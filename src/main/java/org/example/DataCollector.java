@@ -2,7 +2,7 @@ package org.example;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version HelloSelenium 220905
+ * version HelloSelenium 220908
  * Builds data event id array and calendar date array
  *******************************************************************/
 import org.jsoup.nodes.Element;

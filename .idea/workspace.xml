@@ -4,7 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="Version 220905 integrated helloSelenium with myprogram...selenium running with covers." />
+    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/SpreadCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/OddsCollector.java" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -30,7 +35,8 @@
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
   <component name="RecentsManager">
@@ -44,7 +50,7 @@
       <module name="HelloSelenium" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="org.example.*" />
+          <option name="PATTERN" value="org.example.SpreadCollector" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -99,7 +105,28 @@
       <workItem from="1662430651330" duration="698000" />
       <workItem from="1662431360622" duration="589000" />
       <workItem from="1662431975925" duration="4008000" />
-      <workItem from="1662436388971" duration="2110000" />
+      <workItem from="1662436388971" duration="2166000" />
+      <workItem from="1662489646989" duration="1589000" />
+      <workItem from="1662497078574" duration="6611000" />
+      <workItem from="1662506104442" duration="15000" />
+      <workItem from="1662506273909" duration="262000" />
+      <workItem from="1662513118126" duration="7132000" />
+      <workItem from="1662520284661" duration="834000" />
+      <workItem from="1662521128754" duration="671000" />
+      <workItem from="1662562399629" duration="3404000" />
+      <workItem from="1662570853708" duration="1183000" />
+      <workItem from="1662572589017" duration="95000" />
+      <workItem from="1662572956005" duration="542000" />
+      <workItem from="1662573507374" duration="37000" />
+      <workItem from="1662582102295" duration="52000" />
+      <workItem from="1662582200882" duration="24000" />
+      <workItem from="1662583525812" duration="3475000" />
+      <workItem from="1662587125365" duration="3570000" />
+      <workItem from="1662592039828" duration="16000" />
+      <workItem from="1662596531407" duration="321000" />
+      <workItem from="1662606154849" duration="1583000" />
+      <workItem from="1662655875271" duration="199000" />
+      <workItem from="1662666361775" duration="12962000" />
     </task>
     <task id="LOCAL-00001" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
       <created>1662438233430</created>
@@ -108,7 +135,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662438233430</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
+      <created>1662438514916</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1662438514916</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
