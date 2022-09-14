@@ -2,7 +2,7 @@ package org.example;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 220908
+ * version 220913
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.IndexedColors;
@@ -163,8 +163,8 @@ public class ExcelBuilder
         String[] moneylineOddsArray = moneyLineOddString.split(" ");
         if (moneylineOddsArray.length > 0)
         {
-            awayMoneylineOdds = moneylineOddsArray[0];//Moneyline Bet365 away odds
-            homeMoneylineOdds = moneylineOddsArray[3];//Moneyline Bet365 home odds
+//            awayMoneylineOdds = moneylineOddsArray[0];//Moneyline Bet365 away odds
+//            homeMoneylineOdds = moneylineOddsArray[3];//Moneyline Bet365 home odds
         }
     }
     public void setTotalOddsString(String totalOddsString)

@@ -2,7 +2,7 @@ package org.example;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version HelloSelenium 220908
+ * version HelloSelenium 220913
  * Builds data event id array and calendar date array
  *******************************************************************/
 import org.jsoup.nodes.Element;
@@ -61,7 +61,7 @@ public class DataCollector
     private String awayTeamCity;
     private String homeTeamCity;
     private String thisWeek;
-    private String thisSeason = "2021";
+    private String thisSeason;
     private ArrayList<String> thisWeekGameDates = new ArrayList<String>();
     private ArrayList<String> thisGameWeekNumbers = new ArrayList<String>();
     private ArrayList<String> thisWeekHomeTeamScores = new ArrayList<String>();
@@ -236,6 +236,10 @@ public class DataCollector
     public HashMap<String, String> getHomeMLoddsMap()
     {
         return awayMLoddsMap;
+    }
+    public void setThisSeason(String thisSeason)
+    {
+        this.thisSeason = thisSeason;
     }
 }
 

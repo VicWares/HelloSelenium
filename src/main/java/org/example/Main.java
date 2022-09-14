@@ -3,7 +3,7 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 220908
+ * version 220913
  **********************************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.nodes.Element;
@@ -19,7 +19,7 @@ import java.util.Map;
 public class Main extends JComponent
 {
     String oddsURL = "https://www.covers.com/sport/football/nfl/odds";
-    private static String version = "220908";
+    private static String version = "220913";
     private XSSFWorkbook sportDataWorkbook;
     private HashMap<String, String> weekDateMap = new HashMap<>();
     private HashMap<String, String> cityNameMap = new HashMap<>();
@@ -49,6 +49,7 @@ public class Main extends JComponent
         weekNumber = JOptionPane.showInputDialog("Enter NFL week number");
         weekNumber = "1";//Override for testing
         season = "2022";
+        dataCollector.setThisSeason(season);
         excelBuilder.setSeason(season);
         excelBuilder.setWeekNumber(weekNumber);
         String weekDate = weekDateMap.get(weekNumber);

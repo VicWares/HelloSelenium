@@ -3,7 +3,7 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 220908
+ * version 220913
  **********************************************************************************/
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -37,17 +37,5 @@ public class SpreadCollector
         WebElement spreadMenuItem = driver.findElement(By.cssSelector("#BetTypeDropdown > li:nth-child(3) > a"));//Click spread dropdown item
         act.moveToElement(spreadMenuItem).click().build().perform();
         System.out.println("Clicked on spread dropdown item");
-        System.out.println("......" + driver.findElement(By.cssSelector("#__spreadTotalDiv-nfl-265276 > table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(2) > td:nth-child(9) > div:nth-child(1) > div:nth-child(2) > a:nth-child(1) > div:nth-child(1)")).getText().split(" ")[57]);
-
-        for (String key : xRefMap.keySet())
-        {
-            String dataGame = xRefMap.get(key);
-            System.out.print("dataGame = " + dataGame + "=>");
-           // String homeSpreadCloseOdds = driver.findElement(By.cssSelector("[data-book='bet365'][data-game='" +  dataGame + "'][data-type=spread].__awayOdds.__decimal")).getText();
-            //System.out.println("++++++++++" + homeSpreadCloseOdds);
-
-                   // homeSpreadCloseOddsMap.put(key, driver.findElement(By.cssSelector("#__spreadTotalDiv-nfl-" + dataGame + " > table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(2) > td:nth-child(9) > div:nth-child(1) > div:nth-child(2) > a:nth-child(1) > div:nth-child(1)")).getText().split(" ")[57]);
-        }
-        System.out.println(homeSpreadCloseOddsMap);
     }
 }

@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/SpreadCollector.java" afterDir="false" />
+    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="Version 220908 integrated helloSelenium with myprogram...adding Spread odds...">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DataCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ExcelBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ExcelBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/OddsCollector.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SpreadCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SpreadCollector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,7 +127,16 @@
       <workItem from="1662596531407" duration="321000" />
       <workItem from="1662606154849" duration="1583000" />
       <workItem from="1662655875271" duration="199000" />
-      <workItem from="1662666361775" duration="12962000" />
+      <workItem from="1662666361775" duration="13295000" />
+      <workItem from="1662685980808" duration="8006000" />
+      <workItem from="1662694110736" duration="268000" />
+      <workItem from="1663033195322" duration="229000" />
+      <workItem from="1663033496540" duration="1283000" />
+      <workItem from="1663035653920" duration="597000" />
+      <workItem from="1663080619792" duration="285000" />
+      <workItem from="1663080911891" duration="237000" />
+      <workItem from="1663094040542" duration="1802000" />
+      <workItem from="1663096184125" duration="258000" />
     </task>
     <task id="LOCAL-00001" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
       <created>1662438233430</created>
@@ -142,7 +152,14 @@
       <option name="project" value="LOCAL" />
       <updated>1662438514916</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Version 220908 integrated helloSelenium with myprogram...adding Spread odds...">
+      <created>1662680038138</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1662680038138</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -162,6 +179,7 @@
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
     <MESSAGE value="Version 220905 integrated helloSelenium with myprogram...selenium running with covers." />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 220905 integrated helloSelenium with myprogram...selenium running with covers." />
+    <MESSAGE value="Version 220908 integrated helloSelenium with myprogram...adding Spread odds..." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 220908 integrated helloSelenium with myprogram...adding Spread odds..." />
   </component>
 </project>
