@@ -3,7 +3,7 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 220913
+ * version 220914
  **********************************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.nodes.Element;
@@ -19,7 +19,7 @@ import java.util.Map;
 public class Main extends JComponent
 {
     String oddsURL = "https://www.covers.com/sport/football/nfl/odds";
-    private static String version = "220913";
+    private static String version = "220914";
     private XSSFWorkbook sportDataWorkbook;
     private HashMap<String, String> weekDateMap = new HashMap<>();
     private HashMap<String, String> cityNameMap = new HashMap<>();
@@ -44,10 +44,10 @@ public class Main extends JComponent
     private void initialize() throws IOException, InterruptedException
     {
         fillCityNameMap();//Builds full city name map to correct for Covers variations in team city names
-        fillWeekDateMap();
+        fillWeekDateMap();//Game dates for this week
         dataCollector.setCityNameMap(cityNameMap);
         weekNumber = JOptionPane.showInputDialog("Enter NFL week number");
-        weekNumber = "1";//Override for testing
+        weekNumber = "2";//Override for testing
         season = "2022";
         dataCollector.setThisSeason(season);
         excelBuilder.setSeason(season);
@@ -66,6 +66,7 @@ public class Main extends JComponent
         sportDataWorkbook = excelReader.readSportData();
         SpreadCollector spreadCollector = new SpreadCollector();
         spreadCollector.collectSpreads(driver, xRefMap);
+        excelBuilder.setHomeSpreadCloseOddsMap(spreadCollector.getHomeSpreadCloseOddsMap());
         for (Map.Entry<String, String> entry : xRefMap.entrySet())
         {
             String dataEventId = entry.getKey();

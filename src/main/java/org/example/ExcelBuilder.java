@@ -2,7 +2,7 @@ package org.example;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 220913
+ * version 220914
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.IndexedColors;
@@ -39,6 +39,7 @@ public class ExcelBuilder
     private HashMap<String, String> homeMoneyLineOddsMap = new HashMap<>();
     private HashMap<String, String> awayMoneyLineOddsMap = new HashMap<>();
     private HashMap<String, String> homeSpreadOddsMap = new HashMap<>();
+    private HashMap<String, String> homeSpreadCloseOddsMap = new HashMap<>();
     private HashMap<String, String> awaySpreadOddsMap = new HashMap<>();
     private HashMap<String, String> homeTotalOpenOddsMap = new HashMap<>();
     private HashMap<String, String> homeTotalCloseOddsMap = new HashMap<>();
@@ -111,6 +112,13 @@ public class ExcelBuilder
         sportDataSheet.getRow(eventIndex).createCell(11);// Home team short name e.g. DAL Column L 12
         sportDataSheet.getRow(eventIndex).getCell(11).setCellStyle(leftStyle);
         sportDataSheet.getRow(eventIndex).getCell(11).setCellValue(homeShortNameMap.get(dataEventID));
+
+
+        sportDataSheet.getRow(eventIndex).createCell(14);// Home Spread Close Odds e.g. +4.0 Column O 15
+        sportDataSheet.getRow(eventIndex).getCell(14).setCellStyle(leftStyle);
+        sportDataSheet.getRow(eventIndex).getCell(14).setCellValue(homeSpreadCloseOddsMap.get(dataEventID));
+
+
 
         sportDataSheet.getRow(eventIndex).createCell(12);//Spread home odds, column M
         sportDataSheet.getRow(eventIndex).getCell(12).setCellStyle(leftStyle);
@@ -243,5 +251,9 @@ public class ExcelBuilder
     public void setAwayDivision(String awayDivision)
     {
         this.awayDivision = awayDivision;
+    }
+    public void setHomeSpreadCloseOddsMap(HashMap<String, String> homeSpreadCloseOddsMap)
+    {
+        this.homeSpreadCloseOddsMap = homeSpreadCloseOddsMap;
     }
 }

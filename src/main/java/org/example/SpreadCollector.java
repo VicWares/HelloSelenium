@@ -3,14 +3,12 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 220913
+ * version 220914
  **********************************************************************************/
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-
 import java.util.HashMap;
-
-import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
+import java.util.Map;
 public class SpreadCollector
 {
     private HashMap<String, String> homeSpreadCloseOddsMap = new HashMap<>();
@@ -37,5 +35,30 @@ public class SpreadCollector
         WebElement spreadMenuItem = driver.findElement(By.cssSelector("#BetTypeDropdown > li:nth-child(3) > a"));//Click spread dropdown item
         act.moveToElement(spreadMenuItem).click().build().perform();
         System.out.println("Clicked on spread dropdown item");
+
+        try//Get home spread close odds column O15
+        {
+            for (Map.Entry<String,String> entry : xRefMap.entrySet())
+            {
+                String dataEventId = entry.getKey();
+                String dataGame = entry.getValue();
+                WebElement element = driver.findElement(By.cssSelector("[data-game='" + dataGame + "'][data-book='bet365'][data-type='spread']"));
+                String homeSpreadCloseOdds = (element.findElement(By.cssSelector(".__american")).getText().split(" ")[0]);
+                homeSpreadCloseOddsMap.put(dataEventId, homeSpreadCloseOdds);
+            }
+        }
+        catch (Exception e)
+        {
+            driver.close();
+            throw new RuntimeException(e);
+        }
+        finally
+        {
+            driver.close();
+        }
+    }
+    public HashMap<String, String> getHomeSpreadCloseOddsMap()
+    {
+        return homeSpreadCloseOddsMap;
     }
 }
