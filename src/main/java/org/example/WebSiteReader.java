@@ -2,7 +2,7 @@ package org.example;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 220914
+ * version 220916
  * Reads/cleans input URL and returns all Elements and Document
  *******************************************************************/
 import org.jsoup.Jsoup;

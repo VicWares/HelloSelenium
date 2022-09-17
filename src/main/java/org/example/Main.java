@@ -3,7 +3,7 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 220914
+ * version 220916
  **********************************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.nodes.Element;
@@ -29,7 +29,6 @@ public class Main extends JComponent
     public ExcelBuilder excelBuilder = new ExcelBuilder();
     public ExcelWriter excelWriter = new ExcelWriter();
     public DataCollector dataCollector = new DataCollector();
-//    public WebDriver driver = new SafariDriver();
     private Elements consensusElements;
     private int excelLineNumberIndex = 3;//Start filling excel sheet after header
     private Elements oddsElements;
@@ -49,6 +48,7 @@ public class Main extends JComponent
         weekNumber = JOptionPane.showInputDialog("Enter NFL week number");
         weekNumber = "2";//Override for testing
         season = "2022";
+        sportDataWorkbook = excelReader.readSportData();
         dataCollector.setThisSeason(season);
         excelBuilder.setSeason(season);
         excelBuilder.setWeekNumber(weekNumber);
@@ -56,24 +56,29 @@ public class Main extends JComponent
         Elements nflElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + weekDate);
         Elements weekElements = nflElements.select(".cmg_game_data, .cmg_matchup_game_box");
         xRefMap = buildXref(weekElements);
-        WebDriver driver = new SafariDriver();
-        driver.manage().window().maximize();
-        driver.get("https://www.covers.com/sports/nfl/matchups?selectedDate=" + "2022-09-08");
         oddsElements = webSiteReader.readCleanWebsite(oddsURL);//Info from log-in date through the present NFL week
         System.out.println("Main56 week number => " + weekNumber + ", week date => " + weekDate + ", " + weekElements.size() + " games this week") ;
         System.out.println(xRefMap);
         dataCollector.collectTeamInfo(weekElements);
-        sportDataWorkbook = excelReader.readSportData();
+        WebDriver driver = new SafariDriver();
+        driver.manage().window().maximize();
+        driver.get("https://www.covers.com/sports/nfl/matchups?selectedDate=" + weekDate);
         SpreadCollector spreadCollector = new SpreadCollector();
         spreadCollector.collectSpreads(driver, xRefMap);
         excelBuilder.setHomeSpreadCloseOddsMap(spreadCollector.getHomeSpreadCloseOddsMap());
+        Thread.sleep(5000);
+        driver = new SafariDriver();
+        driver.manage().window().maximize();
+        driver.get("https://www.covers.com/sports/nfl/matchups?selectedDate=" + weekDate);
+        MoneyLineCollector moneyLineCollector = new MoneyLineCollector();
+        moneyLineCollector.collectMoneyLines(driver, xRefMap);
+        excelBuilder.setAwayMoneylineCloseOddsMap(moneyLineCollector.getAwayMoneylineCloseOddsMap());
         for (Map.Entry<String, String> entry : xRefMap.entrySet())
         {
             String dataEventId = entry.getKey();
             String dataGame = xRefMap.get(dataEventId);
             System.out.println("Main65 START MAIN LOOP-----------------------------------------------------START MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "/" + dataGame + "\t" + dataCollector.getAwayFullNameMap().get(dataEventId) + " @ " +  dataCollector.getHomeFullNameMap().get(dataEventId) + "-------------------------------------------------------------------------------------------START MAIN LOOP");
             Elements moneyLineOddsElements = oddsElements.select("[data-book='bet365'][data-game='" + dataGame + "'][data-type='moneyline']");
-            excelBuilder.setMoneylineOddsString(moneyLineOddsElements.text());
             consensusElements = webSiteReader.readCleanWebsite("https://contests.covers.com/consensus/matchupconsensusdetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + dataEventId);
             dataCollector.collectConsensusData(consensusElements, dataEventId);
             excelBuilder.setThisWeekAwayTeamsMap(dataCollector.getAwayFullNameMap());

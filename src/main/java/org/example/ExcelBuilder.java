@@ -2,7 +2,7 @@ package org.example;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 220914
+ * version 220916
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.IndexedColors;
@@ -40,6 +40,7 @@ public class ExcelBuilder
     private HashMap<String, String> awayMoneyLineOddsMap = new HashMap<>();
     private HashMap<String, String> homeSpreadOddsMap = new HashMap<>();
     private HashMap<String, String> homeSpreadCloseOddsMap = new HashMap<>();
+    private HashMap<String, String> homeSpreadOpenOddsMap = new HashMap<>();
     private HashMap<String, String> awaySpreadOddsMap = new HashMap<>();
     private HashMap<String, String> homeTotalOpenOddsMap = new HashMap<>();
     private HashMap<String, String> homeTotalCloseOddsMap = new HashMap<>();
@@ -65,6 +66,7 @@ public class ExcelBuilder
     private HashMap<String, String> awayShortNameMap;
     private HashMap <String,String> homeCompleteNameMap = new HashMap();
     private HashMap <String,String> awayCompleteNameMap = new HashMap();
+    private HashMap<String, String> awayMoneylineCloseOddsMap = new HashMap<>();
     public XSSFWorkbook buildExcel(XSSFWorkbook sportDataWorkbook, String dataEventID, int eventIndex, String gameIdentifier)
     {
         sportDataSheet = sportDataWorkbook.getSheet("Data");
@@ -113,12 +115,9 @@ public class ExcelBuilder
         sportDataSheet.getRow(eventIndex).getCell(11).setCellStyle(leftStyle);
         sportDataSheet.getRow(eventIndex).getCell(11).setCellValue(homeShortNameMap.get(dataEventID));
 
-
         sportDataSheet.getRow(eventIndex).createCell(14);// Home Spread Close Odds e.g. +4.0 Column O 15
         sportDataSheet.getRow(eventIndex).getCell(14).setCellStyle(leftStyle);
         sportDataSheet.getRow(eventIndex).getCell(14).setCellValue(homeSpreadCloseOddsMap.get(dataEventID));
-
-
 
         sportDataSheet.getRow(eventIndex).createCell(12);//Spread home odds, column M
         sportDataSheet.getRow(eventIndex).getCell(12).setCellStyle(leftStyle);
@@ -144,9 +143,10 @@ public class ExcelBuilder
         sportDataSheet.getRow(eventIndex).getCell(31).setCellStyle(leftStyle);
         sportDataSheet.getRow(eventIndex).getCell(31).setCellValue(awayMoneyLineOddsMap.get(dataEventID));
 
-        sportDataSheet.getRow(eventIndex).createCell(33);//MoneyLine Bet365 away odds, column AH34
+        sportDataSheet.getRow(eventIndex).createCell(33);//MoneyLine Bet365 away close odds, column AH34
         sportDataSheet.getRow(eventIndex).getCell(33).setCellStyle(leftStyle);
-        sportDataSheet.getRow(eventIndex).getCell(33).setCellValue(awayMoneylineOdds);
+        sportDataSheet.getRow(eventIndex).getCell(33).setCellValue(awayMoneylineCloseOddsMap.get(dataEventID));
+        System.out.println(awayMoneylineCloseOddsMap);
 
         sportDataSheet.getRow(eventIndex).createCell(66);
         sportDataSheet.getRow(eventIndex).getCell(66).setCellStyle(leftStyle);
@@ -166,15 +166,7 @@ public class ExcelBuilder
 
         return sportDataWorkbook;
     }
-    public void setMoneylineOddsString(String moneyLineOddString)
-    {
-        String[] moneylineOddsArray = moneyLineOddString.split(" ");
-        if (moneylineOddsArray.length > 0)
-        {
-//            awayMoneylineOdds = moneylineOddsArray[0];//Moneyline Bet365 away odds
-//            homeMoneylineOdds = moneylineOddsArray[3];//Moneyline Bet365 home odds
-        }
-    }
+
     public void setTotalOddsString(String totalOddsString)
     {
     }
@@ -255,5 +247,9 @@ public class ExcelBuilder
     public void setHomeSpreadCloseOddsMap(HashMap<String, String> homeSpreadCloseOddsMap)
     {
         this.homeSpreadCloseOddsMap = homeSpreadCloseOddsMap;
+    }
+    public void setAwayMoneylineCloseOddsMap(HashMap<String, String> awayMoneylineCloseOddsMap)
+    {
+        this.awayMoneylineCloseOddsMap = awayMoneylineCloseOddsMap;
     }
 }

@@ -5,6 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="Version 220913 integrated helloSelenium with myprogram...adding Spread odds...corrected date in Game Identifier">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/example/MoneyLineCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DataCollector.java" afterDir="false" />
@@ -19,6 +20,13 @@
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -45,6 +53,9 @@
   }
 }</component>
   <component name="RecentsManager">
+    <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.example" />
+    </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.example" />
     </key>
@@ -146,6 +157,11 @@
       <workItem from="1663208217986" duration="3486000" />
       <workItem from="1663213310815" duration="953000" />
       <workItem from="1663214274996" duration="1239000" />
+      <workItem from="1663277525370" duration="104000" />
+      <workItem from="1663279306501" duration="622000" />
+      <workItem from="1663372104039" duration="1494000" />
+      <workItem from="1663373611277" duration="925000" />
+      <workItem from="1663378561809" duration="8711000" />
     </task>
     <task id="LOCAL-00001" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
       <created>1662438233430</created>
