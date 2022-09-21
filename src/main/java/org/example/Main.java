@@ -3,75 +3,130 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 220916
+ * version 220921
  **********************************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
-
 import javax.swing.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 public class Main extends JComponent
 {
+    CityNameMapBuilder cityNameMapBuilder = new CityNameMapBuilder();
+    public static Actions act;
     String oddsURL = "https://www.covers.com/sport/football/nfl/odds";
-    private static String version = "220914";
+    private static String version = "220921";
     private XSSFWorkbook sportDataWorkbook;
-    private HashMap<String, String> weekDateMap = new HashMap<>();
-    private HashMap<String, String> cityNameMap = new HashMap<>();
+    private static HashMap<String, String> weekDateMap = new HashMap<>();
     private HashMap<String, String> xRefMap = new HashMap<>();
     public WebSiteReader webSiteReader = new WebSiteReader();
     public ExcelReader excelReader = new ExcelReader();
     public ExcelBuilder excelBuilder = new ExcelBuilder();
     public ExcelWriter excelWriter = new ExcelWriter();
-    public DataCollector dataCollector = new DataCollector();
+    public static DataCollector dataCollector = new DataCollector();
+    public SpreadCollector spreadCollector = new SpreadCollector();
+    public MoneyLineCollector moneyLineCollector = new MoneyLineCollector();
     private Elements consensusElements;
     private int excelLineNumberIndex = 3;//Start filling excel sheet after header
     private Elements oddsElements;
-    private String season;
-    private String weekNumber;
-
+    private static String season;
+    private static String weekNumber;
+    public static WebDriver driver;
     public static void main(String[] args) throws IOException, InterruptedException
     {
         System.out.println("SharpMarkets, version " + version + ", Copyright 2021 Dan Farris");
-        new Main().initialize();//Get out of static context
+        new CityNameMapBuilder();//Builds full city name map to correct for Covers variations in team city names
+        new WeekDateMapBuilder();//Builds Game dates for this week
+        new CoversMatchupMainPageGetter();//Gets https://www.covers.com/sports/nfl/matchups and clears cookies and selects week
+        driver = CoversMatchupMainPageGetter.getDriver();
+        act = CoversMatchupMainPageGetter.getAct();
+        dataCollector.setCityNameMap(WeekDateMapBuilder.getWeekDateMap());
+        weekNumber = "1";//Override for testing
+        season = "2022";
+
+//        try//To click weeks button on main Scores and Matchups page
+//        {
+//            WebElement weeksButton = driver.findElement(By.cssSelector("#select2-cmg_week_filter_dropdown-container"));//Click week button
+//            act.moveToElement(weeksButton).click().build().perform();
+//            System.out.println("Main page wees button clicked ");
+//        }
+//        catch (Exception e)
+//        {
+//            System.out.println("Main74 can't click weeks button on main page");
+//        }
+
+        //Thread.sleep(5000);
+
+
+//        try//To click this week number on main page
+//        {
+//            WebElement weeksButton = driver.findElement(By.cssSelector("#content > div.cmg_sorting_row > div > div > a.cmg_active_navigation_item"));//Click week button
+//            act.moveToElement(weeksButton).click().build().perform();
+//            System.out.println("Main page selected week button clicked ");
+//        }
+//        catch (Exception e)
+//        {
+//            System.out.println("Main88 can't select this week button on main page");
+//        }
+       // Thread.sleep(5000);
+//        try//To set this week on main Scores and Matchups page
+//        {
+//            WebElement weekButton = driver.findElement(By.cssSelector("a.cmg_active_navigation_item[data-date=Week '" + weekNumber + "']"));//Click week button
+//            act.moveToElement(weekButton).click().build().perform();
+//            System.out.println("Main95 Main page this week button clicked => " + "weeek " + " week number => " + weekNumber);
+//        }
+//        catch (Exception e)
+//        {
+//            System.out.println("Main99 can't set this week on main page");
+//        }
+
+        //Thread.sleep(5000);
+
+//       try//To click on odds button on main page
+//       {
+//           WebElement oddsButton = driver.findElement(By.cssSelector(".covers-CoversSubNav-highlight > a:nth-child(1)"));//Click Odds button
+//           act.moveToElement(oddsButton).click().build().perform();
+//           System.out.println("Main page oddsButton clicked");
+//       }
+//       catch (Exception e)
+//       {
+//           System.out.println("Main89 can't click on main page odds button");
+//       }
+
+       //Thread.sleep(5000);
+
+       new Main().initialize();//Get out of static context
     }
     private void initialize() throws IOException, InterruptedException
     {
-        fillCityNameMap();//Builds full city name map to correct for Covers variations in team city names
-        fillWeekDateMap();//Game dates for this week
-        dataCollector.setCityNameMap(cityNameMap);
-        weekNumber = JOptionPane.showInputDialog("Enter NFL week number");
-        weekNumber = "2";//Override for testing
+        //weekNumber = JOptionPane.showInputDialog("Enter NFL week number");
+        weekNumber = "1";//Override for testing
         season = "2022";
+        String weekDate = weekDateMap.get(weekNumber);
         sportDataWorkbook = excelReader.readSportData();
+        spreadCollector.setDriver(Main.driver, act);
+        moneyLineCollector.setDriver(Main.driver, act);
         dataCollector.setThisSeason(season);
         excelBuilder.setSeason(season);
         excelBuilder.setWeekNumber(weekNumber);
-        String weekDate = weekDateMap.get(weekNumber);
         Elements nflElements = webSiteReader.readCleanWebsite("https://www.covers.com/sports/nfl/matchups?selectedDate=" + weekDate);
         Elements weekElements = nflElements.select(".cmg_game_data, .cmg_matchup_game_box");
         xRefMap = buildXref(weekElements);
         oddsElements = webSiteReader.readCleanWebsite(oddsURL);//Info from log-in date through the present NFL week
-        System.out.println("Main56 week number => " + weekNumber + ", week date => " + weekDate + ", " + weekElements.size() + " games this week") ;
+        System.out.println("Main115 week number => " + weekNumber + ", week date => " + weekDate + ", " + weekElements.size() + " games this week") ;
         System.out.println(xRefMap);
         dataCollector.collectTeamInfo(weekElements);
-        WebDriver driver = new SafariDriver();
-        driver.manage().window().maximize();
-        driver.get("https://www.covers.com/sports/nfl/matchups?selectedDate=" + weekDate);
-        SpreadCollector spreadCollector = new SpreadCollector();
-        spreadCollector.collectSpreads(driver, xRefMap);
+        spreadCollector.collectSpreads(xRefMap, driver);
         excelBuilder.setHomeSpreadCloseOddsMap(spreadCollector.getHomeSpreadCloseOddsMap());
         Thread.sleep(5000);
-        driver = new SafariDriver();
-        driver.manage().window().maximize();
-        driver.get("https://www.covers.com/sports/nfl/matchups?selectedDate=" + weekDate);
-        MoneyLineCollector moneyLineCollector = new MoneyLineCollector();
-        moneyLineCollector.collectMoneyLines(driver, xRefMap);
+        moneyLineCollector.collectMoneyLines(xRefMap);
         excelBuilder.setAwayMoneylineCloseOddsMap(moneyLineCollector.getAwayMoneylineCloseOddsMap());
         for (Map.Entry<String, String> entry : xRefMap.entrySet())
         {
@@ -102,7 +157,6 @@ public class Main extends JComponent
         excelWriter.openOutputStream();
         excelWriter.writeSportData(sportDataWorkbook);
         excelWriter.closeOutputStream();
-        driver.quit();
         System.out.println("Proper Finish...HOORAY!");
     }
     public HashMap<String, String> buildXref(Elements weekElements)
@@ -116,69 +170,6 @@ public class Main extends JComponent
         }
         return xRefMap;
     }
-    private void fillCityNameMap()
-    {
-        cityNameMap.put("Minneapolis", "Minnesota");//Minnesota Vikings
-        cityNameMap.put("Tampa", "Tampa Bay");//Tampa Bay Buccaneers
-        cityNameMap.put("Tampa Bay", "Tampa Bay");//Tampa Bay Buccaneers
-        cityNameMap.put("Arlington", "Dallas");//Dallas Cowboys
-        cityNameMap.put("Dallas", "Dallas");//Dallas Cowboys
-        cityNameMap.put("Orchard Park", "Buffalo");//Buffalo Bills
-        cityNameMap.put("Buffalo", "Buffalo");//Buffalo Bills
-        cityNameMap.put("Charlotte", "Carolina");//Carolina Panthers
-        cityNameMap.put("Carolina", "Carolina");//Carolina Panthers
-        cityNameMap.put("Arizona", "Arizona");//Arizona Cardinals
-        cityNameMap.put("Tempe", "Arizona");//Arizona Cardinals
-        cityNameMap.put("Foxborough", "New England");//New England Patriots
-        cityNameMap.put("New England", "New England");//New England Patriots
-        cityNameMap.put("East Rutherford", "New York");//New York Giants and New York Jets
-        cityNameMap.put("New York", "New York");//New York Giants and New York Jets
-        cityNameMap.put("Landover", "Washington");//Washington Football Team
-        cityNameMap.put("Washington", "Washington");//Washington Football Team
-        cityNameMap.put("Nashville", "Tennessee");//Tennessee Titans
-        cityNameMap.put("Miami", "Miami");//Miami Dolphins
-        cityNameMap.put("Baltimore", "Baltimore");//Baltimore Ravens
-        cityNameMap.put("Cincinnati", "Cincinnati");//Cincinnati Bengals
-        cityNameMap.put("Cleveland", "Cleveland");//Cleveland Browns
-        cityNameMap.put("Pittsburgh", "Pittsburgh");//Pittsburgh Steelers
-        cityNameMap.put("Houston", "Houston");//Houston Texans
-        cityNameMap.put("Indianapolis", "Indianapolis");//Indianapolis Colts
-        cityNameMap.put("Jacksonville", "Jacksonville");//Jacksonville Jaguars
-        cityNameMap.put("Tennessee", "Tennessee");//Tennessee Titans
-        cityNameMap.put("Denver", "Denver");//Denver Broncos
-        cityNameMap.put("Kansas City", "Kansas City");//Kansas City Chiefs
-        cityNameMap.put("Las Vegas", "Las Vegas");//Los Angeles Chargers and Los Angeles Rams
-        cityNameMap.put("Philadelphia", "Philadelphia");//Philadelphia Eagles
-        cityNameMap.put("Chicago", "Chicago");//Chicago Bears
-        cityNameMap.put("Detroit", "Detroit");//Detroit Lions
-        cityNameMap.put("Green Bay", "Green Bay");//Green Bay Packers
-        cityNameMap.put("Minnesota", "Minnesota");
-        cityNameMap.put("Atlanta", "Atlanta");//Atlanta Falcons
-        cityNameMap.put("New Orleans", "New Orleans");//New Orleans Saints
-        cityNameMap.put("Los Angeles", "Los Angeles");//Los Angeles Rams
-        cityNameMap.put("San Francisco", "San Francisco");//San Francisco 49ers
-        cityNameMap.put("Seattle", "Seattle");//Seattle Seahawks
-    }
-    private void fillWeekDateMap()
-    {
-        weekDateMap.put("1", "2022-09-08");//Season 2022 start...Week 1
-        weekDateMap.put("2", "2022-09-15");
-        weekDateMap.put("3", "2022-09-22");
-        weekDateMap.put("4", "2022-09-29");
-        weekDateMap.put("5", "2022-10-06");
-        weekDateMap.put("6", "2022-10-13");
-        weekDateMap.put("7", "2022-10-20");
-        weekDateMap.put("8", "2022-10-27");
-        weekDateMap.put("9", "2022-11-03");
-        weekDateMap.put("10", "2022-11-10");
-        weekDateMap.put("11", "2022-11-17");
-        weekDateMap.put("12", "2022-11-24");
-        weekDateMap.put("13", "2022-12-01");
-        weekDateMap.put("14", "2022-12-08");
-        weekDateMap.put("15", "2022-12-15");
-        weekDateMap.put("16", "2022-12-22");
-        weekDateMap.put("17", "2022-12-29");
-        weekDateMap.put("18", "2023-01-08");
-        weekDateMap.put("19", "2023-02-05");
-    }
+
+
 }
