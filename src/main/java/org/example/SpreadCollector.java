@@ -3,7 +3,7 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 220921
+ * version 220922
  **********************************************************************************/
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
@@ -20,28 +20,27 @@ public class SpreadCollector
     private Actions act;
     public void collectSpreads(HashMap<String, String> xRefMap, WebDriver driver) throws InterruptedException
     {
-        //        System.out.println("Collecting Spreads");
-        //        System.out.println("clicking cookie button");
-        //        WebElement cookieButton = driver.findElement(By.cssSelector("#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"));//GetCookies button
-        //        act.moveToElement(cookieButton).click().build().perform();
-        //        System.out.println("Spread Cookie Button clicked");
-        //        Thread.sleep(5000);
-        System.out.println("Clicking the odds menu button");
-        //WebElement oddsButton = driver.findElement(By.cssSelector("body > div:nth-child(12) > div > nav > ul.covers-CoversSubNav2-visible-links > li.covers-CoversSubNav-highlight > a"));//Click Odds button
-        //act.moveToElement(oddsButton).click().build().perform();
-        System.out.println("Odds Button clicked");
         Thread.sleep(5000);
-        try
+        try//To click bet type dropdown
         {
-            System.out.println("SC36 Trying to click on the spread dropdown item");
-            driver.manage().window().maximize();
-            WebElement spreadMenuItem = driver.findElement(By.cssSelector("a.dropdown-item[data-value='Spread']"));//Click spread dropdown item
-            act.moveToElement(spreadMenuItem).click().build().perform();
-            driver.manage().window().minimize();
+            WebElement betTypeDropdownButton = driver.findElement(By.cssSelector("button.btn.btn-default.dropdown-toggle[type='button']#__betMenu"));//Bet type dropdown button
+            act.moveToElement(betTypeDropdownButton).click().build().perform();
+            System.out.println("Main53 Main page Bet type dropdown button clicked");
         }
         catch (Exception e)
         {
-            System.out.println("SC42 Couldn't find spread dropdown item to click");
+            System.out.println("Main57 can't click Bet type dropdown button on main page");
+        }
+        Thread.sleep(5000);
+        try//To click Spread dropdown on main Scores and Matchups page
+        {
+            WebElement spreadButton = driver.findElement(By.cssSelector("#BetTypeDropdown > li:nth-child(3) > a"));//Spread button
+            act.moveToElement(spreadButton).click().build().perform();
+            System.out.println("Main56 spread button clicked");
+        }
+        catch (Exception e)
+        {
+            System.out.println("Main60 can't click spread button");
         }
         Thread.sleep(5000);
         String dataGame = null;
@@ -53,8 +52,8 @@ public class SpreadCollector
                 dataGame = entry.getValue();
                 System.out.println("Collecting Spread data for => " + dataEventId);
                 WebElement element = driver.findElement(By.cssSelector("[data-game='" + dataGame + "'][data-book='bet365'][data-type='spread']"));
-                System.out.println("SC57..." + element);
                 String homeSpreadCloseOdds = (element.findElement(By.cssSelector(".__american")).getText().split(" ")[0]);
+                System.out.println("SC57 homeSpreadCloseOdds => ..." + homeSpreadCloseOdds);
                 homeSpreadCloseOddsMap.put(dataEventId, homeSpreadCloseOdds);//close in O15, open in N14
                 System.out.println("SC59..... " + homeSpreadCloseOdds);
             }
@@ -74,9 +73,5 @@ public class SpreadCollector
     {
         return homeSpreadOpenOddsMap;
     }
-    public void setDriver(WebDriver driver, Actions act)
-    {
-        this.driver = driver;
-        this.act = act;
-    }
+    public void setDriver(WebDriver driver, Actions act) {this.driver = driver;this.act = act;}
 }

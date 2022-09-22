@@ -3,12 +3,12 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 220921
+ * version 220922
  **********************************************************************************/
 import java.util.HashMap;
 public class CityNameMapBuilder
 {
-    private HashMap<String, String> cityNameMap = new HashMap();
+    private static HashMap<String, String> cityNameMap = new HashMap();
     public CityNameMapBuilder()
     {
         cityNameMap.put("Minneapolis", "Minnesota");//Minnesota Vikings
@@ -52,7 +52,7 @@ public class CityNameMapBuilder
         cityNameMap.put("San Francisco", "San Francisco");//San Francisco 49ers
         cityNameMap.put("Seattle", "Seattle");//Seattle Seahawks
     }
-    public HashMap<String, String> getCityNameMap()
+    public static HashMap<String, String> getCityNameMap()
     {
         return cityNameMap;
     }

@@ -1,9 +1,15 @@
 package org.example;
+/**********************************************************************************
+ * Must be run before
+ * cd /usr/bin/
+ * sudo safaridriver --enable
+ * version 220922
+ **********************************************************************************/
 import java.util.HashMap;
 public class WeekDateMapBuilder
 {
     private static HashMap<String, String> weekDateMap = new HashMap();
-    public WeekDateMapBuilder()
+    public HashMap<String, String> WeekDateMapBuilder()
     {
         weekDateMap.put("1", "2022-09-08");//Season 2022 start...Week 1
         weekDateMap.put("2", "2022-09-15");//Weeks start on Thursdays
@@ -24,6 +30,7 @@ public class WeekDateMapBuilder
         weekDateMap.put("17", "2022-12-29");
         weekDateMap.put("18", "2023-01-08");
         weekDateMap.put("19", "2023-02-05");
+        return weekDateMap;
     }
     public static HashMap<String, String> getWeekDateMap()
     {

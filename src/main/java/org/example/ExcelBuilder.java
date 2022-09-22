@@ -2,7 +2,7 @@ package org.example;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 220921
+ * version 220922
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.IndexedColors;
@@ -65,7 +65,7 @@ public class ExcelBuilder
     private HashMap<String, String> homeShortNameMap;
     private HashMap<String, String> awayShortNameMap;
     private HashMap <String,String> homeCompleteNameMap = new HashMap();
-    private HashMap <String,String> awayCompleteNameMap = new HashMap();
+    private HashMap <String,String> awayCompleteNameMap = new HashMap();//e.g Dallas Cowboys
     private HashMap<String, String> awayMoneylineCloseOddsMap = new HashMap<>();
     public XSSFWorkbook buildExcel(XSSFWorkbook sportDataWorkbook, String dataEventID, int eventIndex, String gameIdentifier)
     {
