@@ -3,7 +3,7 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 220927
+ * version 220927A
  **********************************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.nodes.Element;
@@ -21,7 +21,7 @@ public class Main extends JComponent
 {
     CityNameMapBuilder cityNameMapBuilder = new CityNameMapBuilder();
     public static Actions act;
-    private static String version = "220927";
+    private static String version = "220927A";
     private XSSFWorkbook sportDataWorkbook;
     private static HashMap<String, String> weekDateMap = new WeekDateMapBuilder().WeekDateMapBuilder();
     private HashMap<String, String> xRefMap = new HashMap<>();
@@ -47,7 +47,7 @@ public class Main extends JComponent
         driver = new SafariDriver();
         driver.manage().window().maximize();
         js = (JavascriptExecutor)driver;
-        new mainPageGetter(weekNumber);//Gets https://www.covers.com/sports/nfl/matchups and clears cookies and selects week
+        new mainPageGetter(weekNumber);//Gets https://www.covers.com/sports/nfl/matchups for this week, clears cookies, clicks odds button
         dataCollector.setCityNameMap(CityNameMapBuilder.getCityNameMap());
         new Main().scrape();//Get out of static context
     }

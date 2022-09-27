@@ -4,11 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="Version 220922 HelloSelenium2.  Added Main Page getter.  No longer getting MoneyLine Away Close Odds column AH34.">
+    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="Version 220927 HelloSelenium2.  Clean up with JS executor.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CityNameMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CityNameMapBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CoversMatchupMainPageGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mainPageGetter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DataCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ExcelBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ExcelBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ExcelReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ExcelReader.java" afterDir="false" />
@@ -16,6 +15,7 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MoneyLineCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MoneyLineCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SpreadCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SpreadCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WebSiteReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WebSiteReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mainPageGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mainPageGetter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -205,7 +205,8 @@
       <workItem from="1664290501495" duration="257000" />
       <workItem from="1664290806063" duration="128000" />
       <workItem from="1664295542473" duration="199000" />
-      <workItem from="1664301336973" duration="3180000" />
+      <workItem from="1664301336973" duration="3243000" />
+      <workItem from="1664310794172" duration="2718000" />
     </task>
     <task id="LOCAL-00001" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
       <created>1662438233430</created>
@@ -249,7 +250,14 @@
       <option name="project" value="LOCAL" />
       <updated>1663889963329</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Version 220927 HelloSelenium2.  Clean up with JS executor.">
+      <created>1664305979082</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1664305979082</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -273,6 +281,7 @@
     <MESSAGE value="Version 220913 integrated helloSelenium with myprogram...adding Spread odds...corrected date in Game Identifier" />
     <MESSAGE value="Version 220921 HelloSelenium2.  Added Main Page getter.  Successfully getting MoneyLine Away Close Odds column AH34." />
     <MESSAGE value="Version 220922 HelloSelenium2.  Added Main Page getter.  No longer getting MoneyLine Away Close Odds column AH34." />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 220922 HelloSelenium2.  Added Main Page getter.  No longer getting MoneyLine Away Close Odds column AH34." />
+    <MESSAGE value="Version 220927 HelloSelenium2.  Clean up with JS executor." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 220927 HelloSelenium2.  Clean up with JS executor." />
   </component>
 </project>
