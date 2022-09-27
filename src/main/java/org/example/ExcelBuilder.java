@@ -2,7 +2,7 @@ package org.example;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 220922
+ * version 220927
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.IndexedColors;
@@ -146,7 +146,6 @@ public class ExcelBuilder
         sportDataSheet.getRow(eventIndex).createCell(33);//MoneyLine Bet365 away close odds, column AH34
         sportDataSheet.getRow(eventIndex).getCell(33).setCellStyle(leftStyle);
         sportDataSheet.getRow(eventIndex).getCell(33).setCellValue(awayMoneylineCloseOddsMap.get(dataEventID));
-        System.out.println(awayMoneylineCloseOddsMap);
 
         sportDataSheet.getRow(eventIndex).createCell(66);
         sportDataSheet.getRow(eventIndex).getCell(66).setCellStyle(leftStyle);

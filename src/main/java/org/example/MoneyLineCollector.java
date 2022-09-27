@@ -3,7 +3,7 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 220922
+ * version 220927
  **********************************************************************************/
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -34,13 +34,31 @@ public class MoneyLineCollector
         {
             WebElement spreadMenuItem = driver.findElement(By.cssSelector("#BetTypeDropdown > li:nth-child(2) > a:nth-child(1)"));//Click Moneyline dropdown item
             act.moveToElement(spreadMenuItem).click().build().perform();
-            System.out.println("ML37 Clicked on Moneyline dropdown item");
+            System.out.println("MLC37 Clicked on Moneyline dropdown item");
         }
         catch (Exception e)//Couldn't click on Moneyline dropdown item
         {
-            System.out.println("ML41 Couldn't click on Moneyline dropdown item.");
+            System.out.println("MLC41 Couldn't click on Moneyline dropdown item.");
         }
-        //try Get away moneyline close odds column AH
+        // Get away moneyline close odds column AH
+        for (Map.Entry<String, String> entry : xRefMap.entrySet())
+        {
+            String dataEventId = entry.getKey();
+            String dataGame = entry.getValue();
+            try
+            {
+                String s = "[data-game='" + dataGame + "'][data-book='bet365'][data-type='moneyline']";
+                WebElement element = driver.findElement(By.cssSelector(s));
+                String awayMoneylineCloseOdds = (element.findElement(By.cssSelector(".__american")).getText().split(" ")[0]);
+                awayMoneylineCloseOddsMap.put(dataEventId, awayMoneylineCloseOdds);
+                System.out.println("MLC54 awayMLCodds map => " + awayMoneylineCloseOddsMap);
+            }
+            catch (Exception e)
+            {
+                System.out.println("MLC57 Can't find  Moneyline awayCloseOdds  for dataGame => " + dataGame);
+            }
+        }
+        //try Get home moneyline close odds column S
         {
             for (Map.Entry<String, String> entry : xRefMap.entrySet())
             {
@@ -50,42 +68,25 @@ public class MoneyLineCollector
                 {
                     String s = "[data-game='" + dataGame + "'][data-book='bet365'][data-type='moneyline']";
                     WebElement element = driver.findElement(By.cssSelector(s));
-                    String awayMoneylineCloseOdds = (element.findElement(By.cssSelector(".__american")).getText().split(" ")[0]);
-                    awayMoneylineCloseOddsMap.put(dataEventId, awayMoneylineCloseOdds);
+                    act.moveToElement(element).click().build().perform();
+                    homeMoneylineCloseOdds = (element.findElement(By.cssSelector(".__american")).getText().split(" ")[0]);
+                    homeMoneylineCloseOddsMap.put(dataEventId, homeMoneylineCloseOdds);
+                    System.out.println("MLC74 homeMLCodds map => " + homeMoneylineCloseOddsMap);
                 }
                 catch (Exception e)
                 {
-                    System.out.println("MLC60 Can't find  Moneyline awayCloseOdds  for dataGame => " + dataGame);
+                    System.out.println("MLC78 Can't find  Moneyline home CloseOdds  for dataGame => " + dataGame);
                 }
             }
-            //try Get home moneyline close odds column S
-            {
-                for (Map.Entry<String, String> entry : xRefMap.entrySet())
-                {
-                    String dataEventId = entry.getKey();
-                    String dataGame = entry.getValue();
-                    try
-                    {
-                        String s = "[data-game='" + dataGame + "'][data-book='bet365'][data-type='moneyline']";
-                        WebElement element = driver.findElement(By.cssSelector(s));
-                        String awayHomelineCloseOdds = (element.findElement(By.cssSelector(".__american")).getText().split(" ")[0]);
-                        homeMoneylineCloseOddsMap.put(dataEventId, homeMoneylineCloseOdds);
-                    }
-                    catch (Exception e)
-                    {
-                        System.out.println("MLC60 Can't find  Moneyline awayCloseOdds  for dataGame => " + dataGame);
-                    }
-                }
-            }
-            driver.close();
         }
+        driver.close();
+        System.out.println("MLC83 Exiting moneyline collector");
         return awayMoneylineCloseOddsMap;
     }
-
-        public void setDriver (WebDriver driver, Actions act)
-        {
-            this.driver = driver;
-            this.act = act;
-        }
+    public void setDriver(WebDriver driver, Actions act)
+    {
+        this.driver = driver;
+        this.act = act;
     }
+}
 

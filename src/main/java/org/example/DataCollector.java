@@ -2,7 +2,7 @@ package org.example;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version HelloSelenium 220922
+ * version HelloSelenium 220927
  * Builds data event id array and calendar date array
  *******************************************************************/
 import org.jsoup.nodes.Element;
@@ -17,6 +17,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 import static org.openqa.selenium.By.cssSelector;
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
@@ -160,6 +161,20 @@ public class DataCollector
         ouUndersMap.put(thisMatchupID, ouUnder);
         atsHomesMap.put(thisMatchupID, atsAway);
         atsAwaysMap.put(thisMatchupID, atsHome);
+    }
+    public void collectTotalHomeCloseOdds(String dataEventId)
+    {
+        try
+        {
+            System.out.println("DC169 Starting collectTotalHomeCloseOdds()");
+            String totalHomeCloseOdds = String.valueOf(Main.driver.findElement(By.cssSelector("#__totalDiv-nfl-265308 > table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(2) > td:nth-child(9) > div:nth-child(1) > div:nth-child(2) > a:nth-child(1) > div:nth-child(1)")));
+            System.out.println("DC171 totalHomeCloseOdds => " + totalHomeCloseOdds);
+        }
+        catch (Exception e)
+        {
+            System.out.println("DC175 Can't find totalHomeCloseOdds");
+            throw new RuntimeException(e);
+        }
     }
     public HashMap<String, String> getHomeFullNameMap()
     {
