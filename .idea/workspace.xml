@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="Version 220927 HelloSelenium2.  Clean up with JS executor.">
+    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="Version 220930 HelloSelenium4. Reading website with WebDriver.  Getting xRefList.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CityNameMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CityNameMapBuilder.java" afterDir="false" />
@@ -14,8 +14,9 @@
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MoneyLineCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MoneyLineCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SpreadCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SpreadCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WebSiteReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WebSiteReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mainPageGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mainPageGetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WebSiteReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WeekDateMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WeekDateMapBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mainPageGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MainPageGetter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -207,6 +208,14 @@
       <workItem from="1664295542473" duration="199000" />
       <workItem from="1664301336973" duration="3243000" />
       <workItem from="1664310794172" duration="2718000" />
+      <workItem from="1664557043407" duration="284000" />
+      <workItem from="1664557335840" duration="597000" />
+      <workItem from="1664582625653" duration="1287000" />
+      <workItem from="1664586378933" duration="17000" />
+      <workItem from="1664586401577" duration="5019000" />
+      <workItem from="1664592780513" duration="4278000" />
+      <workItem from="1664642319321" duration="8538000" />
+      <workItem from="1664656295237" duration="4533000" />
     </task>
     <task id="LOCAL-00001" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
       <created>1662438233430</created>

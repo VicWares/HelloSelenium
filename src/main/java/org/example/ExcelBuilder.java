@@ -2,7 +2,7 @@ package org.example;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 220927A
+ * version 2201001
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.IndexedColors;
@@ -44,6 +44,7 @@ public class ExcelBuilder
     private HashMap<String, String> awaySpreadOddsMap = new HashMap<>();
     private HashMap<String, String> homeTotalOpenOddsMap = new HashMap<>();
     private HashMap<String, String> homeTotalCloseOddsMap = new HashMap<>();
+    private HashMap<String, String> awayCityMap = new HashMap<>();
     private XSSFSheet sportDataSheet;
     private XSSFWorkbook sportDataWorkBook = new XSSFWorkbook();
     private XSSFSheet sportDataUpdateSheet = null;
@@ -133,7 +134,7 @@ public class ExcelBuilder
 
         sportDataSheet.getRow(eventIndex).createCell(25);//Away team complete name Z26 e.g. Washingtopn Commanders
         sportDataSheet.getRow(eventIndex).getCell(25).setCellStyle(leftStyle);
-        sportDataSheet.getRow(eventIndex).getCell(25).setCellValue(awayCompleteNameMap.get(dataEventID));
+        sportDataSheet.getRow(eventIndex).getCell(25).setCellValue(awayCityMap.get(dataEventID));
 
         sportDataSheet.getRow(eventIndex).createCell(26);//Away Short Name AA27
         sportDataSheet.getRow(eventIndex).getCell(26).setCellStyle(leftStyle);
@@ -250,5 +251,9 @@ public class ExcelBuilder
     public void setAwayMoneylineCloseOddsMap(HashMap<String, String> awayMoneylineCloseOddsMap)
     {
         this.awayMoneylineCloseOddsMap = awayMoneylineCloseOddsMap;
+    }
+    public void setAwayCityMap(HashMap<String, String> awayCityMap)
+    {
+        this.awayCityMap = awayCityMap;
     }
 }

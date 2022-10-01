@@ -3,13 +3,13 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 220922
+ * version 2201001
  **********************************************************************************/
 import java.util.HashMap;
 public class WeekDateMapBuilder
 {
     private static HashMap<String, String> weekDateMap = new HashMap();
-    public HashMap<String, String> WeekDateMapBuilder()
+    public HashMap<String, String> weekDateMapBuilder()
     {
         weekDateMap.put("1", "2022-09-08");//Season 2022 start...Week 1
         weekDateMap.put("2", "2022-09-15");//Weeks start on Thursdays

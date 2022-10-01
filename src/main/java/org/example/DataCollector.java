@@ -2,24 +2,17 @@ package org.example;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version HelloSelenium 220927A
+ * version HelloSelenium 220930
  * Builds data event id array and calendar date array
+ * version 2201001
  *******************************************************************/
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
 
-import static org.openqa.selenium.By.cssSelector;
+import static javax.swing.text.html.CSS.getAttribute;
 import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 public class DataCollector
 {
@@ -74,7 +67,7 @@ public class DataCollector
     private HashMap<String, String> gameIdentifierMap = new HashMap<>();
     private HashMap<String, String> homeFullNameMap = new HashMap<>();
     private HashMap<String, String> awayFullNameMap = new HashMap<>();
-    private HashMap<String, String> homeShortNameMap = new HashMap<>();
+    private HashMap<String, String> homeShortNameMap = new HashMap<>();//e.g. LAR, BUF
     private HashMap<String, String> awayShortNameMap = new HashMap<>();
     private HashMap<String, String> atsHomesMap = new HashMap<>();
     private HashMap<String, String> atsAwaysMap = new HashMap<>();
@@ -84,6 +77,7 @@ public class DataCollector
     private HashMap<String, String> idXref = new HashMap<>();
     private HashMap<String, String> homeTotalOpenOddsMap = new HashMap<>();
     private HashMap<String, String> homeTotalCloseOddsMap = new HashMap<>();
+    private HashMap<String, String> awayCityMap = new HashMap<>();
     private String[] bet365OddsArray = new String[6];
     private String homeTeamShortName;
     private String awayTeamShortName;
@@ -94,29 +88,42 @@ public class DataCollector
     private String homeShortName;
     private String month;
     private String day;
-    public void collectTeamInfo(Elements weekElements)//From covers.com website for this week's matchups
+    public void collectTeamInfo(String dataEventId)//From covers.com website for this week's matchups
     {
-        for (Element e : weekElements)//Build week matchup IDs array
+        System.out.println("DC90 Collecting team info");
         {
-            month = e.attr("");
-            homeTeamFullName = e.attr("data-home-team-fullname-search");//e.g. Houston...correcting for different city/name usage
-            homeTeamNickname = e.attr("data-home-team-nickname-search");//e.g. Texans
-            homeTeamShortName = weekElements.attr("data-home-team-shortname-search");//Home team abbreviation e.g. LAR
-            awayTeamShortName = weekElements.attr("data-away-team-shortname-search");//Home team abbreviation e.g. BUF
-            homeTeamCity = e.attr("data-home-team-city-search");
-            homeTeamCity = cityNameMap.get(homeTeamCity);
-            homeTeamCompleteName = homeTeamCity + " " + homeTeamNickname;
-            awayTeamFullName = e.attr("data-away-team-fullname-search");//e.g. Dallas
-            awayTeamNickname = e.attr("data-away-team-nickname-search");//e.g. Cowboys
-            awayTeamCity = e.attr("data-away-team-city-search");
-            awayTeamCity = cityNameMap.get(awayTeamCity);
-            awayTeamCompleteName = awayTeamCity + " " + awayTeamNickname;
-            gameIdentifier = thisSeason + " - " + awayTeamCompleteName + " @ " + homeTeamCompleteName;
-            dataEventId = e.attr("data-event-id");
-            gameDateTime = e.attr("data-game-date").split(" ");
-            gameDate = gameDateTime[0];
-            awayTeamScore = e.attr("data-away-score");
-            thisWeek = e.attr("data-competition-type");
+            WebElement cityNameElement = Main.driver.findElement(By.cssSelector("div.cmg_game_data.cmg_matchup_game_box[data-event-id='" + dataEventId + "'][data-away-team-city-search]"));//e.g. Los Angeles, Z26 TODO:should be Buffalo Bills
+            String awayCity = cityNameElement.getAttribute("data-away-team-city-search").toString();
+            awayCityMap.put(dataEventId, awayCity);
+
+            WebElement homeShortNameElement = Main.driver.findElement(By.cssSelector("div.cmg_game_data.cmg_matchup_game_box[data-event-id='" + dataEventId + "'][data-home-team-shortname-search]"));//Home team abbreviation e.g. LAR  Column L12
+            String homeShortName = homeShortNameElement.getAttribute("data-home-team-shortname-search").toString();
+            homeShortNameMap.put(dataEventId, homeShortName);
+
+            WebElement awayShortNameElement = Main.driver.findElement(By.cssSelector("div.cmg_game_data.cmg_matchup_game_box[data-event-id='" + dataEventId + "'][data-away-team-shortname-search]"));//Away team abbreviation e.g. BUF, column AA27
+            String awayShortName = awayShortNameElement.getAttribute("data-away-team-shortname-search").toString();
+            awayShortNameMap.put(dataEventId, awayShortName);
+            System.out.println(awayShortNameMap);
+
+
+            //homeTeamFullName = e.findElement(By.cssSelector("[data-home-team-fullname-search]")).getText();//e.g. Houston.
+//            homeTeamNickname = e.attr("data-home-team-nickname-search");//e.g. Texans
+           // homeShortName = weekElements.attr("data-home-team-shortname-search");//Home team abbreviation e.g. LAR
+//            awayTeamShortName = weekElements.attr("data-away-team-shortname-search");//Home team abbreviation e.g. BUF
+//            homeTeamCity = e.attr("data-home-team-city-search");
+//            homeTeamCity = cityNameMap.get(homeTeamCity);
+//            homeTeamCompleteName = homeTeamCity + " " + homeTeamNickname;
+//            awayTeamFullName = e.attr("data-away-team-fullname-search");//e.g. Dallas
+//            awayTeamNickname = e.attr("data-away-team-nickname-search");//e.g. Cowboys
+//            awayTeamCity = e.attr("data-away-team-city-search");
+//            awayTeamCity = cityNameMap.get(awayTeamCity);
+//            awayTeamCompleteName = awayTeamCity + " " + awayTeamNickname;
+//            gameIdentifier = thisSeason + " - " + awayTeamCompleteName + " @ " + homeTeamCompleteName;
+//            dataEventId = e.attr("data-event-id");
+//            gameDateTime = e.attr("data-game-date").split(" ");
+//            gameDate = gameDateTime[0];
+//            awayTeamScore = e.attr("data-away-score");
+//            thisWeek = e.attr("data-competition-type");
             thisWeekGameDates.add(gameDate);
             gameDatesMap.put(dataEventId, gameDate);
             gameIdentifierMap.put(dataEventId, gameIdentifier);
@@ -124,34 +131,33 @@ public class DataCollector
             thisWeekAwayTeams.add(awayTeamCompleteName);
             homeFullNameMap.put(dataEventId, homeTeamFullName);
             awayFullNameMap.put(dataEventId, awayTeamFullName);
-            homeShortNameMap.put(dataEventId, homeTeamShortName);
-            awayShortNameMap.put(dataEventId, awayTeamShortName);
+            homeShortNameMap.put(dataEventId, homeShortName);
             homeTeamCompleteNameMap.put(dataEventId, homeTeamCompleteName);
             awayTeamCompleteNameMap.put(dataEventId, awayTeamCompleteName);
             thisWeekHomeTeamScores.add(homeTeamScore);
             thisWeekAwayTeamScores.add((awayTeamScore));
             thisGameWeekNumbers.add(thisWeek);
-            awayShortName = e.attr("data-away-team-shortname-search");//Away team
-            awayShortNameMap.put(dataEventId, awayShortName);
-            homeShortName = e.attr("data-home-team-shortname-search");//Home team
-            homeShortNameMap.put(dataEventId, homeShortName);
+//            awayShortName = e.attr("data-away-team-shortname-search");//Away team
+//            awayShortNameMap.put(dataEventId, awayShortName);
+//            homeShortName = e.attr("data-home-team-shortname-search");//Home team
+//            homeShortNameMap.put(dataEventId, homeShortName);
         }
     }
-    public void collectConsensusData(Elements thisMatchupConsensus, String thisMatchupID)
+    public void collectConsensusData(ArrayList<WebElement> thisMatchupConsensusList, String thisMatchupID)
     {
         this.dataEventId = thisMatchupID;
         String ouOver = null;
         String ouUnder = null;
         String atsHome = null;
         String atsAway = null;
-        Elements rightConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersright");//Home/Under
-        Elements leftConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersleft");//Away/Over
+//        WebElement rightConsensus = thisMatchupConsensusList.select(".covers-CoversConsensusDetailsTable-finalWagersright");//Home/Under
+//        WebElement leftConsensus = thisMatchupConsensusList.select(".covers-CoversConsensusDetailsTable-finalWagersleft");//Away/Over
         try//To catch missing consensus data due to delayed or cancelled game
         {
-            ouUnder = rightConsensus.select("div").get(1).text();
-            ouOver = leftConsensus.select("div").get(1).text();
-            atsHome = leftConsensus.select("div").get(0).text();
-            atsAway = rightConsensus.select("div").get(0).text();
+//            ouUnder = rightConsensus.select("div").get(1).text();
+//            ouOver = leftConsensus.select("div").get(1).text();
+//            atsHome = leftConsensus.select("div").get(0).text();
+//            atsAway = rightConsensus.select("div").get(0).text();
         }
         catch (Exception e)
         {
@@ -252,9 +258,9 @@ public class DataCollector
     {
         return awayMLoddsMap;
     }
-    public void setThisSeason(String thisSeason)
+    public HashMap<String, String> getAwayCityMap()
     {
-        this.thisSeason = thisSeason;
+        return awayCityMap;
     }
 }
 
