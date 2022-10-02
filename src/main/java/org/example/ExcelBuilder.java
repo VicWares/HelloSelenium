@@ -2,19 +2,17 @@ package org.example;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 2201001
+ * version 2201001A
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import java.awt.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashMap;
-
 import static org.apache.poi.hssf.record.ExtendedFormatRecord.CENTER;
 import static org.apache.poi.hssf.record.ExtendedFormatRecord.LEFT;
 public class ExcelBuilder
@@ -30,7 +28,7 @@ public class ExcelBuilder
     private String awayDivision;//AB28
     private HashMap<String, String> homeTeamsMap = new HashMap<>();
     private HashMap<String, String> awayTeamsMap = new HashMap<>();
-    private HashMap<String, String> gameDatesMap = new HashMap<>();
+    private HashMap<String, String> gameDateMap = new HashMap<>();
     private HashMap<String, String> atsHomesMap = new HashMap<>();
     private HashMap<String, String> atsAwaysMap = new HashMap<>();
     private HashMap<String, String> ouOversMap;
@@ -44,7 +42,10 @@ public class ExcelBuilder
     private HashMap<String, String> awaySpreadOddsMap = new HashMap<>();
     private HashMap<String, String> homeTotalOpenOddsMap = new HashMap<>();
     private HashMap<String, String> homeTotalCloseOddsMap = new HashMap<>();
-    private HashMap<String, String> awayCityMap = new HashMap<>();
+    private HashMap<String, String> homeCityPlusNicknameMap;
+    private HashMap<String, String> awayCityPlusNicknameMap;
+    private HashMap<String, String> gameIdentifierMap = new HashMap<>();
+
     private XSSFSheet sportDataSheet;
     private XSSFWorkbook sportDataWorkBook = new XSSFWorkbook();
     private XSSFSheet sportDataUpdateSheet = null;
@@ -67,7 +68,12 @@ public class ExcelBuilder
     private HashMap<String, String> awayShortNameMap;
     private HashMap <String,String> homeCompleteNameMap = new HashMap();
     private HashMap <String,String> awayCompleteNameMap = new HashMap();//e.g Dallas Cowboys
+
+    private HashMap <String,String> homeNicknameMap = new HashMap();
+    private HashMap <String,String> awayNicknameMap = new HashMap();//e.g Dallas Cowboys
     private HashMap<String, String> awayMoneylineCloseOddsMap = new HashMap<>();
+    private HashMap<String, String> homeCityMap = new HashMap<>();
+    private HashMap<String, String> awayCityMap = new HashMap<>();
     public XSSFWorkbook buildExcel(XSSFWorkbook sportDataWorkbook, String dataEventID, int eventIndex, String gameIdentifier)
     {
         sportDataSheet = sportDataWorkbook.getSheet("Data");
@@ -85,7 +91,7 @@ public class ExcelBuilder
         sportDataSheet.setColumnWidth(1, 25 * 256);
         homeTeam = homeTeamsMap.get(dataEventID);
         awayTeam = awayTeamsMap.get(dataEventID);
-        matchupDate = gameDatesMap.get(dataEventID);
+        matchupDate = gameDateMap.get(dataEventID);
         atsHome = atsHomesMap.get(dataEventID);
         atsAway = atsAwaysMap.get(dataEventID);
         ouAway = ouOversMap.get(dataEventID);
@@ -96,9 +102,10 @@ public class ExcelBuilder
         sportDataSheet.getRow(0).getCell(0).setCellValue(time);
         sportDataSheet.getRow(eventIndex).getCell(0).setCellValue(gameIdentifier);//e.g. 2021 - Washington Football Team @ Dallas Cowboys
 
-        sportDataSheet.getRow(eventIndex).createCell(1);
+        sportDataSheet.getRow(eventIndex).createCell(1);//e.g. 2022-09-25
         sportDataSheet.getRow(eventIndex).getCell(1).setCellStyle(leftStyle);
-        sportDataSheet.getRow(eventIndex).getCell(1).setCellValue(matchupDate);
+        sportDataSheet.getRow(eventIndex).getCell(1).setCellValue(gameDateMap.get(dataEventID));
+        System.out.println("EB108 " + gameDateMap.get(dataEventID));
 
         sportDataSheet.getRow(eventIndex).createCell(2);
         sportDataSheet.getRow(eventIndex).getCell(2).setCellStyle(leftStyle);
@@ -108,9 +115,9 @@ public class ExcelBuilder
         sportDataSheet.getRow(eventIndex).getCell(3).setCellStyle(leftStyle);
         sportDataSheet.getRow(eventIndex).getCell(3).setCellValue("Week " + weekNumber);
 
-        sportDataSheet.getRow(eventIndex).createCell(10);// Home team full name e.g. Dallas Coyboys Column K11
+        sportDataSheet.getRow(eventIndex).createCell(10);// Home team plus nickname e.g. Dallas Coyboys Column K11
         sportDataSheet.getRow(eventIndex).getCell(10).setCellStyle(leftStyle);
-        sportDataSheet.getRow(eventIndex).getCell(10).setCellValue(homeCompleteNameMap.get(dataEventID));
+        sportDataSheet.getRow(eventIndex).getCell(10).setCellValue(homeCityPlusNicknameMap.get(dataEventID));
 
         sportDataSheet.getRow(eventIndex).createCell(11);// Home team short name e.g. DAL Column L 12
         sportDataSheet.getRow(eventIndex).getCell(11).setCellStyle(leftStyle);
@@ -132,9 +139,9 @@ public class ExcelBuilder
         sportDataSheet.getRow(eventIndex).getCell(18).setCellStyle(leftStyle);
         sportDataSheet.getRow(eventIndex).getCell(18).setCellValue(homeMoneylineOdds);
 
-        sportDataSheet.getRow(eventIndex).createCell(25);//Away team complete name Z26 e.g. Washingtopn Commanders
+        sportDataSheet.getRow(eventIndex).createCell(25);//Away city plus nickname Z26 e.g. Washingtopn Commanders
         sportDataSheet.getRow(eventIndex).getCell(25).setCellStyle(leftStyle);
-        sportDataSheet.getRow(eventIndex).getCell(25).setCellValue(awayCityMap.get(dataEventID));
+        sportDataSheet.getRow(eventIndex).getCell(25).setCellValue(awayCityPlusNicknameMap.get(dataEventID));
 
         sportDataSheet.getRow(eventIndex).createCell(26);//Away Short Name AA27
         sportDataSheet.getRow(eventIndex).getCell(26).setCellStyle(leftStyle);
@@ -175,7 +182,7 @@ public class ExcelBuilder
     public void setHomeShortNameMap(HashMap<String, String> homeShortNameMapMap){this.homeShortNameMap = homeShortNameMapMap;}
     public void setAwayShortNameMap(HashMap<String, String> awayShortNameMapMap){this.awayShortNameMap = awayShortNameMapMap;}
 
-    public void setGameDatesMap(HashMap<String, String> gameDatesMap) {this.gameDatesMap = gameDatesMap;}
+    public void setGameDateMap(HashMap<String, String> gameDateMap) {this.gameDateMap = gameDateMap;}
     public void setAtsHomesMap(HashMap<String, String> atsHomes)
     {
         this.atsHomesMap = atsHomes;
@@ -255,5 +262,29 @@ public class ExcelBuilder
     public void setAwayCityMap(HashMap<String, String> awayCityMap)
     {
         this.awayCityMap = awayCityMap;
+    }
+    public void setHomeCityMap(HashMap<String, String> homeCityMap)
+    {
+        this.homeCityMap = homeCityMap;
+    }
+    public void setHomeNicknameMap(HashMap<String, String> homeNicknameMap)
+    {
+        this.homeNicknameMap = homeNicknameMap;
+    }
+    public void setAwayNicknameMap(HashMap<String, String> awaynicknameMap)
+    {
+        this.awayNicknameMap = awaynicknameMap;
+    }
+    public void setHomeCityPlusNicknameMap(HashMap<String, String> homeCityPlusNicknameMap)
+    {
+        this.homeCityPlusNicknameMap = homeCityPlusNicknameMap;
+    }
+    public void setAwayCityPlusNicknameMap(HashMap<String, String> awayCityPlusNicknameMap)
+    {
+        this.awayCityPlusNicknameMap = awayCityPlusNicknameMap;
+    }
+    public void setGameIdentifierMap(HashMap<String, String> gameIdentifierMap)
+    {
+        this.gameIdentifierMap = gameIdentifierMap;
     }
 }

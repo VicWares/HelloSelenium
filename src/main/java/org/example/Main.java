@@ -3,7 +3,7 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 2201001
+ * version 2201001A
  **********************************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.select.Elements;
@@ -22,7 +22,7 @@ public class Main extends JComponent
     private static ArrayList<WebElement> dataEventIdList;
     CityNameMapBuilder cityNameMapBuilder = new CityNameMapBuilder();
     public static Actions act;
-    private static String version = "221001";
+    private static String version = "221001A";
     private XSSFWorkbook sportDataWorkbook;
     private static HashMap<String, String> weekDateMap = new WeekDateMapBuilder().weekDateMapBuilder();
     private static ArrayList<String> dataEventList = new ArrayList<>();
@@ -61,16 +61,21 @@ public class Main extends JComponent
         System.out.println("Main62...... " + dataEventList);
         for (String dataEventId : dataEventList)
         {
-            System.out.println("Main65 START MAIN LOOP-----------------------------------------------------START MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "," + dataCollector.getAwayFullNameMap().get(dataEventId) + " @ " + dataCollector.getHomeFullNameMap().get(dataEventId) + "-------------------------------------------------------------------------------------------START MAIN LOOP");
+            System.out.println("Main65 START MAIN LOOP-----------------------------------------------------START MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "," + dataCollector.getAwayCityPlusNicknameMap().get(dataEventId) + " @ " + dataCollector.getHomeCityPlusNicknameMap().get(dataEventId) + "-------------------------------------------------------------------------------------------START MAIN LOOP");
             dataCollector.collectTeamInfo(dataEventId);
             excelBuilder.setAwayCityMap(dataCollector.getAwayCityMap());
-            excelBuilder.setHomeShortNameMap(dataCollector.getHomeShortNameMap());//e.g.BUF, column L12
-            excelBuilder.setAwayShortNameMap(dataCollector.getAwayShortNameMap());//e.g. LAR, column AA27
-            System.out.println("Main69.................." + dataCollector.getAwayShortNameMap().get(dataEventId));
+            excelBuilder.setHomeCityMap(dataCollector.getHomeCityMap());
+            excelBuilder.setHomeNicknameMap(dataCollector.getHomeNicknameMap());//e.g.BUF, column L12
+            excelBuilder.setAwayNicknameMap(dataCollector.getAwayShortNameMap());//e.g. LAR, column AA27
+            excelBuilder.setAwayCityPlusNicknameMap(dataCollector.getAwayCityPlusNicknameMap());
+            excelBuilder.setHomeCityPlusNicknameMap(dataCollector.getHomeCityPlusNicknameMap());
+            excelBuilder.setAwayShortNameMap(dataCollector.getAwayShortNameMap());
+            excelBuilder.setHomeShortNameMap(dataCollector.getHomeShortNameMap());
+            excelBuilder.setHomeCompleteNameMap(dataCollector.getHomeTeamCompleteNameMap());
             dataCollector.collectConsensusData(consensusElementList, dataEventId);
             excelBuilder.setThisWeekAwayTeamsMap(dataCollector.getAwayFullNameMap());
             excelBuilder.setHomeTeamsMap(dataCollector.getHomeFullNameMap());
-            excelBuilder.setGameDatesMap(dataCollector.getGameDatesMap());
+            excelBuilder.setGameDateMap(dataCollector.getGameDateMap());
             excelBuilder.setAtsHomesMap(dataCollector.getAtsHomesMap());
             excelBuilder.setAtsAwaysMap(dataCollector.getAtsAwaysMap());
             excelBuilder.setOuOversMap(dataCollector.getOuAwayMap());
@@ -82,7 +87,7 @@ public class Main extends JComponent
             excelBuilder.setTotalHomeCloseOddsMap(dataCollector.getTotalHomeCloseOddsMap());//Column AP
             excelBuilder.buildExcel(sportDataWorkbook, dataEventId, excelLineNumberIndex, dataCollector.getGameIdentifierMap().get(dataEventId));
             excelLineNumberIndex++;
-            System.out.println("END MAIN LOOP--------------------------------------------------------------END MAIN LOOP FOR dataEventId/dataGame " + dataEventId + ", " + dataCollector.getAwayFullNameMap().get(dataEventId) + " @ " + dataCollector.getHomeFullNameMap().get(dataEventId) + "-------------------------------------------------------------------------------------------END MAIN LOOP");
+            System.out.println("END MAIN LOOP--------------------------------------------------------------END MAIN LOOP FOR dataEventId/dataGame " + dataEventId + ", " + dataCollector.getAwayCityPlusNicknameMap().get(dataEventId) + " @ " + dataCollector.getHomeCityPlusNicknameMap().get(dataEventId) + "-------------------------------------------------------------------------------------------END MAIN LOOP");
         }
         excelWriter.openOutputStream();
         excelWriter.writeSportData(sportDataWorkbook);
