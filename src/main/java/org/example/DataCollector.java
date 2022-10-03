@@ -4,7 +4,7 @@ package org.example;
  * Copyright 2020 Dan Farris
  * version HelloSelenium 220930
  * Builds data event id array and calendar date array
- * version 2201001A
+ * version 221003
  *******************************************************************/
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -119,10 +119,6 @@ public class DataCollector
             WebElement gameDatelement = Main.driver.findElement(By.cssSelector("div.cmg_game_data.cmg_matchup_game_box[data-event-id='" + dataEventId + "'][data-game-date]"));//game date e.g  2022-09-08
             String gameDate = gameDatelement.getAttribute("data-game-date").toString().split(" ")[0];//remove time
             gameDateMap.put(dataEventId, gameDate);
-            System.out.println("DC122" + gameDate);
-
-
-
 
             String homeCityPlusNickname = homeCity + " " + homeNickname;
             homeCityPlusNicknameMap = new HashMap<>();
@@ -152,7 +148,6 @@ public class DataCollector
 //            awayTeamScore = e.attr("data-away-score");
 //            thisWeek = e.attr("data-competition-type");
             gameDateMap.put(dataEventId, gameDate);
-            System.out.println("DC147 " + gameDateMap);
             gameIdentifierMap.put(dataEventId, gameIdentifier);
             thisWeekHomeTeams.add(homeTeamCompleteName);
             thisWeekAwayTeams.add(awayTeamCompleteName);

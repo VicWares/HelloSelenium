@@ -2,7 +2,7 @@ package org.example;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 2201001A
+ * version 221003
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.IndexedColors;
@@ -105,7 +105,6 @@ public class ExcelBuilder
         sportDataSheet.getRow(eventIndex).createCell(1);//e.g. 2022-09-25
         sportDataSheet.getRow(eventIndex).getCell(1).setCellStyle(leftStyle);
         sportDataSheet.getRow(eventIndex).getCell(1).setCellValue(gameDateMap.get(dataEventID));
-        System.out.println("EB108 " + gameDateMap.get(dataEventID));
 
         sportDataSheet.getRow(eventIndex).createCell(2);
         sportDataSheet.getRow(eventIndex).getCell(2).setCellStyle(leftStyle);

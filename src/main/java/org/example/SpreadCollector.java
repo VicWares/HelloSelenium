@@ -3,7 +3,7 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 2201001A
+ * version 221003
  **********************************************************************************/
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;

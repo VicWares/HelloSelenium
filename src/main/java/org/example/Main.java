@@ -3,11 +3,11 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 2201001A
+ * version 221003
  **********************************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -19,12 +19,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 public class Main extends JComponent
 {
-    private static ArrayList<WebElement> dataEventIdList;
+    public static HashMap<String,String> dataEventIdMap = new HashMap<>();
     CityNameMapBuilder cityNameMapBuilder = new CityNameMapBuilder();
     public static Actions act;
-    private static String version = "221001A";
+    private static String version = "221003";
     private XSSFWorkbook sportDataWorkbook;
-    private static HashMap<String, String> weekDateMap = new WeekDateMapBuilder().weekDateMapBuilder();
+    public static HashMap<String, String> weekDateMap = new WeekDateMapBuilder().weekDateMapBuilder();
     private static ArrayList<String> dataEventList = new ArrayList<>();
     public ExcelReader excelReader = new ExcelReader();
     public ExcelBuilder excelBuilder = new ExcelBuilder();
@@ -36,9 +36,10 @@ public class Main extends JComponent
     private int excelLineNumberIndex = 3;//Start filling excel sheet after header
     private Elements oddsElements;
     private static String season = "2022";
-    private static String weekNumber = "2";
+    public static String weekNumber = "2";
     public static WebDriver driver = new SafariDriver();
     public static JavascriptExecutor js;
+    private static HashMap<String, String> xRefMap;
     public static void main(String[] args) throws IOException, InterruptedException
     {
         System.out.println("SharpMarkets, version " + version + ", Copyright 2021 Dan Farris");
@@ -46,9 +47,8 @@ public class Main extends JComponent
         new WeekDateMapBuilder();//Builds Game dates for this week
         driver.manage().window();
         js = (JavascriptExecutor) driver;
-        dataCollector.setCityNameMap(CityNameMapBuilder.getCityNameMap());//TODO: Fix this
-        Main.driver.get("https://www.covers.com/sports/nfl/matchups?selectedDate=" + weekDateMap.get(weekNumber));
-        buildDataEventIdList();
+        dataCollector.setCityNameMap(CityNameMapBuilder.getCityNameMap());
+        new BuildXrefMap();
         new MainPageGetter(weekNumber);//Gets https://www.covers.com/sports/nfl/matchups for this week, clears cookies
         new Main().scrape();//Get out of static context
     }
@@ -58,7 +58,6 @@ public class Main extends JComponent
         sportDataWorkbook = excelReader.readSportData();//Dan's giant excel spreadsheet
         excelBuilder.setSeason(season);
         excelBuilder.setWeekNumber(weekNumber);
-        System.out.println("Main62...... " + dataEventList);
         for (String dataEventId : dataEventList)
         {
             System.out.println("Main65 START MAIN LOOP-----------------------------------------------------START MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "," + dataCollector.getAwayCityPlusNicknameMap().get(dataEventId) + " @ " + dataCollector.getHomeCityPlusNicknameMap().get(dataEventId) + "-------------------------------------------------------------------------------------------START MAIN LOOP");
@@ -94,18 +93,5 @@ public class Main extends JComponent
         excelWriter.closeOutputStream();
         driver.quit();
         System.out.println("Proper Finish...HOORAY!");
-    }
-    private static void buildDataEventIdList()
-    {
-        ArrayList<WebElement> dataEventIdElements = (ArrayList<WebElement>) driver.findElements(By.cssSelector("[data-event-id]"));//Find all games for this week
-        dataEventIdList = (ArrayList<WebElement>) driver.findElements(By.cssSelector("[data-event-id]"));//Find all games for this week
-        int i = 0;
-        for (WebElement e : dataEventIdList)
-        {
-            if (i++ % 2 == 0)
-            {
-                dataEventList.add(e.getAttribute("data-event-id"));
-            }
-        }
     }
 }
