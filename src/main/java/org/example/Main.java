@@ -3,15 +3,13 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 221003
+ * version 221003A
  **********************************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
 import javax.swing.*;
 import java.io.IOException;
@@ -20,12 +18,10 @@ import java.util.HashMap;
 public class Main extends JComponent
 {
     public static HashMap<String,String> dataEventIdMap = new HashMap<>();
-    CityNameMapBuilder cityNameMapBuilder = new CityNameMapBuilder();
-    public static Actions act;
+    private CityNameMapBuilder cityNameMapBuilder = new CityNameMapBuilder();
     private static String version = "221003";
     private XSSFWorkbook sportDataWorkbook;
     public static HashMap<String, String> weekDateMap = new WeekDateMapBuilder().weekDateMapBuilder();
-    private static ArrayList<String> dataEventList = new ArrayList<>();
     public ExcelReader excelReader = new ExcelReader();
     public ExcelBuilder excelBuilder = new ExcelBuilder();
     public ExcelWriter excelWriter = new ExcelWriter();
@@ -48,7 +44,9 @@ public class Main extends JComponent
         driver.manage().window();
         js = (JavascriptExecutor) driver;
         dataCollector.setCityNameMap(CityNameMapBuilder.getCityNameMap());
-        new BuildXrefMap();
+        System.out.println("Main48 city map => " + CityNameMapBuilder.getCityNameMap());
+        new EventIdMapBuilder();//Builds Main.dataEventIdMap
+        System.out.println("Main50 dataEventId => " + dataEventIdMap);
         new MainPageGetter(weekNumber);//Gets https://www.covers.com/sports/nfl/matchups for this week, clears cookies
         new Main().scrape();//Get out of static context
     }
@@ -56,9 +54,11 @@ public class Main extends JComponent
     private void scrape() throws IOException, InterruptedException
     {
         sportDataWorkbook = excelReader.readSportData();//Dan's giant excel spreadsheet
+        System.out.println("Main59 read sportsData.xlsx row 0, col 0 => " + sportDataWorkbook.getSheet("Data").getRow(0).getCell(0));
         excelBuilder.setSeason(season);
         excelBuilder.setWeekNumber(weekNumber);
-        for (String dataEventId : dataEventList)
+        System.out.println("Main61 dataEventList.size() =>" + Main.dataEventIdMap.size());
+        for (String dataEventId : dataEventIdMap.keySet())
         {
             System.out.println("Main65 START MAIN LOOP-----------------------------------------------------START MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "," + dataCollector.getAwayCityPlusNicknameMap().get(dataEventId) + " @ " + dataCollector.getHomeCityPlusNicknameMap().get(dataEventId) + "-------------------------------------------------------------------------------------------START MAIN LOOP");
             dataCollector.collectTeamInfo(dataEventId);

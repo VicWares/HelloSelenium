@@ -4,7 +4,7 @@ package org.example;
  * Copyright 2020 Dan Farris
  * version HelloSelenium 220930
  * Builds data event id array and calendar date array
- * version 221003
+ * version 221003A
  *******************************************************************/
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

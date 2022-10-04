@@ -3,7 +3,7 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 221003
+ * version 221003A
  **********************************************************************************/
 import java.util.HashMap;
 public class WeekDateMapBuilder

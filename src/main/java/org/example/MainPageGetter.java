@@ -3,7 +3,7 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 221003
+ * version 221003A
  **********************************************************************************/
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -25,7 +25,7 @@ public class MainPageGetter
         weekDate =  weekDateMap.get(weekNumber);
         System.out.println("CMPG26 week number => " + weekNumber + ", week date => " + weekDate);
         String s = "https://www.covers.com/sports/nfl/matchups?selectedDate=" + weekDate;
-        System.out.println("URL => " + s);
+        System.out.println("MPG 28... getting URL => " + s);
         Main.driver.get(s);//Main Covers matchups page
         try//To click cookies on main Scores and Matchups page
         {
