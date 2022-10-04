@@ -2,7 +2,7 @@ package org.example;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 221003A
+ * version 221003B
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.ss.usermodel.IndexedColors;
@@ -274,10 +274,7 @@ public class ExcelBuilder
     {
         this.awayNicknameMap = awaynicknameMap;
     }
-    public void setHomeCityPlusNicknameMap(HashMap<String, String> homeCityPlusNicknameMap)
-    {
-        this.homeCityPlusNicknameMap = homeCityPlusNicknameMap;
-    }
+    public void setHomeCityPlusNicknameMap(HashMap<String, String> homeCityPlusNicknameMap) {this.homeCityPlusNicknameMap = homeCityPlusNicknameMap;}
     public void setAwayCityPlusNicknameMap(HashMap<String, String> awayCityPlusNicknameMap)
     {
         this.awayCityPlusNicknameMap = awayCityPlusNicknameMap;

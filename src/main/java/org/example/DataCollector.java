@@ -46,7 +46,7 @@ public class DataCollector
     private String awayTeamFullName;//e.g. Cleveland...data-home-team-fullname-search
     private String homeTeamFullName;//e.g Houston...data-home-team-fullname-search
     private String awayTeamCompleteName;//e.g. Kansas City Chiefs
-    private String homeTeamCompleteName;//e.g Houston Texans
+    private String homeCompleteName;//e.g Houston Texans
     private String gameIdentifier;//e.g 2020 - Houston Texans @ Kansas City Chiefs
     private String awayTeamScore;
     private String homeTeamScore;
@@ -58,7 +58,7 @@ public class DataCollector
     private ArrayList<String> thisGameWeekNumbers = new ArrayList<String>();
     private ArrayList<String> thisWeekHomeTeamScores = new ArrayList<String>();
     private ArrayList<String> thisWeekAwayTeamScores = new ArrayList<String>();
-    private ArrayList<String> thisWeekHomeTeams = new ArrayList<String>();
+    private HashMap<String,String> homeCompleteNameMap = new HashMap<>();
     private ArrayList<String> atsHomes = new ArrayList<String>();
     private ArrayList<String> thisWeekAwayTeams = new ArrayList<String>();
     private HashMap<String, String> gameDateMap = new HashMap<>();
@@ -94,11 +94,13 @@ public class DataCollector
         {
             WebElement awayCityNameElement = Main.driver.findElement(By.cssSelector("div.cmg_game_data.cmg_matchup_game_box[data-event-id='" + dataEventId + "'][data-away-team-city-search]"));//Away City  e.g. Los Angeles, Z26 TODO:should be Buffalo Bills
             String awayCity = awayCityNameElement.getAttribute("data-away-team-city-search").toString();
+            awayCity = cityNameMap.get(awayCity);
             awayCityMap.put(dataEventId, awayCity);
 
             WebElement homeCityNameElement = Main.driver.findElement(By.cssSelector("div.cmg_game_data.cmg_matchup_game_box[data-event-id='" + dataEventId + "'][data-home-team-city-search]"));//Home City  e.g. Los Angeles, K11 TODO:should be Buffalo Bills
             String homeCity = homeCityNameElement.getAttribute("data-home-team-city-search").toString();
-            homeCityMap.put(dataEventId, homeCity);
+            homeCity = cityNameMap.get(homeCity);
+            homeCityMap.put(dataEventId, cityNameMap.get(homeCity));
 
             WebElement homeShortNameElement = Main.driver.findElement(By.cssSelector("div.cmg_game_data.cmg_matchup_game_box[data-event-id='" + dataEventId + "'][data-home-team-shortname-search]"));//Home team short name e.g. LAR  Column L12
             String homeShortName = homeShortNameElement.getAttribute("data-home-team-shortname-search").toString();
@@ -128,7 +130,6 @@ public class DataCollector
             awayCityPlusNicknameMap = new HashMap<>();
             awayCityPlusNicknameMap.put(dataEventId, awayCityPlusNickname);
 
-
             //homeTeamFullName = e.findElement(By.cssSelector("[data-home-team-fullname-search]")).getText();//e.g. Houston.
 //            homeTeamNickname = e.attr("data-home-team-nickname-search");//e.g. Texans
            // homeShortName = weekElements.attr("data-home-team-shortname-search");//Home team abbreviation e.g. LAR
@@ -149,12 +150,12 @@ public class DataCollector
 //            thisWeek = e.attr("data-competition-type");
             gameDateMap.put(dataEventId, gameDate);
             gameIdentifierMap.put(dataEventId, gameIdentifier);
-            thisWeekHomeTeams.add(homeTeamCompleteName);
+            homeCompleteNameMap.put(dataEventId, homeCompleteName);
             thisWeekAwayTeams.add(awayTeamCompleteName);
             homeFullNameMap.put(dataEventId, homeTeamFullName);
             awayFullNameMap.put(dataEventId, awayTeamFullName);
             homeNicknameMap.put(dataEventId, homeShortName);
-            homeTeamCompleteNameMap.put(dataEventId, homeTeamCompleteName);
+            homeTeamCompleteNameMap.put(dataEventId, homeCompleteName);
             awayTeamCompleteNameMap.put(dataEventId, awayTeamCompleteName);
             thisWeekHomeTeamScores.add(homeTeamScore);
             thisWeekAwayTeamScores.add((awayTeamScore));

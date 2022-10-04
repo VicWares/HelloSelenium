@@ -3,7 +3,7 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 221003A
+ * version 221003B
  **********************************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.select.Elements;
@@ -19,7 +19,7 @@ public class Main extends JComponent
 {
     public static HashMap<String,String> dataEventIdMap = new HashMap<>();
     private CityNameMapBuilder cityNameMapBuilder = new CityNameMapBuilder();
-    private static String version = "221003";
+    private static String version = "221003A";
     private XSSFWorkbook sportDataWorkbook;
     public static HashMap<String, String> weekDateMap = new WeekDateMapBuilder().weekDateMapBuilder();
     public ExcelReader excelReader = new ExcelReader();
@@ -32,7 +32,7 @@ public class Main extends JComponent
     private int excelLineNumberIndex = 3;//Start filling excel sheet after header
     private Elements oddsElements;
     private static String season = "2022";
-    public static String weekNumber = "2";
+    public static String weekNumber = "5";
     public static WebDriver driver = new SafariDriver();
     public static JavascriptExecutor js;
     private static HashMap<String, String> xRefMap;
@@ -45,7 +45,7 @@ public class Main extends JComponent
         js = (JavascriptExecutor) driver;
         dataCollector.setCityNameMap(CityNameMapBuilder.getCityNameMap());
         System.out.println("Main48 city map => " + CityNameMapBuilder.getCityNameMap());
-        new EventIdMapBuilder();//Builds Main.dataEventIdMap
+        new DataEventIdMapBuilder();//Builds Main.dataEventIdMap
         System.out.println("Main50 dataEventId => " + dataEventIdMap);
         new MainPageGetter(weekNumber);//Gets https://www.covers.com/sports/nfl/matchups for this week, clears cookies
         new Main().scrape();//Get out of static context

@@ -3,7 +3,7 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 221003A
+ * version 221003B
  **********************************************************************************/
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
