@@ -3,7 +3,7 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 220927A
+ * version 221006
  **********************************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.nodes.Element;
@@ -36,7 +36,7 @@ public class Main extends JComponent
     private int excelLineNumberIndex = 3;//Start filling excel sheet after header
     private Elements oddsElements;
     private static String season = "2022";
-    private static String weekNumber = "3";
+    private static String weekNumber = "5";
     public static WebDriver driver;
     public static JavascriptExecutor js;
     public static void main(String[] args) throws IOException, InterruptedException

@@ -7,14 +7,12 @@
     <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="Version 220927 HelloSelenium2.  Clean up with JS executor.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CityNameMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CityNameMapBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DataCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ExcelBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ExcelBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ExcelReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ExcelReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ExcelWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ExcelWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MoneyLineCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MoneyLineCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SpreadCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SpreadCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WebSiteReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WebSiteReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WeekDateMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WeekDateMapBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mainPageGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mainPageGetter.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -46,6 +44,7 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/vicwintriss/git/HelloSelenium3&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -207,6 +206,17 @@
       <workItem from="1664295542473" duration="199000" />
       <workItem from="1664301336973" duration="3243000" />
       <workItem from="1664310794172" duration="2718000" />
+      <workItem from="1664484118622" duration="283000" />
+      <workItem from="1664719360835" duration="458000" />
+      <workItem from="1664719984674" duration="12000" />
+      <workItem from="1664720082185" duration="4000" />
+      <workItem from="1664771064703" duration="168000" />
+      <workItem from="1664892466988" duration="487000" />
+      <workItem from="1664935655742" duration="85000" />
+      <workItem from="1664937080703" duration="125000" />
+      <workItem from="1664990891950" duration="182000" />
+      <workItem from="1665083558567" duration="161000" />
+      <workItem from="1665088686140" duration="1414000" />
     </task>
     <task id="LOCAL-00001" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
       <created>1662438233430</created>
