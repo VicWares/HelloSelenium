@@ -3,7 +3,7 @@ package org.example;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 221006
+ * version 221007 HelloSelenium3
  **********************************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.nodes.Element;
@@ -21,7 +21,7 @@ public class Main extends JComponent
 {
     CityNameMapBuilder cityNameMapBuilder = new CityNameMapBuilder();
     public static Actions act;
-    private static String version = "220927A";
+    private static String version = "221007";
     private XSSFWorkbook sportDataWorkbook;
     private static HashMap<String, String> weekDateMap = new WeekDateMapBuilder().WeekDateMapBuilder();
     private HashMap<String, String> xRefMap = new HashMap<>();
@@ -70,9 +70,8 @@ public class Main extends JComponent
             String dataEventId = entry.getKey();
             String dataGame = xRefMap.get(dataEventId);
             System.out.println("Main65 START MAIN LOOP-----------------------------------------------------START MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "/" + dataGame + "\t" + dataCollector.getAwayFullNameMap().get(dataEventId) + " @ " + dataCollector.getHomeFullNameMap().get(dataEventId) + "-------------------------------------------------------------------------------------------START MAIN LOOP");
-            //Elements moneyLineOddsElements = oddsElements.select("[data-book='bet365'][data-game='" + dataGame + "'][data-type='moneyline']");
+            //dataCollector.collectOddsData(oddsElements, dataEventId);
             consensusElements = webSiteReader.readCleanWebsite("https://contests.covers.com/consensus/matchupconsensusdetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + dataEventId);
-            Main.driver.get("https://contests.covers.com/consensus/matchupconsensusdetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + dataEventId);
             dataCollector.collectConsensusData(consensusElements, dataEventId);
             excelBuilder.setThisWeekAwayTeamsMap(dataCollector.getAwayFullNameMap());
             excelBuilder.setHomeTeamsMap(dataCollector.getHomeFullNameMap());

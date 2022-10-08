@@ -6,12 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="Version 220927 HelloSelenium2.  Clean up with JS executor.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CityNameMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CityNameMapBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DataCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ExcelBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ExcelBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ExcelReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ExcelReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ExcelWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ExcelWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MoneyLineCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MoneyLineCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SpreadCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SpreadCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WebSiteReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WebSiteReader.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WeekDateMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WeekDateMapBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mainPageGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mainPageGetter.java" afterDir="false" />
     </list>
@@ -28,6 +31,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="2E0BqqpqWwbNrbosgqbkiRVbVaD" />

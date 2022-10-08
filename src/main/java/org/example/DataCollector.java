@@ -2,7 +2,7 @@ package org.example;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 221006 HelloSelenium3
+ * version 221007 HelloSelenium3
  * Builds data event id array and calendar date array
  *******************************************************************/
 import org.jsoup.nodes.Element;
@@ -162,7 +162,7 @@ public class DataCollector
         atsHomesMap.put(thisMatchupID, atsAway);
         atsAwaysMap.put(thisMatchupID, atsHome);
     }
-    public void collectTotalHomeCloseOdds(String dataEventId)
+    public void collectOddsData(String dataEventId)
     {
         try
         {

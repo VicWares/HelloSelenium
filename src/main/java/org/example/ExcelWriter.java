@@ -2,7 +2,7 @@ package org.example;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 221006
+ * version 221007 HelloSelenium3
  * write new NFL Covers data to the large SportData Excel sheet
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
