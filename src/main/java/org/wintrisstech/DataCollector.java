@@ -2,7 +2,7 @@ package org.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 221023 HelloSeleniumx
+ * version 221024 HelloSeleniumx
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -93,6 +93,8 @@ public class DataCollector
     private String atsAway;
     private Integer excelRowIndex;
     private String atsHome;
+    private String ouHome;
+    private String ouAway;
     public void collectTeamDataForThisWeek()//From covers.com website for this week's matchups
     {
         sportDataSheet = sportDataWorkbook.getSheet("Data");
@@ -135,70 +137,27 @@ public class DataCollector
         sportDataSheet.getRow(excelRowIndex).getCell(64).setCellValue(atsAway);
 
         atsHome = Main.driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-finalWagersRight")).getText();
-        sportDataSheet.getRow(excelRowIndex).createCell(65);//Column BO66 ATS consensus home
-        sportDataSheet.getRow(excelRowIndex).getCell(65).setCellValue(atsAway);
+        sportDataSheet.getRow(excelRowIndex).createCell(66);//Column BO67 ATS consensus home
+        sportDataSheet.getRow(excelRowIndex).getCell(66).setCellValue(atsHome);
+
+        ouHome = Main.driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-finalWagersRight")).getText();
+        sportDataSheet.getRow(excelRowIndex).createCell(72);//Column BU73 O/U consensus home
+        sportDataSheet.getRow(excelRowIndex).getCell(72).setCellValue(ouHome);
+
+        ouAway = Main.driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-finalWagersleft")).getText();
+        sportDataSheet.getRow(excelRowIndex).createCell(70);//Column BS71 O/U consensus away
+        sportDataSheet.getRow(excelRowIndex).getCell(70).setCellValue(ouAway);
     }
     public void collectOddsData()
     {
-        driver.findElement(By.cssSelector("a[href='/sport/football/nfl/odds']")).click();//Select Odds button
         for (HashMap.Entry<String,String> entry : xRefMap.entrySet())
         {
-            String dataEventId = entry.getKey();
-            String dataGame = entry.getValue();
-            int excelRowIndex = excelRowIndexMap.get(dataEventId);
-            WebElement dataEventIdElement = driver.findElement(By.cssSelector("[data-event-id='" + dataEventId + "']"));//Driver gets all team elements associated with this dataEventId
-            System.out.println(".............openOdds=> " + driver.findElement(By.cssSelector(".__american")).getText());
+//            String dataEventId = entry.getKey();
+//            String dataGame = entry.getValue();
+//            int excelRowIndex = excelRowIndexMap.get(dataEventId);
+//            WebElement dataEventIdElement = driver.findElement(By.cssSelector("[data-event-id='" + dataEventId + "']"));//Driver gets all team elements associated with this dataEventId
+//            System.out.println(".............openOdds=> " + driver.findElement(By.cssSelector(".__american")).getText());
         }
-    }
-
-    public HashMap<String, String> getGameIdentifierMap() {return gameIdentifierMap;}
-    public void setCityNameMap(HashMap<String, String> cityNameMap)
-    {
-        this.cityNameMap = cityNameMap;
-    }
-    public HashMap<String, String> getAwayShortNameMap()
-    {
-        return awayShortNameMap;
-    }
-    public HashMap<String, String> getHomeShortNameMap()
-    {
-        return homeShortNameMap;
-    }
-    public HashMap<String, String> getHomeTeamCompleteNameMap()
-    {
-        return homeTeamCompleteNameMap;
-    }
-    public HashMap<String, String> getAwayTeamCompleteNameMap()
-    {
-        return awayTeamCompleteNameMap;
-    }
-    public HashMap<String, String> getGetHomeTotalCloseOddsMap()
-    {
-        return getHomeTotalCloseOddsMap;
-    }
-    public HashMap<String, String> getGetTotalHomeOpenOddsMap()
-    {
-        return getHomeTotalOpenOddsMap;
-    }
-    public HashMap<String, String> getTotalHomeOpenOddsMap()
-    {
-        return totalHomeOpenOddsMap;
-    }
-    public HashMap<String, String> getTotalHomeCloseOddsMap()
-    {
-        return totalHomeCloseOddsMap;
-    }
-    public HashMap<String, String> getAwayMLoddsMap()
-    {
-        return awayMLoddsMap;
-    }
-    public HashMap<String, String> getHomeMLoddsMap()
-    {
-        return awayMLoddsMap;
-    }
-    public void setThisSeason(String thisSeason)
-    {
-        this.thisSeason = thisSeason;
     }
     public void setSportDataWorkbook(XSSFWorkbook sportDataWorkbook)
     {

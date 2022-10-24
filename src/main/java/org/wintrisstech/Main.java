@@ -3,7 +3,7 @@ package org.wintrisstech;
  * Must be run before Selenium for initial setup
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 221023 HelloSeleniumx
+ * version 221024 HelloSeleniumx
  **********************************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -68,21 +68,16 @@ public class Main
         dataCollector.setSportDataWorkbook(sportDataWorkbook);
         Main.driver.get("https://www.covers.com/sports/nfl/matchups?selectedDate=" + Main.weekDate);//Driver now holds Current week scores & matchups page
         dataCollector.collectTeamDataForThisWeek();
+        Main.driver.get("https://www.covers.com/sports/nfl/matchups?selectedDate=" + Main.weekDate);//Driver now holds Current week scores & matchups page
+//        driver.findElement(By.cssSelector("a[href='/sport/football/nfl/odds']")).click();//Select Odds button")).click();
+//        dataCollector.collectOddsData();
         //******************************************************************************************************************<START>*********************************************************************************************************************************************************************
         for (Map.Entry<String, String> entry : xRefMap.entrySet())//START MAIN LOOP//////////////////////////////////////<START>//////////////////////////////////////////////////////////////////////////////////////////////START MAIN LOOP
         {
             dataEventId = entry.getKey();//Matchup index used almost everywhere...
             String dataGame = xRefMap.get(dataEventId);//Used sometimes to index matchups
             System.out.println("Main77 START MAIN LOOP////////////////// Start Game => " + game + "//////////////////////////////////////////START MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "/" + dataGame + "////////////////////////////////////////////////////////////////////START MAIN LOOP");
-            try
-            {
-                String consensusPage = "https://contests.covers.com/consensus/matchupconsensusdetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + dataEventId;
-                Main.driver.get(consensusPage);
-            }
-            catch (Exception e)
-            {
-                System.out.println("Main85...NO get consensus page");
-            }
+            Main.driver.get("https://contests.covers.com/consensus/matchupconsensusdetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + dataEventId);
             dataCollector.collectConsensusData(dataEventId);
             System.out.println("Main88 END MAIN LOOP//////// End Game =>>>>>>>>>>>> " + game++ + "/////////////////////////////" + dataEventId + " " + dataGame + " -----------------<=====================>----------------------------------END MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "/" + xRefMap.get(dataEventId) + "-------------------------------------------------------------------------------------------END MAIN LOOP");
         }//END MAIN LOOP///////////////////////////////////////////////////////////////////////////<END>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////END MAIN LOOP
