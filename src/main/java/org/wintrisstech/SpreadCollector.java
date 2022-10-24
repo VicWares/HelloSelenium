@@ -1,4 +1,4 @@
-package org.example;
+package org.wintrisstech;
 /**********************************************************************************
  * Must be run before
  * cd /usr/bin/
@@ -6,11 +6,11 @@ package org.example;
  * version 221003B
  **********************************************************************************/
 import org.openqa.selenium.*;
-import org.openqa.selenium.interactions.Actions;
+
 import java.util.HashMap;
 import java.util.Map;
 
-import static org.example.Main.js;
+import static org.wintrisstech.Main.js;
 public class SpreadCollector
 {
     private HashMap<String, String> homeSpreadCloseOddsMap = new HashMap<>();

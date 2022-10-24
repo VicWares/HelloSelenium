@@ -1,4 +1,4 @@
-package org.example;
+package org.wintrisstech;
 /**********************************************************************************
  * Must be run before
  * cd /usr/bin/

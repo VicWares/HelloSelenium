@@ -1,9 +1,8 @@
-package org.example;
+package org.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 2220916
- * write new NFL Covers data to the large SportData Excel sheet
+ * version 221023 HelloSeleniumx
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -20,19 +19,12 @@ public class ExcelWriter
         System.out.println("EW20 Writing to desktop");
         try
         {
+            os = new FileOutputStream(deskTopPath + "/SportData.xlsx");
             sportDataWorkbook.write(os);
+            os.close();
         }
         catch (Exception e)
         {
-            e.printStackTrace();
-        }
-    }
-    public void closeOutputStream() throws IOException
-    {
-        os.close();
-    }
-    public void openOutputStream() throws FileNotFoundException
-    {
-        os = new FileOutputStream(deskTopPath + "/SportData.xlsx");
+            System.out.println("EW27 SportDataBook write failure");        }
     }
 }
