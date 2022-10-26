@@ -2,7 +2,7 @@ package org.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 221024 HelloSeleniumx
+ * version 221025A HelloSeleniumX
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -12,6 +12,7 @@ import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import static org.wintrisstech.Main.*;
 public class DataCollector
@@ -95,23 +96,26 @@ public class DataCollector
     private String atsHome;
     private String ouHome;
     private String ouAway;
-    public void collectTeamDataForThisWeek()//From covers.com website for this week's matchups
+    public void collectTeamDataForThisWeek(List<WebElement> weekEventElements)//From covers.com website for this week's matchups
     {
         sportDataSheet = sportDataWorkbook.getSheet("Data");
         int minute = LocalTime.now().getMinute();
         String javaTime = LocalDate.now() + " " + LocalTime.now().getHour() + ":" + minute;
         sportDataSheet.getRow(0).createCell(0);//Row 1, Column A1, Report time e.g. 10/18/22 13:17
         sportDataSheet.getRow(0).getCell(0).setCellValue(javaTime);
-        for (String dataEventId : xRefMap.keySet())//Build week matchup IDs array
+        for (WebElement matchupElement : weekEventElements)//Iterate through all games for this NFL week
         {
-            excelRowIndex = Main.excelRowIndexMap.get(dataEventId);
-            WebElement dataEventIdElement = driver.findElement(By.cssSelector("[data-event-id='" + dataEventId + "']"));//Driver gets all team elements associated with this dataEventId
-            String homeFullName = dataEventIdElement.getAttribute("data-home-team-fullname-search");//e.g. Dallas
-            String awayFullname = dataEventIdElement.getAttribute("data-away-team-fullname-search");//e.g. Miami
-            String homeNickname = dataEventIdElement.getAttribute("data-home-team-nickname-search");//e.g. Texans
-            String awayNickname = dataEventIdElement.getAttribute("data-away-team-nickname-search");//e.g. Dolphins
-            homeCompleteName = homeFullName + " " + homeNickname;//e.g. Miami Dolphin
-            awayCompleteName = awayFullname + " " + awayNickname;
+            String dataEventId = matchupElement.getAttribute("data-event-id");
+            excelRowIndex = excelRowIndexMap.get(dataEventId);
+            String homeFullName = matchupElement.getAttribute("data-home-team-fullname-search");//data-home-team-fullname-search]")).getText();//e.g. Dallas
+            String awayFullName = matchupElement.getAttribute("data-away-team-fullname-search");//e.g. Miami
+            String homeNickname = matchupElement.getAttribute("data-home-team-nickname-search");//e.g. Texans
+            String awayNickname = matchupElement.getAttribute("data-away-team-nickname-search");//e.g. Dolphins
+            String awayShortName = matchupElement.getAttribute("data-away-team-shortname-search");//e.g. MIA
+            String homeShortName = matchupElement.getAttribute("data-home-team-shortname-search");//e.g. DAL
+
+            homeCompleteName = homeFullName + " " + homeNickname;//e.g. Miami Dolphins
+            awayCompleteName = awayFullName + " " + awayNickname;
             gameIdentifier = season + " - " + awayCompleteName + " @ " + homeCompleteName;//Column A1, gameIentifier e.g. 2022-Buffalo Bills @ Los Angles Rams
             sportDataSheet.getRow(excelRowIndex).createCell(0);
             sportDataSheet.getRow(excelRowIndex).getCell(0).setCellValue(gameIdentifier);
@@ -125,15 +129,25 @@ public class DataCollector
             sportDataSheet.getRow(excelRowIndex).createCell(3);//Column D4 NFL week e.g. 5
             sportDataSheet.getRow(excelRowIndex).getCell(3).setCellValue("Week " + Main.weekNumber);
 
-            sportDataSheet.getRow(excelRowIndex).createCell(10);// Column K11, Home team full name e.g. Dallas Coyboys Column K11
+            sportDataSheet.getRow(excelRowIndex).createCell(10);// Column K11, Home team complete name e.g. Dallas Coyboys
             sportDataSheet.getRow(excelRowIndex).getCell(10).setCellValue(homeCompleteName);
+
+            sportDataSheet.getRow(excelRowIndex).createCell(11);// Column L12, Home team short name e.g. DAL
+            sportDataSheet.getRow(excelRowIndex).getCell(11).setCellValue(homeShortName);
+
+            sportDataSheet.getRow(excelRowIndex).createCell(25);// Column Z26, Away team complete name e.g. Dallas Coyboys
+            sportDataSheet.getRow(excelRowIndex).getCell(25).setCellValue(awayCompleteName);
+
+            sportDataSheet.getRow(excelRowIndex).createCell(26);// Column AA27, Away team short name e.g. DAL
+            sportDataSheet.getRow(excelRowIndex).getCell(26).setCellValue(awayShortName);
         }
     }
     public void collectConsensusData(String dataEventId)
     {
         excelRowIndex = Main.excelRowIndexMap.get(dataEventId);
+        Main.driver.get("https://contests.covers.com/consensus/matchupconsensusdetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + dataEventId);
         atsAway = Main.driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-finalWagersleft")).getText();
-        sportDataSheet.getRow(excelRowIndex).createCell(64);//Column BM65 ATS consensus away
+        sportDataSheet.getRow(excelRowIndex).createCell(64);
         sportDataSheet.getRow(excelRowIndex).getCell(64).setCellValue(atsAway);
 
         atsHome = Main.driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-finalWagersRight")).getText();

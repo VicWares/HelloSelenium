@@ -3,7 +3,7 @@ package org.wintrisstech;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 221003B
+ * version 221025A HelloSeleniumX
  **********************************************************************************/
 import org.openqa.selenium.*;
 
