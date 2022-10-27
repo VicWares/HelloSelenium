@@ -6,8 +6,10 @@ package org.wintrisstech;
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.jsoup.select.Elements;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -113,65 +115,79 @@ public class DataCollector
             String awayNickname = matchupElement.getAttribute("data-away-team-nickname-search");//e.g. Dolphins
             String awayShortName = matchupElement.getAttribute("data-away-team-shortname-search");//e.g. MIA
             String homeShortName = matchupElement.getAttribute("data-home-team-shortname-search");//e.g. DAL
-
             homeCompleteName = homeFullName + " " + homeNickname;//e.g. Miami Dolphins
             awayCompleteName = awayFullName + " " + awayNickname;
             gameIdentifier = season + " - " + awayCompleteName + " @ " + homeCompleteName;//Column A1, gameIentifier e.g. 2022-Buffalo Bills @ Los Angles Rams
             sportDataSheet.getRow(excelRowIndex).createCell(0);
             sportDataSheet.getRow(excelRowIndex).getCell(0).setCellValue(gameIdentifier);
-
             sportDataSheet.getRow(excelRowIndex).createCell(1);//Column B2, date e.g. 2022-10-06
             sportDataSheet.getRow(excelRowIndex).getCell(1).setCellValue(weekDate);
-
             sportDataSheet.getRow(excelRowIndex).createCell(2);//Column C3, Season
             sportDataSheet.getRow(excelRowIndex).getCell(2).setCellValue(season);
-
             sportDataSheet.getRow(excelRowIndex).createCell(3);//Column D4 NFL week e.g. 5
-            sportDataSheet.getRow(excelRowIndex).getCell(3).setCellValue("Week " + Main.weekNumber);
-
+            sportDataSheet.getRow(excelRowIndex).getCell(3).setCellValue("Week " + weekNumber);
             sportDataSheet.getRow(excelRowIndex).createCell(10);// Column K11, Home team complete name e.g. Dallas Coyboys
             sportDataSheet.getRow(excelRowIndex).getCell(10).setCellValue(homeCompleteName);
-
             sportDataSheet.getRow(excelRowIndex).createCell(11);// Column L12, Home team short name e.g. DAL
             sportDataSheet.getRow(excelRowIndex).getCell(11).setCellValue(homeShortName);
-
             sportDataSheet.getRow(excelRowIndex).createCell(25);// Column Z26, Away team complete name e.g. Dallas Coyboys
             sportDataSheet.getRow(excelRowIndex).getCell(25).setCellValue(awayCompleteName);
-
             sportDataSheet.getRow(excelRowIndex).createCell(26);// Column AA27, Away team short name e.g. DAL
             sportDataSheet.getRow(excelRowIndex).getCell(26).setCellValue(awayShortName);
         }
     }
     public void collectConsensusData(String dataEventId)
     {
-        excelRowIndex = Main.excelRowIndexMap.get(dataEventId);
-        Main.driver.get("https://contests.covers.com/consensus/matchupconsensusdetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + dataEventId);
-        atsAway = Main.driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-finalWagersleft")).getText();
-        sportDataSheet.getRow(excelRowIndex).createCell(64);
-        sportDataSheet.getRow(excelRowIndex).getCell(64).setCellValue(atsAway);
+        excelRowIndex = excelRowIndexMap.get(dataEventId);
+        driver.get("https://contests.covers.com/consensus/matchupconsensusdetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + dataEventId);
+//        WebElement rightConsensus = driver.findElement(By.cssSelector(".covers-CoversConsensusDetailsTable-finalWagersRight"));//Home/Under
+//        WebElement leftConsensus = driver.findElement(By.cssSelector(".covers-CoversConsensusDetailsTable-finalWagersleft"));//Away/Over
+        //System.out.print("...." + driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-awayFinal:nth-child(0)")));
+        //            ouHome = driver.findElement(By.cssSelector("rightConsensus:eq(1)")).getText();//Column BU73
+        //            sportDataSheet.getRow(excelRowIndex).createCell(72);
+        //            sportDataSheet.getRow(excelRowIndex).getCell(72).setCellValue(ouHome);
+                    ouAway = driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-awayFinal > div.covers-CoversConsensusDetailsTable-finalWagersleft")).getText();
+                    sportDataSheet.getRow(excelRowIndex).createCell(70);
+                    sportDataSheet.getRow(excelRowIndex).getCell(70).setCellValue(ouAway);
 
-        atsHome = Main.driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-finalWagersRight")).getText();
-        sportDataSheet.getRow(excelRowIndex).createCell(66);//Column BO67 ATS consensus home
-        sportDataSheet.getRow(excelRowIndex).getCell(66).setCellValue(atsHome);
+                    ouHome = driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-homeFinal > div.covers-CoversConsensusDetailsTable-finalWagersRight")).getText();
+                    sportDataSheet.getRow(excelRowIndex).createCell(72);
+                    sportDataSheet.getRow(excelRowIndex).getCell(72).setCellValue(ouHome);
 
-        ouHome = Main.driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-finalWagersRight")).getText();
-        sportDataSheet.getRow(excelRowIndex).createCell(72);//Column BU73 O/U consensus home
-        sportDataSheet.getRow(excelRowIndex).getCell(72).setCellValue(ouHome);
+                    atsAway = driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-awayFinal > div.covers-CoversConsensusDetailsTable-finalWagersleft")).getText();
+                    sportDataSheet.getRow(excelRowIndex).createCell(65);
+                    sportDataSheet.getRow(excelRowIndex).getCell(65).setCellValue(ouAway);
 
-        ouAway = Main.driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-finalWagersleft")).getText();
-        sportDataSheet.getRow(excelRowIndex).createCell(70);//Column BS71 O/U consensus away
-        sportDataSheet.getRow(excelRowIndex).getCell(70).setCellValue(ouAway);
+                    atsHome = driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-homeFinal > div.covers-CoversConsensusDetailsTable-finalWagersRight")).getText();
+                    sportDataSheet.getRow(excelRowIndex).createCell(67);
+                    sportDataSheet.getRow(excelRowIndex).getCell(67).setCellValue(ouHome);
+
+
+        //            atsHome = driver.findElement(By.cssSelector("rightConsensus:eq(0)")).getText();//Column BO67
+        //            sportDataSheet.getRow(excelRowIndex).createCell(66);//Column BO67 ATS consensus home...overall
+        //            sportDataSheet.getRow(excelRowIndex).getCell(66).setCellValue(atsHome);
+        //            atsAway = driver.findElement(By.cssSelector("leftConsensus:eq(0)")).getText();
+        //            sportDataSheet.getRow(excelRowIndex).createCell(64);//Column BM65 ATS consensus away...overall
+        //            sportDataSheet.getRow(excelRowIndex).getCell(64).setCellValue(atsAway);
+        //            ouHome = driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-row > div.covers-CoversConsensusDetailsTable-homeFinal > div.covers-CoversConsensusDetailsTable-finalWagersRight")).getText();
+        //            sportDataSheet.getRow(excelRowIndex).createCell(72);
+        //            sportDataSheet.getRow(excelRowIndex).getCell(72).setCellValue(ouHome);
+        //            ouAway = driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-row > div.covers-CoversConsensusDetailsTable-awayFinal > div.covers-CoversConsensusDetailsTable-finalWagersleft")).getText();
+        //            sportDataSheet.getRow(excelRowIndex).createCell(70);//Column BS71 O/U consensus away...overall
+        //            sportDataSheet.getRow(excelRowIndex).getCell(70).setCellValue(ouAway);
     }
-    public void collectOddsData()
+    //        catch (Exception e)
+    //        {
+    //            System.out.println("DC149 DataCollector, no consensus data for " + gameIdentifier);
+    //        }
+    //        public void collectOddsData () {
+    //        for (HashMap.Entry<String, String> entry : xRefMap.entrySet())
     {
-        for (HashMap.Entry<String,String> entry : xRefMap.entrySet())
-        {
-//            String dataEventId = entry.getKey();
-//            String dataGame = entry.getValue();
-//            int excelRowIndex = excelRowIndexMap.get(dataEventId);
-//            WebElement dataEventIdElement = driver.findElement(By.cssSelector("[data-event-id='" + dataEventId + "']"));//Driver gets all team elements associated with this dataEventId
-//            System.out.println(".............openOdds=> " + driver.findElement(By.cssSelector(".__american")).getText());
-        }
+        //            String dataEventId = entry.getKey();
+        //            String dataGame = entry.getValue();
+        //            int excelRowIndex = excelRowIndexMap.get(dataEventId);
+        //            WebElement dataEventIdElement = driver.findElement(By.cssSelector("[data-event-id='" + dataEventId + "']"));//Driver gets all team elements associated with this dataEventId
+        //            System.out.println(".............openOdds=> " + driver.findElement(By.cssSelector(".__american")).getText());
     }
     public void setSportDataWorkbook(XSSFWorkbook sportDataWorkbook)
     {

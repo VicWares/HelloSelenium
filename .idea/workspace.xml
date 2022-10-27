@@ -4,16 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment=" * version 221023 HelloSeleniumx...combined HelloSelenium3 and FantasticCovers to get rid of Excel 1904 error.">
+    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment=" * version 221025A HelloSeleniumX...ATS and O/U consensus captured.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/CityNameMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/CityNameMapBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/DataCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/MoneyLineCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/MoneyLineCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/SpreadCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/SpreadCollector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,7 +224,13 @@
       <workItem from="1666631490667" duration="2221000" />
       <workItem from="1666666914345" duration="7214000" />
       <workItem from="1666730876024" duration="11696000" />
-      <workItem from="1666747824315" duration="7628000" />
+      <workItem from="1666747824315" duration="7784000" />
+      <workItem from="1666797971069" duration="3067000" />
+      <workItem from="1666802062474" duration="4642000" />
+      <workItem from="1666817484029" duration="11796000" />
+      <workItem from="1666830281760" duration="257000" />
+      <workItem from="1666833761528" duration="12738000" />
+      <workItem from="1666887124493" duration="1043000" />
     </task>
     <task id="LOCAL-00001" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
       <created>1662438233430</created>
@@ -295,7 +295,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666584560642</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary=" * version 221025A HelloSeleniumX...ATS and O/U consensus captured.">
+      <created>1666757367626</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1666757367626</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -322,6 +329,7 @@
     <MESSAGE value="Version 220927 HelloSelenium2.  Clean up with JS executor." />
     <MESSAGE value="Version 221003A HelloSelenium9. Building dataEventIdMap with DataEventIdMapBuilder constructor." />
     <MESSAGE value=" * version 221023 HelloSeleniumx...combined HelloSelenium3 and FantasticCovers to get rid of Excel 1904 error." />
-    <option name="LAST_COMMIT_MESSAGE" value=" * version 221023 HelloSeleniumx...combined HelloSelenium3 and FantasticCovers to get rid of Excel 1904 error." />
+    <MESSAGE value=" * version 221025A HelloSeleniumX...ATS and O/U consensus captured." />
+    <option name="LAST_COMMIT_MESSAGE" value=" * version 221025A HelloSeleniumX...ATS and O/U consensus captured." />
   </component>
 </project>

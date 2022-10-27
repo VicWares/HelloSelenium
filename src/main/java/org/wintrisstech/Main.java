@@ -26,24 +26,20 @@ public class Main
     private static String dataEventId;
     private static String version = "version 221025A HelloSeleniumX";
     public static String season = "2022";
-    public static String weekNumber = "8";
+    public static String weekNumber = "7";
     public static WebDriver driver = new SafariDriver();
+    public static JavascriptExecutor js;
+
     static ExcelWriter excelWriter = new ExcelWriter();
     static ExcelReader excelReader = new ExcelReader();
     static DataCollector dataCollector = new DataCollector();
-    public static JavascriptExecutor js = (JavascriptExecutor) driver;
     private static int game;
+    private static int i;
     private Actions act = new Actions(driver);
-    public static HashMap<String, String> MLATSawayMap = new HashMap<>();
     public static HashMap<String, String> xRefMap = new HashMap<>();
-    public static HashMap<String, String> ouHomeMap = new HashMap<>();
-    public static HashMap<String, String> atsHomeMap = new HashMap<>();
-    public static HashMap<String, String> atsAwayMap = new HashMap<>();
-    public static HashMap<String, String> ouAwayMap = new HashMap<>();
     public static HashMap<String, String> weekDateMap = new HashMap<String, String>();//Constructor builds HashMap of NFL week calendar dates (e.g 2022-09-08) referenced by NFL week number (e.g. 4)
     public static HashMap<String, String> cityNameMap = new HashMap<String, String>();//Constructor builds HashMap of NFL team city names referenced by bogus Covers city names (e.g East Rutherford) referenced by NFL city names (e.g. New York)
     public static HashMap<String, Integer> excelRowIndexMap = new HashMap<String, Integer>();//HashMap references excel row numbers (e.g. 5) by dataEventId (e.g. 87409).  Each excel row has a specific data-event-id
-    public static HashMap<String, String> matchupDataEventIdMap = new HashMap<>();//Map of this week's matchups by dataEventId e.g.
     public Main()
     {
         driver = new SafariDriver();
@@ -51,6 +47,8 @@ public class Main
     public static void main(String[] args) throws IOException, InterruptedException
     {
         System.out.println("SharpMarkets, version " + version + ", Copyright 2022 Dan Farris");
+        js = (JavascriptExecutor)driver;
+
         weekDate = weekDateMap.get(weekNumber);
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
@@ -77,7 +75,12 @@ public class Main
             System.out.println("Main77 START MAIN LOOP////////////////// Start Game => " + game + "//////////////////////////////////////////START MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "/" + dataGame + "////////////////////////////////////////////////////////////////////START MAIN LOOP");
             dataCollector.collectConsensusData(dataEventId);
             System.out.println("Main88 END MAIN LOOP//////// End Game =>>>>>>>>>>>> " + game++ + "/////////////////////////////" + dataEventId + " " + dataGame + " -----------------<=====================>----------------------------------END MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "/" + xRefMap.get(dataEventId) + "-------------------------------------------------------------------------------------------END MAIN LOOP");
-        }//END MAIN LOOP///////////////////////////////////////////////////////////////////////////<END>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////END MAIN LOOP
+//            if(i++ > 4)
+//            {
+//                break;
+//            }
+        }
+        //END MAIN LOOP///////////////////////////////////////////////////////////////////////////<END>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////END MAIN LOOP
         //******************************************************************************************************************<END>*********************************************************************************************************************************************************************
         try
         {
