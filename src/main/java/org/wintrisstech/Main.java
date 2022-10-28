@@ -3,7 +3,7 @@ package org.wintrisstech;
  * Must be run before Selenium for initial setup
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 221025A HelloSeleniumX
+ * version 221027 HelloSeleniumX
  **********************************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
@@ -16,7 +16,6 @@ import org.openqa.selenium.safari.SafariDriver;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.concurrent.TimeUnit;
 public class Main
 {
@@ -34,7 +33,7 @@ public class Main
     static ExcelReader excelReader = new ExcelReader();
     static DataCollector dataCollector = new DataCollector();
     private static int game;
-    private static int i;
+    private static int i = 0;
     private Actions act = new Actions(driver);
     public static HashMap<String, String> xRefMap = new HashMap<>();
     public static HashMap<String, String> weekDateMap = new HashMap<String, String>();//Constructor builds HashMap of NFL week calendar dates (e.g 2022-09-08) referenced by NFL week number (e.g. 4)
@@ -65,7 +64,7 @@ public class Main
         sportDataWorkbook = excelReader.readSportData();
         dataCollector.setSportDataWorkbook(sportDataWorkbook);
         dataCollector.collectTeamDataForThisWeek(weekEventElements);
-        //Main.driver.get("https://www.covers.com/sports/nfl/matchups?selectedDate=" + Main.weekDate);//Driver now holds Current week scores & matchups page
+//        Main.driver.get("https://www.covers.com/sports/nfl/matchups?selectedDate=" + Main.weekDate);//Driver now holds Current week scores & matchups page
 //        driver.findElement(By.cssSelector("a[href='/sport/football/nfl/odds']")).click();//Select Odds button")).click();
 //        dataCollector.collectOddsData();
         //******************************************************************************************************************<START>*********************************************************************************************************************************************************************
@@ -73,12 +72,9 @@ public class Main
         {
             String dataGame = xRefMap.get(dataEventId);//Used sometimes to index matchups
             System.out.println("Main77 START MAIN LOOP////////////////// Start Game => " + game + "//////////////////////////////////////////START MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "/" + dataGame + "////////////////////////////////////////////////////////////////////START MAIN LOOP");
-            dataCollector.collectConsensusData(dataEventId);
+            dataCollector.collectConsensusOverall(dataEventId);
+            dataCollector.collectConsensusMoneyLeaders(dataEventId);
             System.out.println("Main88 END MAIN LOOP//////// End Game =>>>>>>>>>>>> " + game++ + "/////////////////////////////" + dataEventId + " " + dataGame + " -----------------<=====================>----------------------------------END MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "/" + xRefMap.get(dataEventId) + "-------------------------------------------------------------------------------------------END MAIN LOOP");
-//            if(i++ > 4)
-//            {
-//                break;
-//            }
         }
         //END MAIN LOOP///////////////////////////////////////////////////////////////////////////<END>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////END MAIN LOOP
         //******************************************************************************************************************<END>*********************************************************************************************************************************************************************
