@@ -3,7 +3,7 @@ package org.wintrisstech;
  * Must be run before Selenium for initial setup
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 221027 HelloSeleniumX
+ * version 221028 HelloSeleniumX
  **********************************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
@@ -23,9 +23,9 @@ public class Main
     public static HashMap<String, String> homeCompleteNameMap = new HashMap<>();
     private static XSSFWorkbook sportDataWorkbook;
     private static String dataEventId;
-    private static String version = "version 221025A HelloSeleniumX";
+    private static String version = "version 221028 HelloSeleniumX";
     public static String season = "2022";
-    public static String weekNumber = "7";
+    public static String weekNumber = "8";
     public static WebDriver driver = new SafariDriver();
     public static JavascriptExecutor js;
 

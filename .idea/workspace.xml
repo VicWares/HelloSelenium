@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment=" * version 221025A Capturing ATS home/away and O/U home/away">
+    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment=" * version 221027 Getting all overall consensus data...working on Consensus Money Leaders">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/CityNameMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/CityNameMapBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/DataCollector.java" afterDir="false" />
@@ -240,7 +240,9 @@
       <workItem from="1666887124493" duration="11523000" />
       <workItem from="1666903501645" duration="1100000" />
       <workItem from="1666911729521" duration="2139000" />
-      <workItem from="1666920413631" duration="4135000" />
+      <workItem from="1666920413631" duration="4233000" />
+      <workItem from="1666972741894" duration="7172000" />
+      <workItem from="1666988798335" duration="2597000" />
     </task>
     <task id="LOCAL-00001" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
       <created>1662438233430</created>
@@ -319,7 +321,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666888343795</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary=" * version 221027 Getting all overall consensus data...working on Consensus Money Leaders">
+      <created>1666928976944</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1666928976944</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -348,6 +357,7 @@
     <MESSAGE value=" * version 221023 HelloSeleniumx...combined HelloSelenium3 and FantasticCovers to get rid of Excel 1904 error." />
     <MESSAGE value=" * version 221025A HelloSeleniumX...ATS and O/U consensus captured." />
     <MESSAGE value=" * version 221025A Capturing ATS home/away and O/U home/away" />
-    <option name="LAST_COMMIT_MESSAGE" value=" * version 221025A Capturing ATS home/away and O/U home/away" />
+    <MESSAGE value=" * version 221027 Getting all overall consensus data...working on Consensus Money Leaders" />
+    <option name="LAST_COMMIT_MESSAGE" value=" * version 221027 Getting all overall consensus data...working on Consensus Money Leaders" />
   </component>
 </project>
