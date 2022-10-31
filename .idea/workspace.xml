@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment=" * version 221027 Getting all overall consensus data...working on Consensus Money Leaders">
+    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment=" * version 221028  Succesfully getting all 8 consensus numbers...some are repeats...not sure numbers right...">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/CityNameMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/CityNameMapBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/DataCollector.java" afterDir="false" />
@@ -242,7 +242,19 @@
       <workItem from="1666911729521" duration="2139000" />
       <workItem from="1666920413631" duration="4233000" />
       <workItem from="1666972741894" duration="7172000" />
-      <workItem from="1666988798335" duration="2597000" />
+      <workItem from="1666988798335" duration="9927000" />
+      <workItem from="1667012589193" duration="4337000" />
+      <workItem from="1667066352498" duration="637000" />
+      <workItem from="1667082582697" duration="866000" />
+      <workItem from="1667103108858" duration="75000" />
+      <workItem from="1667148382950" duration="2298000" />
+      <workItem from="1667166570469" duration="8343000" />
+      <workItem from="1667180369448" duration="9964000" />
+      <workItem from="1667232787068" duration="1851000" />
+      <workItem from="1667235043801" duration="120000" />
+      <workItem from="1667235356777" duration="73000" />
+      <workItem from="1667235509990" duration="3213000" />
+      <workItem from="1667250610209" duration="948000" />
     </task>
     <task id="LOCAL-00001" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
       <created>1662438233430</created>
@@ -328,7 +340,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666928976944</updated>
     </task>
-    <option name="localTasksCounter" value="13" />
+    <task id="LOCAL-00013" summary=" * version 221028  Succesfully getting all 8 consensus numbers...some are repeats...not sure numbers right...">
+      <created>1666991786574</created>
+      <option name="number" value="00013" />
+      <option name="presentableId" value="LOCAL-00013" />
+      <option name="project" value="LOCAL" />
+      <updated>1666991786574</updated>
+    </task>
+    <option name="localTasksCounter" value="14" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -358,6 +377,7 @@
     <MESSAGE value=" * version 221025A HelloSeleniumX...ATS and O/U consensus captured." />
     <MESSAGE value=" * version 221025A Capturing ATS home/away and O/U home/away" />
     <MESSAGE value=" * version 221027 Getting all overall consensus data...working on Consensus Money Leaders" />
-    <option name="LAST_COMMIT_MESSAGE" value=" * version 221027 Getting all overall consensus data...working on Consensus Money Leaders" />
+    <MESSAGE value=" * version 221028  Succesfully getting all 8 consensus numbers...some are repeats...not sure numbers right..." />
+    <option name="LAST_COMMIT_MESSAGE" value=" * version 221028  Succesfully getting all 8 consensus numbers...some are repeats...not sure numbers right..." />
   </component>
 </project>
