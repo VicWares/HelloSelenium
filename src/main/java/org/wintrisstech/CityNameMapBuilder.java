@@ -3,7 +3,7 @@ package org.wintrisstech;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 221103 HelloSeleniumX
+ * version 221104 HelloSeleniumX2
  **********************************************************************************/
 import java.util.HashMap;
 public class CityNameMapBuilder

@@ -2,7 +2,7 @@ package org.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 221103 HelloSeleniumX
+ * version 221104 HelloSeleniumX2
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
@@ -69,7 +69,7 @@ public class DataCollector
     private ArrayList<String> atsHomes = new ArrayList<String>();
     private ArrayList<String> thisWeekAwayTeams = new ArrayList<String>();
     private HashMap<String, String> gameDatesMap = new HashMap<>();
-    private static HashMap<String, String> gameIdentifierMap = new HashMap<>();
+    public static HashMap<String, String> gameIdentifierMap = new HashMap<>();
     public static HashMap<String, String> homeFullNameMap = new HashMap<>();
     private HashMap<String, String> awayFullNameMap = new HashMap<>();
     private HashMap<String, String> homeShortNameMap = new HashMap<>();
@@ -155,10 +155,10 @@ public class DataCollector
 //        System.out.println("DC155...ouHome => ouHome "+ ouHome);
 //        sportDataSheet.getRow(excelRowIndex).createCell(72);
 //        sportDataSheet.getRow(excelRowIndex).getCell(72).setCellValue(ouHome);
-        String atsHome = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div .covers-CoversConsensusDetailsTable-homeFinal .covers-CoversConsensusDetailsTable-finalWagersRight"))).getText();//BO67 ATS Home
-        System.out.println("DC159...atsHome => "+ atsHome);
+        String atsHomeOA = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div .covers-CoversConsensusDetailsTable-homeFinal .covers-CoversConsensusDetailsTable-finalWagersRight"))).getText();//BO67 ATS Home Overall
+        System.out.println("DC159...atsHomeOA => "+ atsHomeOA);//OA => Overall
         sportDataSheet.getRow(excelRowIndex).createCell(66);
-        sportDataSheet.getRow(excelRowIndex).getCell(66).setCellValue(atsHome);
+        sportDataSheet.getRow(excelRowIndex).getCell(66).setCellValue(atsHomeOA);
 //        String atsAway = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.covers-CoversConsensusDetailsTable-row:nth-child(18) > div:nth-child(1) > div:nth-child(1)"))).getText();//BM65 ATS Away
 //        System.out.println("DC163...atsAway => ouHome "+ atsAway);
 //        sportDataSheet.getRow(excelRowIndex).createCell(64);
@@ -167,7 +167,6 @@ public class DataCollector
     public void collectMoneyLeaders(String dataEventId)
     {
         wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("li.covers-CoversConsensus-sides:nth-child(1) > a:nth-child(1)"))).click();//Click on Money Leaders option in consensus page
-
         //driver.findElement(By.cssSelector("li.covers-CoversConsensus-sides:nth-child(1) > a:nth-child(1)")).click();
         this.gameIdentifier = gameIdentifierMap.get(dataEventId);
         excelRowIndex = excelRowIndexMap.get(dataEventId);
@@ -175,10 +174,10 @@ public class DataCollector
 //        sportDataSheet.getRow(excelRowIndex).createCell(67);
 //        sportDataSheet.getRow(excelRowIndex).getCell(67).setCellValue(atsAway);
 //        System.out.println("DC173...ATS away => " + gameIdentifier + " " + atsAway);
-        String atsHome = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.covers-CoversConsensusDetailsTable-row:nth-child(2) > div:nth-child(2) > div:nth-child(2)"))).getText();//BQ69 ATS Home
+        String atsHomeML = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.covers-CoversConsensusDetailsTable-row:nth-child(2) > div:nth-child(2) > div:nth-child(2)"))).getText();//BQ69 ATS Home Money Leaders
         sportDataSheet.getRow(excelRowIndex).createCell(68);
-        sportDataSheet.getRow(excelRowIndex).getCell(68).setCellValue(atsHome);
-        System.out.println("DC177...ATS home for => " + gameIdentifier + " " + atsHome);
+        sportDataSheet.getRow(excelRowIndex).getCell(68).setCellValue(atsHomeML);
+        System.out.println("DC180...ATSML home for => " + gameIdentifier + " " + atsHomeML);//ML => Money Leaders
 //        String ouAway = driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-row:nth-child(3) > div:nth-child(1) > div:nth-child(2)")).getText();//BV74 OU Away######bad
 //        sportDataSheet.getRow(excelRowIndex).createCell(73);
 //        sportDataSheet.getRow(excelRowIndex).getCell(73).setCellValue(ouAway);

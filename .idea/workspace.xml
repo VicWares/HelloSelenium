@@ -4,11 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment=" * version 221028  Succesfully getting all 8 consensus numbers...some are repeats...not sure numbers right...">
+    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment=" * version 221103 Adding waits.  Gets completely through all games with ATS Home for both Overall and Money Leaders consensus...trying others consensus items.">
+      <change afterPath="$PROJECT_DIR$/WeekDateMapBuilder.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/WeekDateMapBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/DataCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/SpreadCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/SpreadCollector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -49,6 +50,7 @@
 }</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
+      <recent name="org.wintrisstech" />
       <recent name="org.example" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
@@ -262,7 +264,10 @@
       <workItem from="1667499391102" duration="4248000" />
       <workItem from="1667511505988" duration="1235000" />
       <workItem from="1667515658065" duration="4701000" />
-      <workItem from="1667527694904" duration="7066000" />
+      <workItem from="1667527694904" duration="7729000" />
+      <workItem from="1667572660410" duration="575000" />
+      <workItem from="1667578881868" duration="6797000" />
+      <workItem from="1667598365591" duration="1021000" />
     </task>
     <task id="LOCAL-00001" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
       <created>1662438233430</created>
@@ -355,7 +360,14 @@
       <option name="project" value="LOCAL" />
       <updated>1666991786574</updated>
     </task>
-    <option name="localTasksCounter" value="14" />
+    <task id="LOCAL-00014" summary=" * version 221103 Adding waits.  Gets completely through all games with ATS Home for both Overall and Money Leaders consensus...trying others consensus items.">
+      <created>1667535534959</created>
+      <option name="number" value="00014" />
+      <option name="presentableId" value="LOCAL-00014" />
+      <option name="project" value="LOCAL" />
+      <updated>1667535534959</updated>
+    </task>
+    <option name="localTasksCounter" value="15" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -386,6 +398,7 @@
     <MESSAGE value=" * version 221025A Capturing ATS home/away and O/U home/away" />
     <MESSAGE value=" * version 221027 Getting all overall consensus data...working on Consensus Money Leaders" />
     <MESSAGE value=" * version 221028  Succesfully getting all 8 consensus numbers...some are repeats...not sure numbers right..." />
-    <option name="LAST_COMMIT_MESSAGE" value=" * version 221028  Succesfully getting all 8 consensus numbers...some are repeats...not sure numbers right..." />
+    <MESSAGE value=" * version 221103 Adding waits.  Gets completely through all games with ATS Home for both Overall and Money Leaders consensus...trying others consensus items." />
+    <option name="LAST_COMMIT_MESSAGE" value=" * version 221103 Adding waits.  Gets completely through all games with ATS Home for both Overall and Money Leaders consensus...trying others consensus items." />
   </component>
 </project>
