@@ -6,13 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment=" * version 221028  Succesfully getting all 8 consensus numbers...some are repeats...not sure numbers right...">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/CityNameMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/CityNameMapBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/DataCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelWriter.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/MoneyLineCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/MoneyLineCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/SpreadCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/SpreadCollector.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -255,6 +250,19 @@
       <workItem from="1667235356777" duration="73000" />
       <workItem from="1667235509990" duration="3213000" />
       <workItem from="1667250610209" duration="948000" />
+      <workItem from="1667275974673" duration="266000" />
+      <workItem from="1667352059219" duration="119000" />
+      <workItem from="1667352206011" duration="2948000" />
+      <workItem from="1667409625638" duration="2472000" />
+      <workItem from="1667420266918" duration="104000" />
+      <workItem from="1667420376959" duration="7800000" />
+      <workItem from="1667445616534" duration="4377000" />
+      <workItem from="1667498182711" duration="1108000" />
+      <workItem from="1667499301035" duration="52000" />
+      <workItem from="1667499391102" duration="4248000" />
+      <workItem from="1667511505988" duration="1235000" />
+      <workItem from="1667515658065" duration="4701000" />
+      <workItem from="1667527694904" duration="7066000" />
     </task>
     <task id="LOCAL-00001" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
       <created>1662438233430</created>

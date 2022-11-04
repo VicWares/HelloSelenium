@@ -2,13 +2,16 @@ package org.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 221031 HelloSeleniumX
+ * version 221103 HelloSeleniumX
  *******************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -66,7 +69,7 @@ public class DataCollector
     private ArrayList<String> atsHomes = new ArrayList<String>();
     private ArrayList<String> thisWeekAwayTeams = new ArrayList<String>();
     private HashMap<String, String> gameDatesMap = new HashMap<>();
-    public static HashMap<String, String> gameIdentifierMap = new HashMap<>();
+    private static HashMap<String, String> gameIdentifierMap = new HashMap<>();
     public static HashMap<String, String> homeFullNameMap = new HashMap<>();
     private HashMap<String, String> awayFullNameMap = new HashMap<>();
     private HashMap<String, String> homeShortNameMap = new HashMap<>();
@@ -92,11 +95,12 @@ public class DataCollector
     private HashMap<String, String> homeNicknameMap = new HashMap<>();
     private XSSFWorkbook sportDataWorkbook;
     private XSSFSheet sportDataSheet;
-    private String atsAway;
     private Integer excelRowIndex;
-    private String atsHome;
-    private String ouHome;
-    private String ouAway;
+    public static HashMap<String, String> getGameIdentifierMap(String dataEventId)
+    {
+        return gameIdentifierMap;
+    }
+    WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
     public void collectTeamDataForThisWeek(List<WebElement> weekEventElements)//From covers.com website for this week's matchups
     {
         sportDataSheet = sportDataWorkbook.getSheet("Data");
@@ -108,8 +112,10 @@ public class DataCollector
         {
             String dataEventId = matchupElement.getAttribute("data-event-id");
             excelRowIndex = excelRowIndexMap.get(dataEventId);
-            String homeFullName = matchupElement.getAttribute("data-home-team-fullname-search");//data-home-team-fullname-search]")).getText();//e.g. Dallas
+            String homeFullName = matchupElement.getAttribute("data-home-team-fullname-search");//e.g. Dallas
+            homeFullName = Main.cityNameMap.get(homeFullName);//To correct for Covers goofy city names
             String awayFullName = matchupElement.getAttribute("data-away-team-fullname-search");//e.g. Miami
+            awayFullName = Main.cityNameMap.get(awayFullName);//To correct for Covers goofy city names
             String homeNickname = matchupElement.getAttribute("data-home-team-nickname-search");//e.g. Texans
             String awayNickname = matchupElement.getAttribute("data-away-team-nickname-search");//e.g. Dolphins
             String awayShortName = matchupElement.getAttribute("data-away-team-shortname-search");//e.g. MIA
@@ -117,6 +123,7 @@ public class DataCollector
             homeCompleteName = homeFullName + " " + homeNickname;//e.g. Miami Dolphins
             awayCompleteName = awayFullName + " " + awayNickname;
             gameIdentifier = season + " - " + awayCompleteName + " @ " + homeCompleteName;//Column A1, gameIentifier e.g. 2022-Buffalo Bills @ Los Angles Rams
+            gameIdentifierMap.put(dataEventId, gameIdentifier);
             sportDataSheet.getRow(excelRowIndex).createCell(0);
             sportDataSheet.getRow(excelRowIndex).getCell(0).setCellValue(gameIdentifier);
             sportDataSheet.getRow(excelRowIndex).createCell(1);//Column B2, date e.g. 2022-10-06
@@ -134,51 +141,52 @@ public class DataCollector
             sportDataSheet.getRow(excelRowIndex).createCell(26);// Column AA27, Away team short name e.g. DAL
             sportDataSheet.getRow(excelRowIndex).getCell(26).setCellValue(awayShortName);
         }
-        System.out.println("DC137 working on: " + gameIdentifier);
     }
     public void collectOverall(String dataEventId)
     {
-        Main.driver.get("https://contests.covers.com/consensus/matchupconsensusdetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + dataEventId);
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("#public > a"))).click();//Click on Overall option in consensus page
+        this.gameIdentifier = gameIdentifierMap.get(dataEventId);
         excelRowIndex = excelRowIndexMap.get(dataEventId);
-
-        ouAway = driver.findElement(By.cssSelector("div .covers-CoversConsensusDetailsTable-finalWagersleft")).getText();//BS71 OU Away***BAD
-        sportDataSheet.getRow(excelRowIndex).createCell(70);
-        sportDataSheet.getRow(excelRowIndex).getCell(70).setCellValue(ouAway);
-
-        ouHome = driver.findElement(By.cssSelector("div .covers-CoversConsensusDetailsTable-finalWagersRight")).getText();//BU73 OU Home***BAD
-        sportDataSheet.getRow(excelRowIndex).createCell(72);
-        sportDataSheet.getRow(excelRowIndex).getCell(72).setCellValue(ouHome);
-
-        atsHome = driver.findElement(By.cssSelector("div .covers-CoversConsensusDetailsTable-homeFinal .covers-CoversConsensusDetailsTable-finalWagersRight")).getText();//BO67 ATS Home
+//        String ouAway = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.covers-CoversConsensusDetailsTable-row:nth-child(7) > div:nth-child(1) > div:nth-child(1)"))).getText();//OU Away
+//        sportDataSheet.getRow(excelRowIndex).createCell(70);
+//        sportDataSheet.getRow(excelRowIndex).getCell(70).setCellValue(ouAway);
+//        System.out.println("DC153...ouAway => " + ouAway);
+//        String ouHome = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("#consensus_analysis_content > div:nth-child(16) > div.covers-CoversConsensusDetailsTable-homeFinal > div"))).getText();//BU73 OU Home***BAD
+//        System.out.println("DC155...ouHome => ouHome "+ ouHome);
+//        sportDataSheet.getRow(excelRowIndex).createCell(72);
+//        sportDataSheet.getRow(excelRowIndex).getCell(72).setCellValue(ouHome);
+        String atsHome = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div .covers-CoversConsensusDetailsTable-homeFinal .covers-CoversConsensusDetailsTable-finalWagersRight"))).getText();//BO67 ATS Home
+        System.out.println("DC159...atsHome => "+ atsHome);
         sportDataSheet.getRow(excelRowIndex).createCell(66);
         sportDataSheet.getRow(excelRowIndex).getCell(66).setCellValue(atsHome);
-
-        atsAway = driver.findElement(By.cssSelector("div .covers-CoversConsensusDetailsTable-awayFinal .covers-CoversConsensusDetailsTable-finalWagersleft")).getText();//BM65 ATS Away
-        sportDataSheet.getRow(excelRowIndex).createCell(64);
-        sportDataSheet.getRow(excelRowIndex).getCell(64).setCellValue(atsAway);
+//        String atsAway = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.covers-CoversConsensusDetailsTable-row:nth-child(18) > div:nth-child(1) > div:nth-child(1)"))).getText();//BM65 ATS Away
+//        System.out.println("DC163...atsAway => ouHome "+ atsAway);
+//        sportDataSheet.getRow(excelRowIndex).createCell(64);
+//        sportDataSheet.getRow(excelRowIndex).getCell(64).setCellValue(atsAway);
     }
     public void collectMoneyLeaders(String dataEventId)
     {
-        driver.findElement(By.cssSelector("li.covers-CoversConsensus-sides:nth-child(1) > a:nth-child(1)")).click();
-        atsAway = driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-row div.covers-CoversConsensusDetailsTable-awayFinal > div.covers-CoversConsensusDetailsTable-finalWagersleft")).getText();
-        sportDataSheet.getRow(excelRowIndex).createCell(67);
-        sportDataSheet.getRow(excelRowIndex).getCell(67).setCellValue(atsAway);
-        System.out.println("DC171...ATS away => " + atsAway);
+        wait.until(ExpectedConditions.elementToBeClickable(By.cssSelector("li.covers-CoversConsensus-sides:nth-child(1) > a:nth-child(1)"))).click();//Click on Money Leaders option in consensus page
 
-        atsHome = driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-row div.covers-CoversConsensusDetailsTable-homeFinal > div.covers-CoversConsensusDetailsTable-finalWagersRight")).getText();//BQ69 ATS Home
+        //driver.findElement(By.cssSelector("li.covers-CoversConsensus-sides:nth-child(1) > a:nth-child(1)")).click();
+        this.gameIdentifier = gameIdentifierMap.get(dataEventId);
+        excelRowIndex = excelRowIndexMap.get(dataEventId);
+//        String atsAway = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.covers-CoversConsensusDetailsTable-row:nth-child(2) > div:nth-child(1) > div:nth-child(2)"))).getText();//BP68 ATS Away
+//        sportDataSheet.getRow(excelRowIndex).createCell(67);
+//        sportDataSheet.getRow(excelRowIndex).getCell(67).setCellValue(atsAway);
+//        System.out.println("DC173...ATS away => " + gameIdentifier + " " + atsAway);
+        String atsHome = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.covers-CoversConsensusDetailsTable-row:nth-child(2) > div:nth-child(2) > div:nth-child(2)"))).getText();//BQ69 ATS Home
         sportDataSheet.getRow(excelRowIndex).createCell(68);
         sportDataSheet.getRow(excelRowIndex).getCell(68).setCellValue(atsHome);
-        System.out.println("DC180...ATS home => " + atsHome);
-
-        ouAway = driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-row div.covers-CoversConsensusDetailsTable-awayFinal > div.covers-CoversConsensusDetailsTable-finalWagersleft")).getText();//BV74 OU Away######bad
-        sportDataSheet.getRow(excelRowIndex).createCell(73);
-        sportDataSheet.getRow(excelRowIndex).getCell(73).setCellValue(ouAway);
-        System.out.println("DC175...OU away => " + ouAway);
-
-        ouHome = driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-row div.covers-CoversConsensusDetailsTable-homeFinal > div.covers-CoversConsensusDetailsTable-finalWagersRight")).getText();//BW75 OU Home#####bad
-        sportDataSheet.getRow(excelRowIndex).createCell(74);
-        sportDataSheet.getRow(excelRowIndex).getCell(74).setCellValue(ouHome);
-        System.out.println("DC180...OU  => " + ouHome);
+        System.out.println("DC177...ATS home for => " + gameIdentifier + " " + atsHome);
+//        String ouAway = driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-row:nth-child(3) > div:nth-child(1) > div:nth-child(2)")).getText();//BV74 OU Away######bad
+//        sportDataSheet.getRow(excelRowIndex).createCell(73);
+//        sportDataSheet.getRow(excelRowIndex).getCell(73).setCellValue(ouAway);
+//        System.out.println("DC182...OU away => " + gameIdentifier + " " + ouAway);
+//        String ouHome = driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-row:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).getText();//BW75 OU Home#####bad
+//        sportDataSheet.getRow(excelRowIndex).createCell(74);
+//        sportDataSheet.getRow(excelRowIndex).getCell(74).setCellValue(ouHome);
+//        System.out.println("DC185...OU home => " + gameIdentifier + " " + ouHome);
     }
     public void setSportDataWorkbook(XSSFWorkbook sportDataWorkbook)
     {

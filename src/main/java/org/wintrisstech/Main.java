@@ -3,20 +3,21 @@ package org.wintrisstech;
  * Must be run before Selenium for initial setup
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 221031 HelloSeleniumX
+ * version 221103 HelloSeleniumX
  **********************************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.safari.SafariDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.io.IOException;
+import java.time.Duration;
 import java.util.HashMap;
 import java.util.List;
-import java.util.concurrent.TimeUnit;
 public class Main
 {
     public static String weekDate;
@@ -27,54 +28,46 @@ public class Main
     public static String season = "2022";
     public static String weekNumber = "8";
     public static WebDriver driver = new SafariDriver();
-    public static JavascriptExecutor js;
-
     static ExcelWriter excelWriter = new ExcelWriter();
     static ExcelReader excelReader = new ExcelReader();
     static DataCollector dataCollector = new DataCollector();
     private static int game;
     private static int i = 0;
     private static String dataGame;
-    private Actions act = new Actions(driver);
+    //private Actions act = new Actions(driver);
     public static HashMap<String, String> xRefMap = new HashMap<>();
     public static HashMap<String, String> weekDateMap = new HashMap<String, String>();//Constructor builds HashMap of NFL week calendar dates (e.g 2022-09-08) referenced by NFL week number (e.g. 4)
     public static HashMap<String, String> cityNameMap = new HashMap<String, String>();//Constructor builds HashMap of NFL team city names referenced by bogus Covers city names (e.g East Rutherford) referenced by NFL city names (e.g. New York)
     public static HashMap<String, Integer> excelRowIndexMap = new HashMap<String, Integer>();//HashMap references excel row numbers (e.g. 5) by dataEventId (e.g. 87409).  Each excel row has a specific data-event-id
-    public Main()
-    {
-        driver = new SafariDriver();
-    }
     public static void main(String[] args) throws IOException, InterruptedException
     {
         System.out.println("SharpMarkets, version " + version + ", Copyright 2022 Dan Farris");
-        js = (JavascriptExecutor)driver;
-
-        weekDate = weekDateMap.get(weekNumber);
         driver.manage().window().maximize();
-        driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(20));
+        weekDate = weekDateMap.get(weekNumber);
         new CityNameMapBuilder();//Builds full city name map to correct for Covers variations in team city names
         new WeekDateMapBuilder();//Builds Game dates for current week
         weekDate = weekDateMap.get(weekNumber);
         Main.driver.get("https://www.covers.com/sports/nfl/matchups?selectedDate=" + Main.weekDate);//Main Covers page
         List<WebElement> weekEventElements = driver.findElements(By.cssSelector("div.cmg_game_data.cmg_matchup_game_box[data-event-id]"));//Determine how many and which games to index this week****critical/basic index element!!!
-        System.out.println("Main63...number of matchups this week => " + weekEventElements.size());
+        System.out.println("Main59...number of matchups this week => " + weekEventElements.size());
         xRefMap = buildXrefMap(weekEventElements);//Cross-reference from dava-event-id to data-game e.g. 87700=265355.  Both are used for referencing matchups at various times!!
-        System.out.println("Main62 This is week " + weekNumber + ", " + weekDateMap.get(weekNumber) + ", " + weekEventElements.size() + " games this week.");
+        System.out.println("Main61 This is week " + weekNumber + ", " + weekDateMap.get(weekNumber) + ", " + weekEventElements.size() + " games this week.");
         excelRowIndexMap = buildExcelRowIndexMap();
-        System.out.println("Main65...Excel Row index Map => " + excelRowIndexMap);
+        System.out.println("Main63...Excel Row index Map => " + excelRowIndexMap);
         sportDataWorkbook = excelReader.readSportData();
         dataCollector.setSportDataWorkbook(sportDataWorkbook);
         dataCollector.collectTeamDataForThisWeek(weekEventElements);
         //<START> >************************************************************************************************************<START>*********************************************************************************************************************************************************************
         for (String dataEventId : xRefMap.keySet())//START MAIN LOOP//////////////////////////////////////<START>//////////////////////////////////////////////////////////////////////////////////////////////START MAIN LOOP
         {
-            System.out.println("Main77 START MAIN LOOP FOR: " + ""+ "////////////////// Start Game => " + game + " //////////////////////////////////////////START MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "////////////////////////////////////////////////////////////////////START MAIN LOOP");
+            System.out.println("Main65 START MAIN LOOP ////////////////// Start Game game# => " + game + " //////////////////////////////////////////START MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "////////////////////////////////////////////////////////////////////START MAIN LOOP");
             dataGame = xRefMap.get(dataEventId);//Used sometimes to index matchups, dtataEventId used extensively
-            Main.driver.get("https://www.covers.com/sports/nfl/matchups?selectedDate=" + Main.weekDate);//Driver now holds Current week scores & matchups page
+            driver.get("https://contests.covers.com/consensus/matchupconsensusdetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + dataEventId);
             dataCollector.collectOverall(dataEventId);
             dataCollector.collectMoneyLeaders(dataEventId);
             String gameIdentifier = dataCollector.getGameIdentifier();
-            System.out.println("Main88 END MAIN LOOP//////// End Game =>>>>>>>>>>>> " + game++ + " /////////////////////////////" + dataEventId + " -----------------<=====================>----------------------------------END MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "/" + xRefMap.get(dataEventId) + "-------------------------------------------------------------------------------------------END MAIN LOOP");
+            System.out.println("Main71 END MAIN LOOP//////// End Game =>>>>>>>>>>>> game# " + game++ + " /////////////////////////////" + dataEventId + " -----------------<=====================>----------------------------------END MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "/" + xRefMap.get(dataEventId) + "-------------------------------------------------------------------------------------------END MAIN LOOP");
         }
         //END MAIN LOOP///////////////////////////////////////////////////////////////////////////<END>///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////END MAIN LOOP
         //******************************************************************************************************************<END>*********************************************************************************************************************************************************************
@@ -97,19 +90,6 @@ public class Main
             excelRowIndexMap.put(dataEventId, Integer.valueOf(row++));
         }
         return excelRowIndexMap;
-    }
-    public static void clickCookies(String sourceLineNumber)
-    {
-        try
-        {
-            WebElement cookieButton = driver.findElement(By.cssSelector("#CybotCookiebotDialogBodyLevelButtonLevelOptinAllowAll"));//Click Cookies button
-            js.executeScript("arguments[0].click();", cookieButton);
-            System.out.println("Clicked on Cookie Button, line# " + sourceLineNumber);
-        }
-        catch (Exception e)
-        {
-            System.out.println("NO...Click on Cookie Button, line# " + sourceLineNumber);
-        }
     }
     public static class CityNameMapBuilder
     {
