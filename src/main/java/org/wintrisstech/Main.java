@@ -3,7 +3,7 @@ package org.wintrisstech;
  * Must be run before Selenium for initial setup
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 221104A HelloSeleniumX2
+ * version 221105 HelloSeleniumX2
  **********************************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
