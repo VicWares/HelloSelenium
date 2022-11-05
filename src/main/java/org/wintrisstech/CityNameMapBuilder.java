@@ -3,7 +3,7 @@ package org.wintrisstech;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 221104 HelloSeleniumX2
+ * version 221104A HelloSeleniumX2
  **********************************************************************************/
 import java.util.HashMap;
 public class CityNameMapBuilder
@@ -40,7 +40,7 @@ public class CityNameMapBuilder
         cityNameMap.put("Tennessee", "Tennessee");//Tennessee Titans
         cityNameMap.put("Denver", "Denver");//Denver Broncos
         cityNameMap.put("Kansas City", "Kansas City");//Kansas City Chiefs
-        cityNameMap.put("Las Vegas", "Las Vegas");//Los Angeles Chargers and Los Angeles Rams
+        cityNameMap.put("Las Vegas", "Las Vegas");
         cityNameMap.put("Philadelphia", "Philadelphia");//Philadelphia Eagles
         cityNameMap.put("Chicago", "Chicago");//Chicago Bears
         cityNameMap.put("Detroit", "Detroit");//Detroit Lions

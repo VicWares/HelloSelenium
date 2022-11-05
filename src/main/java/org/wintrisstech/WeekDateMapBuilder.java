@@ -2,7 +2,7 @@ package org.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 221104 HelloSeleniumX2
+ * version 221104A HelloSeleniumX2
  *******************************************************************/
 import java.util.HashMap;
 public class WeekDateMapBuilder
