@@ -4,17 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment=" * version 221104A Runs complete...maybe betting all 8 consensus elements...">
+    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment=" * version 221105...Almost there with consensus. Putting some numbers into wrong Excel column...don't understand why...">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/CityNameMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/CityNameMapBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/DataCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelBuilder.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelReader.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelWriter.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/MoneyLineCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/MoneyLineCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/WeekDateMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/WeekDateMapBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/SpreadCollector.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -276,7 +274,16 @@
       <workItem from="1667604203866" duration="3149000" />
       <workItem from="1667613722292" duration="6291000" />
       <workItem from="1667676445462" duration="536000" />
-      <workItem from="1667681962507" duration="7280000" />
+      <workItem from="1667681962507" duration="7454000" />
+      <workItem from="1667691244579" duration="1692000" />
+      <workItem from="1667708274777" duration="2461000" />
+      <workItem from="1667750507042" duration="299000" />
+      <workItem from="1667751381180" duration="1728000" />
+      <workItem from="1667754187230" duration="3219000" />
+      <workItem from="1667757443026" duration="68000" />
+      <workItem from="1667763140043" duration="698000" />
+      <workItem from="1667766858784" duration="1845000" />
+      <workItem from="1667782146257" duration="5202000" />
     </task>
     <task id="LOCAL-00001" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
       <created>1662438233430</created>
@@ -390,7 +397,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667618822056</updated>
     </task>
-    <option name="localTasksCounter" value="17" />
+    <task id="LOCAL-00017" summary=" * version 221105...Almost there with consensus. Putting some numbers into wrong Excel column...don't understand why...">
+      <created>1667691079575</created>
+      <option name="number" value="00017" />
+      <option name="presentableId" value="LOCAL-00017" />
+      <option name="project" value="LOCAL" />
+      <updated>1667691079576</updated>
+    </task>
+    <option name="localTasksCounter" value="18" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -424,6 +438,7 @@
     <MESSAGE value=" * version 221103 Adding waits.  Gets completely through all games with ATS Home for both Overall and Money Leaders consensus...trying others consensus items." />
     <MESSAGE value=" * version 221104 Adding waits.  Running OK with waits, but only gets ATS home, Overall correctly..." />
     <MESSAGE value=" * version 221104A Runs complete...maybe betting all 8 consensus elements..." />
-    <option name="LAST_COMMIT_MESSAGE" value=" * version 221104A Runs complete...maybe betting all 8 consensus elements..." />
+    <MESSAGE value=" * version 221105...Almost there with consensus. Putting some numbers into wrong Excel column...don't understand why..." />
+    <option name="LAST_COMMIT_MESSAGE" value=" * version 221105...Almost there with consensus. Putting some numbers into wrong Excel column...don't understand why..." />
   </component>
 </project>

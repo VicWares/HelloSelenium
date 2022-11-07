@@ -2,7 +2,7 @@ package org.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 221105 HelloSeleniumX2
+ * version 221106 HelloSeleniumX2
  *******************************************************************/
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -95,16 +95,15 @@ public class DataCollector
     private HashMap<String, String> homeCityMap = new HashMap<>();
     private HashMap<String, String> homeNicknameMap = new HashMap<>();
     private XSSFWorkbook sportDataWorkbook;
-    private XSSFSheet sportDataSheet;
+    private static XSSFSheet sportDataSheet;
     private Integer excelRowIndex;
-    public static HashMap<String, String> getGameIdentifierMap(String dataEventId)
-    {
-        return gameIdentifierMap;
-    }
     WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(30));
-    public void collectTeamDataForThisWeek(List<WebElement> weekEventElements)//From covers.com website for this week's matchups
+    public DataCollector(XSSFSheet sportDataSheet)
     {
-        sportDataSheet = sportDataWorkbook.getSheet("Data");
+        this.sportDataSheet = sportDataSheet;
+    }
+    public void collectTeamDataForThisWeek(List<WebElement> weekEventElements, XSSFSheet sportDataSheet)//From covers.com website for this week's matchups
+    {
         int minute = LocalTime.now().getMinute();
         String javaTime = LocalDate.now() + " " + LocalTime.now().getHour() + ":" + minute;
         sportDataSheet.getRow(0).createCell(0);//Row 1, Column A1, Report time e.g. 10/18/22 13:17
@@ -152,22 +151,22 @@ public class DataCollector
         String oAoUaway = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.covers-CoversConsensusDetailsTable-row:nth-child(13) > div:nth-child(1) > div:nth-child(1)"))).getText();//BS71 OA OU Away
         sportDataSheet.getRow(excelRowIndex).createCell(70).setCellType(Cell.CELL_TYPE_NUMERIC);;
         sportDataSheet.getRow(excelRowIndex).getCell(70).setCellValue(oAoUaway);
-        System.out.println("DC154...oAoUaway => " + gameIdentifier + " " + oAoUaway);
+        System.out.print("DC155...Overall O/U away => " + gameIdentifier + " " + oAoUaway);
 
         String oAoUhome = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.covers-CoversConsensusDetailsTable-row:nth-child(13) > div:nth-child(3) > div:nth-child(1)"))).getText();//BU73 OA OU Home
         sportDataSheet.getRow(excelRowIndex).createCell(72).setCellType(Cell.CELL_TYPE_NUMERIC);;
         sportDataSheet.getRow(excelRowIndex).getCell(72).setCellValue(oAoUhome);
-        System.out.println("DC159...oAouHome => " + gameIdentifier + " " +  oAoUhome);
+        System.out.print("DC160...OverLl O/U home => " + gameIdentifier + " " +  oAoUhome);
 
         String oAatsHome = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div .covers-CoversConsensusDetailsTable-homeFinal .covers-CoversConsensusDetailsTable-finalWagersRight"))).getText();//BO67 OA ATS Home
         sportDataSheet.getRow(excelRowIndex).createCell(66).setCellType(Cell.CELL_TYPE_NUMERIC);;
         sportDataSheet.getRow(excelRowIndex).getCell(66).setCellValue(oAatsHome);
-        System.out.println("DC164...oAatsHome => "+ gameIdentifier + " " + oAatsHome);//OA => Overall
+        System.out.println("DC165...Overall ATS Home => "+ gameIdentifier + " " + oAatsHome);//OA => Overall
 
         String oAatsAway = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div .covers-CoversConsensusDetailsTable-finalWagersleft"))).getText();//BM65 OA ATS Away
         sportDataSheet.getRow(excelRowIndex).createCell(64).setCellType(Cell.CELL_TYPE_NUMERIC);;
         sportDataSheet.getRow(excelRowIndex).getCell(64).setCellValue(oAatsAway);
-        System.out.println("DC169...oAatsAway => "+ gameIdentifier + " " + oAatsAway);
+        System.out.println("DC169...Overall ATS Away => "+ gameIdentifier + " " + oAatsAway);
     }
     public void collectMoneyLeaders(String dataEventId)
     {
@@ -178,29 +177,25 @@ public class DataCollector
         String MlAtsAway = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.covers-CoversConsensusDetailsTable-row:nth-child(2) > div:nth-child(1) > div:nth-child(2)"))).getText();//BP68 ML ATS Away
         sportDataSheet.getRow(excelRowIndex).createCell(67).setCellType(Cell.CELL_TYPE_NUMERIC);
         sportDataSheet.getRow(excelRowIndex).getCell(67).setCellValue(MlAtsAway);
-        System.out.println("DC180...ML ATS away => " + gameIdentifier + " " + MlAtsAway);
+        System.out.print("DC181...ML ATS Away => " + gameIdentifier + " " + MlAtsAway);
 
         String MlAtsHome = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.covers-CoversConsensusDetailsTable-row:nth-child(2) > div:nth-child(2) > div:nth-child(2)"))).getText();//BQ69 ATS Home Money Leaders
         sportDataSheet.getRow(excelRowIndex).createCell(68).setCellType(Cell.CELL_TYPE_NUMERIC);;
         sportDataSheet.getRow(excelRowIndex).getCell(68).setCellValue(MlAtsHome);
-        System.out.println("DC185...ML ATS home => " + gameIdentifier + " " + MlAtsHome);//ML ATS home => Money Leaders
+        System.out.print("DC186...ML ATS Home => " + gameIdentifier + " " + MlAtsHome);//ML ATS home => Money Leaders
 
         String MlOuAway = driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-row:nth-child(3) > div:nth-child(1) > div:nth-child(2)")).getText();//BV74 ML OU Away
         sportDataSheet.getRow(excelRowIndex).createCell(73).setCellType(Cell.CELL_TYPE_NUMERIC);;
         sportDataSheet.getRow(excelRowIndex).getCell(73).setCellValue(MlOuAway);
-        System.out.println("DC190...ML OU away => " + gameIdentifier + " " + MlOuAway);
+        System.out.print("DC191...ML O/U Away => " + gameIdentifier + " " + MlOuAway);
 
         String MlOuHome = driver.findElement(By.cssSelector("div.covers-CoversConsensusDetailsTable-row:nth-child(3) > div:nth-child(2) > div:nth-child(2)")).getText();//BW75 ML OU Home ML
         sportDataSheet.getRow(excelRowIndex).createCell(74).setCellType(Cell.CELL_TYPE_NUMERIC);;
         sportDataSheet.getRow(excelRowIndex).getCell(74).setCellValue(MlOuHome);
-        System.out.println("DC195...ML OU home => " + gameIdentifier + " " + MlOuHome);
+        System.out.print("DC196...ML O/U Home => " + gameIdentifier + " " + MlOuHome);
     }
-    public void setSportDataWorkbook(XSSFWorkbook sportDataWorkbook)
+    public static void setSportDataSheet(XSSFSheet sportDataSheet)
     {
-        this.sportDataWorkbook = sportDataWorkbook;
-    }
-    public String getGameIdentifier()
-    {
-        return gameIdentifier;
+        DataCollector.sportDataSheet = sportDataSheet;
     }
 }

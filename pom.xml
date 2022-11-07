@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>org.example</groupId>
     <artifactId>HelloSelenium</artifactId>
-    <version>221105</version>
+    <version>221106</version>
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
