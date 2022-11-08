@@ -2,9 +2,10 @@ package org.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 221108 HelloSelenium32
+ * version 221108A HelloSelenium32
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.CellType;
 import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
@@ -48,7 +49,7 @@ public class ExcelBuilder
     private XSSFWorkbook sportDataWorkBook = new XSSFWorkbook();
     private XSSFSheet sportDataUpdateSheet = null;
     private String atsHome;
-    private String atsAway;
+    private String bm65;//Excel SportDAta column
     private String completeHomeTeamName;
     private String completeAwayTeamName;
     private String gameIdentifier;
@@ -84,7 +85,7 @@ public class ExcelBuilder
         awayTeam = awayTeamsMap.get(dataEventID);
         matchupDate = gameDatesMap.get(dataEventID);
         atsHome = atsHomesMap.get(dataEventID);
-        atsAway = atsAwaysMap.get(dataEventID);
+        bm65 = atsAwaysMap.get(dataEventID);
         ouAway = ouOversMap.get(dataEventID);
         ouHome = ouUndersMap.get(dataEventID);
 
@@ -103,6 +104,7 @@ public class ExcelBuilder
 
         sportDataSheet.getRow(eventIndex).createCell(3);
         sportDataSheet.getRow(eventIndex).getCell(3).setCellStyle(leftStyle);
+        sportDataSheet.getRow(eventIndex).getCell(3).setCellType(CellType.STRING);
         sportDataSheet.getRow(eventIndex).getCell(3).setCellValue("Week " + weekNumber);
 
         sportDataSheet.getRow(eventIndex).createCell(10);// Home team full name e.g. Dallas Coyboys Column K11
@@ -113,13 +115,13 @@ public class ExcelBuilder
         sportDataSheet.getRow(eventIndex).getCell(11).setCellStyle(leftStyle);
         sportDataSheet.getRow(eventIndex).getCell(11).setCellValue(homeShortNameMap.get(dataEventID));
 
-        sportDataSheet.getRow(eventIndex).createCell(14);// Home Spread Close Odds e.g. +4.0 Column O 15
-        sportDataSheet.getRow(eventIndex).getCell(14).setCellStyle(leftStyle);
-        sportDataSheet.getRow(eventIndex).getCell(14).setCellValue(homeSpreadCloseOddsMap.get(dataEventID));
-
         sportDataSheet.getRow(eventIndex).createCell(12);//Spread home odds, column M
         sportDataSheet.getRow(eventIndex).getCell(12).setCellStyle(leftStyle);
         sportDataSheet.getRow(eventIndex).getCell(12).setCellValue(homeSpreadOddsMap.get(dataEventID));
+
+        sportDataSheet.getRow(eventIndex).createCell(14);// Home Spread Close Odds e.g. +4.0 Column O 15
+        sportDataSheet.getRow(eventIndex).getCell(14).setCellStyle(leftStyle);
+        sportDataSheet.getRow(eventIndex).getCell(14).setCellValue(homeSpreadCloseOddsMap.get(dataEventID));
 
         sportDataSheet.getRow(eventIndex).createCell(17);//MoneyLine Bet365 home odds, column R
         sportDataSheet.getRow(eventIndex).getCell(17).setCellStyle(leftStyle);
@@ -145,13 +147,13 @@ public class ExcelBuilder
         sportDataSheet.getRow(eventIndex).getCell(33).setCellStyle(leftStyle);
         sportDataSheet.getRow(eventIndex).getCell(33).setCellValue(awayMoneylineCloseOddsMap.get(dataEventID));
 
+        sportDataSheet.getRow(eventIndex).createCell(64);//BM65 Consensus Overall ATS Away
+        sportDataSheet.getRow(eventIndex).getCell(64).setCellStyle(leftStyle);
+        sportDataSheet.getRow(eventIndex).getCell(64).setCellValue(bm65);
+
         sportDataSheet.getRow(eventIndex).createCell(66);
         sportDataSheet.getRow(eventIndex).getCell(66).setCellStyle(leftStyle);
         sportDataSheet.getRow(eventIndex).getCell(66).setCellValue(atsHome);
-
-        sportDataSheet.getRow(eventIndex).createCell(64);
-        sportDataSheet.getRow(eventIndex).getCell(64).setCellStyle(leftStyle);
-        sportDataSheet.getRow(eventIndex).getCell(64).setCellValue(atsAway);
 
         sportDataSheet.getRow(eventIndex).createCell(70);
         sportDataSheet.getRow(eventIndex).getCell(70).setCellStyle(leftStyle);

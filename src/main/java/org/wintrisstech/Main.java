@@ -3,7 +3,7 @@ package org.wintrisstech;
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 221108 HelloSelenium32
+ * version 221108A HelloSelenium32
  **********************************************************************************/
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.jsoup.nodes.Element;
@@ -66,7 +66,7 @@ public class Main extends JComponent
             String dataGame = xRefMap.get(dataEventId);
             System.out.println("Main65 START MAIN LOOP-----------------------------------------------------START MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "/" + dataGame + "\t" + dataCollector.getAwayFullNameMap().get(dataEventId) + " @ " + dataCollector.getHomeFullNameMap().get(dataEventId) + "-------------------------------------------------------------------------------------------START MAIN LOOP");
             //*********************************************************************************************START MAIN LOOP******************************************************************************************************
-            consensusElements = webSiteReader.readCleanWebsite("https://contests.covers.com/consensus/matchupconsensusdetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + dataEventId);
+            consensusElements = webSiteReader.readCleanWebsite("https://contests.covers.com/consensus/matchupconsensusdetails?externalId=%2fsport%2ffootball%2fcompetition%3a" + dataEventId);//Coveers main manthips page
             dataCollector.collectConsensusData(consensusElements, dataEventId);
             excelBuilder.setAwayFullNameMap(dataCollector.getAwayFullNameMap());
             excelBuilder.setHomeFullNameMap(dataCollector.getHomeFullNameMap());
@@ -85,7 +85,7 @@ public class Main extends JComponent
             excelBuilder.buildExcel(sportDataWorkbook, dataEventId, excelLineNumberIndex, dataCollector.getGameIdentifierMap().get(dataEventId));
             excelLineNumberIndex++;
             //***********************************************************************************************END MAIN LOOP******************************************************************************************************
-            System.out.println("END MAIN LOOP----------------------------------------------------------------END MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "/" + dataGame + "    " + dataCollector.getAwayFullNameMap().get(dataEventId) + " @ " + dataCollector.getHomeFullNameMap().get(dataEventId) + "-------------------------------------------------------------------------------------------END MAIN LOOP");
+            System.out.println("\nEND MAIN LOOP----------------------------------------------------------------END MAIN LOOP FOR dataEventId/dataGame " + dataEventId + "/" + dataGame + "    " + dataCollector.getAwayFullNameMap().get(dataEventId) + " @ " + dataCollector.getHomeFullNameMap().get(dataEventId) + "-------------------------------------------------------------------------------------------END MAIN LOOP");
         }
         excelWriter.openOutputStream();
         excelWriter.writeSportData(sportDataWorkbook);

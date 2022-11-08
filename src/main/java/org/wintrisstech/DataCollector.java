@@ -2,7 +2,7 @@ package org.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 221108 HelloSelenium32
+ * version 221108A HelloSelenium32
  *******************************************************************/
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
@@ -81,6 +81,10 @@ public class DataCollector
     private String homeShortName;
     private String month;
     private String day;
+    private String ouOver;
+    private String ouUnder;
+    private String atsHome;
+    private String atsAway;
     public void collectTeamInfo(Elements weekElements)//From covers.com website for this week's matchups
     {
         for (Element e : weekElements)//Build week matchup IDs array
@@ -127,10 +131,10 @@ public class DataCollector
     public void collectConsensusData(Elements thisMatchupConsensus, String dataEventId)
     {
         this.dataEventId = dataEventId;
-        String ouOver = null;
-        String ouUnder = null;
-        String atsHome = null;
-        String atsAway = null;
+        ouOver = null;
+        ouUnder = null;
+       atsHome = null;
+        atsAway = null;
         Elements rightConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersright");//Home/Under
         Elements leftConsensus = thisMatchupConsensus.select(".covers-CoversConsensusDetailsTable-finalWagersleft");//Away/Over
         try//To catch missing consensus data due to delayed or cancelled game
@@ -148,6 +152,8 @@ public class DataCollector
         ouUndersMap.put(dataEventId, ouUnder);
         atsHomesMap.put(dataEventId, atsAway);
         atsAwaysMap.put(dataEventId, atsHome);
+        System.out.printf("%5s %5s %5s %5s %5s %5s %5s %5s", "65", "67", "68", "69", "71", "73", "74", "75").println();
+        System.out.printf("%5s %5s %5s %5s %5s %5s %5s %5s", atsHome, atsAway, "68", "69", ouOver, ouUnder, "74", "75");
     }
     public HashMap<String, String> getHomeFullNameMap()
     {

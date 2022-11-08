@@ -2,7 +2,7 @@ package org.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 221108 HelloSelenium32
+ * version 221108A HelloSelenium32
  *******************************************************************/
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
