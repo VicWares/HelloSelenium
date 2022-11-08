@@ -1,16 +1,16 @@
-package org.example;
+package org.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 221007 HelloSelenium3
+ * version 221108 HelloSelenium32
  *******************************************************************/
 import org.apache.poi.ss.usermodel.CellStyle;
+import org.apache.poi.ss.usermodel.HorizontalAlignment;
 import org.apache.poi.ss.usermodel.IndexedColors;
 import org.apache.poi.xssf.usermodel.XSSFCellStyle;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
-import java.awt.*;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.HashMap;
@@ -47,8 +47,6 @@ public class ExcelBuilder
     private XSSFSheet sportDataSheet;
     private XSSFWorkbook sportDataWorkBook = new XSSFWorkbook();
     private XSSFSheet sportDataUpdateSheet = null;
-    byte[] redColor = new byte[]{(byte) 255, (byte) 0, (byte) 0};
-    Color color =  new Color(215,228,188);
     private String atsHome;
     private String atsAway;
     private String completeHomeTeamName;
@@ -72,9 +70,9 @@ public class ExcelBuilder
         sportDataSheet = sportDataWorkbook.getSheet("Data");
         String time = LocalDate.now() + " " + LocalTime.now().getHour() + ":" + LocalTime.now().getMinute();
         CellStyle leftStyle = sportDataWorkbook.createCellStyle();
-        leftStyle.setAlignment(LEFT);
+        leftStyle.setAlignment(HorizontalAlignment.forInt(LEFT));
         CellStyle centerStyle = sportDataWorkbook.createCellStyle();
-        centerStyle.setAlignment(CENTER);
+        centerStyle.setAlignment(HorizontalAlignment.forInt(CENTER));
         CellStyle myStyle = sportDataWorkbook.createCellStyle();
         XSSFCellStyle redStyle = sportDataWorkbook.createCellStyle();
         redStyle.setFillForegroundColor(IndexedColors.RED.getIndex());
@@ -169,8 +167,8 @@ public class ExcelBuilder
     public void setTotalOddsString(String totalOddsString)
     {
     }
-    public void setHomeTeamsMap(HashMap<String, String> homeTeamsMap){this.homeTeamsMap = homeTeamsMap;}
-    public void setThisWeekAwayTeamsMap(HashMap<String, String> thisWeekAwayTeamsMap){this.awayTeamsMap = thisWeekAwayTeamsMap;}
+    public void setHomeFullNameMap(HashMap<String, String> homeTeamsMap){this.homeTeamsMap = homeTeamsMap;}
+    public void setAwayFullNameMap(HashMap<String, String> thisWeekAwayTeamsMap){this.awayTeamsMap = thisWeekAwayTeamsMap;}
     public void setHomeShortNameMap(HashMap<String, String> homeShortNameMapMap){this.homeShortNameMap = homeShortNameMapMap;}
     public void setAwayShortNameMap(HashMap<String, String> awayShortNameMapMap){this.awayShortNameMap = awayShortNameMapMap;}
 

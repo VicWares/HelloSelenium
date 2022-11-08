@@ -1,9 +1,9 @@
-package org.example;
+package org.wintrisstech;
 /**********************************************************************************
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 221007 HelloSelenium3
+ * version 221108 HelloSelenium32
  **********************************************************************************/
 import java.util.HashMap;
 public class WeekDateMapBuilder

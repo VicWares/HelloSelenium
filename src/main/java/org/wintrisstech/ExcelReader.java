@@ -1,15 +1,12 @@
-package org.example;
+package org.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
  * version 221007 HelloSelenium3
  * Read large SportData excel work book (SportData.xlsx) on user's desktop and return workBook
  *******************************************************************/
-
-
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import java.io.FileInputStream;
 import java.io.InputStream;
 public class ExcelReader
@@ -22,7 +19,6 @@ public class ExcelReader
         try
         {
             is = new FileInputStream(deskTopPath);
-            //ZipSecureFile.setMinInflateRatio(0);//To prevent zip bomb exception
             sportDataWorkbook = (XSSFWorkbook) WorkbookFactory.create(is);
             is.close();
         }

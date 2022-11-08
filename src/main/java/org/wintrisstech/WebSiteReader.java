@@ -1,9 +1,8 @@
-package org.example;
+package org.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 221007 HelloSelenium3
- * Reads/cleans input URL and returns all Elements and Document
+ * version 221108 HelloSelenium32
  *******************************************************************/
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;

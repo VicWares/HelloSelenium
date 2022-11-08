@@ -1,9 +1,9 @@
-package org.example;
+package org.wintrisstech;
 /**********************************************************************************
  * Must be run before
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 221007 HelloSelenium3
+ * version 221108 HelloSelenium32
  **********************************************************************************/
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

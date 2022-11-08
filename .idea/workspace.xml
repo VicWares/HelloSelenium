@@ -4,19 +4,21 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="Version 220927 HelloSelenium2.  Clean up with JS executor.">
+    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="Version 221007 HelloSelenium3.  Getting consensus and using js WebServer...also using JSoup in combo...will keep both.">
+      <change afterPath="$PROJECT_DIR$/MoneLineCollector.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CityNameMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/CityNameMapBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/DataCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ExcelBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ExcelBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ExcelReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ExcelReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ExcelWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/ExcelWriter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MoneyLineCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/MoneyLineCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SpreadCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/SpreadCollector.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WebSiteReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WebSiteReader.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WeekDateMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/WeekDateMapBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mainPageGetter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/example/mainPageGetter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/CityNameMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/CityNameMapBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/DataCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/DataCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ExcelBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ExcelReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/ExcelWriter.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/ExcelWriter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/MoneyLineCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/MoneyLineCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/SpreadCollector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/SpreadCollector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WebSiteReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/WebSiteReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/WeekDateMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/WeekDateMapBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/example/mainPageGetter.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,11 +54,14 @@
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/vicwintriss/git/HelloSelenium3&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/vicwintriss/Desktop/HelloSelenium32&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
     &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
     &quot;settings.editor.selected.configurable&quot;: &quot;preferences.lookFeel&quot;
   }
 }</component>
@@ -70,26 +75,6 @@
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="org.example" />
     </key>
-  </component>
-  <component name="RunManager">
-    <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="org.example.Main" />
-      <module name="HelloSelenium" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="org.example.SpreadCollector" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <recent_temporary>
-      <list>
-        <item itemvalue="Application.Main" />
-      </list>
-    </recent_temporary>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
@@ -225,6 +210,50 @@
       <workItem from="1664990891950" duration="182000" />
       <workItem from="1665083558567" duration="161000" />
       <workItem from="1665088686140" duration="1414000" />
+      <workItem from="1665246614250" duration="4764000" />
+      <workItem from="1665262557630" duration="5272000" />
+      <workItem from="1665270555007" duration="638000" />
+      <workItem from="1665271702033" duration="2128000" />
+      <workItem from="1665277171484" duration="224000" />
+      <workItem from="1665277559801" duration="88000" />
+      <workItem from="1665278175152" duration="86000" />
+      <workItem from="1665289851976" duration="83000" />
+      <workItem from="1665333543315" duration="1368000" />
+      <workItem from="1665342748611" duration="2796000" />
+      <workItem from="1665351906775" duration="1578000" />
+      <workItem from="1665354419776" duration="5350000" />
+      <workItem from="1665609294869" duration="2578000" />
+      <workItem from="1665611933162" duration="597000" />
+      <workItem from="1665695081640" duration="3176000" />
+      <workItem from="1665700448475" duration="651000" />
+      <workItem from="1665720499817" duration="289000" />
+      <workItem from="1665926886814" duration="494000" />
+      <workItem from="1666107589424" duration="442000" />
+      <workItem from="1666148500717" duration="427000" />
+      <workItem from="1666150854921" duration="35000" />
+      <workItem from="1666301823616" duration="725000" />
+      <workItem from="1666305723546" duration="698000" />
+      <workItem from="1666315261280" duration="785000" />
+      <workItem from="1666413590492" duration="18000" />
+      <workItem from="1666413677462" duration="72000" />
+      <workItem from="1666456038139" duration="379000" />
+      <workItem from="1666499146977" duration="136000" />
+      <workItem from="1666536613112" duration="435000" />
+      <workItem from="1666674182952" duration="231000" />
+      <workItem from="1666718665743" duration="660000" />
+      <workItem from="1666817141447" duration="336000" />
+      <workItem from="1666818162247" duration="1323000" />
+      <workItem from="1666825084077" duration="1025000" />
+      <workItem from="1666907343468" duration="786000" />
+      <workItem from="1667141801362" duration="329000" />
+      <workItem from="1667313827273" duration="312000" />
+      <workItem from="1667326275878" duration="837000" />
+      <workItem from="1667334328536" duration="36000" />
+      <workItem from="1667337229222" duration="5100000" />
+      <workItem from="1667342528345" duration="1424000" />
+      <workItem from="1667346205758" duration="3341000" />
+      <workItem from="1667920943117" duration="23000" />
+      <workItem from="1667933771723" duration="1814000" />
     </task>
     <task id="LOCAL-00001" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
       <created>1662438233430</created>
@@ -275,7 +304,14 @@
       <option name="project" value="LOCAL" />
       <updated>1664305979082</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="Version 221007 HelloSelenium3.  Getting consensus and using js WebServer...also using JSoup in combo...will keep both.">
+      <created>1665203419850</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1665203419850</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -300,6 +336,7 @@
     <MESSAGE value="Version 220921 HelloSelenium2.  Added Main Page getter.  Successfully getting MoneyLine Away Close Odds column AH34." />
     <MESSAGE value="Version 220922 HelloSelenium2.  Added Main Page getter.  No longer getting MoneyLine Away Close Odds column AH34." />
     <MESSAGE value="Version 220927 HelloSelenium2.  Clean up with JS executor." />
-    <option name="LAST_COMMIT_MESSAGE" value="Version 220927 HelloSelenium2.  Clean up with JS executor." />
+    <MESSAGE value="Version 221007 HelloSelenium3.  Getting consensus and using js WebServer...also using JSoup in combo...will keep both." />
+    <option name="LAST_COMMIT_MESSAGE" value="Version 221007 HelloSelenium3.  Getting consensus and using js WebServer...also using JSoup in combo...will keep both." />
   </component>
 </project>

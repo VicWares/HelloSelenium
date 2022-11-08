@@ -1,26 +1,13 @@
-package org.example;
+package org.wintrisstech;
 /*******************************************************************
  * Covers NFL Extraction Tool
  * Copyright 2020 Dan Farris
- * version 221007 HelloSelenium3
- * Builds data event id array and calendar date array
+ * version 221108 HelloSelenium32
  *******************************************************************/
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.safari.SafariDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Map;
-
-import static org.openqa.selenium.By.cssSelector;
-import static org.openqa.selenium.support.ui.ExpectedConditions.elementToBeClickable;
 public class DataCollector
 {
     private static HashMap<String, String> bet365HomeTeamOdds = new HashMap<>();
@@ -137,9 +124,9 @@ public class DataCollector
             homeShortNameMap.put(dataEventId, homeShortName);
         }
     }
-    public void collectConsensusData(Elements thisMatchupConsensus, String thisMatchupID)
+    public void collectConsensusData(Elements thisMatchupConsensus, String dataEventId)
     {
-        this.dataEventId = thisMatchupID;
+        this.dataEventId = dataEventId;
         String ouOver = null;
         String ouUnder = null;
         String atsHome = null;
@@ -157,24 +144,10 @@ public class DataCollector
         {
             System.out.println("DC121 DataCollector, no consensus data for " + gameIdentifier);
         }
-        ouOversMap.put(thisMatchupID, ouOver);
-        ouUndersMap.put(thisMatchupID, ouUnder);
-        atsHomesMap.put(thisMatchupID, atsAway);
-        atsAwaysMap.put(thisMatchupID, atsHome);
-    }
-    public void collectOddsData(String dataEventId)
-    {
-        try
-        {
-            System.out.println("DC169 Starting collectTotalHomeCloseOdds()");
-            String totalHomeCloseOdds = String.valueOf(Main.driver.findElement(By.cssSelector("#__totalDiv-nfl-265308 > table:nth-child(2) > tbody:nth-child(3) > tr:nth-child(2) > td:nth-child(9) > div:nth-child(1) > div:nth-child(2) > a:nth-child(1) > div:nth-child(1)")));
-            System.out.println("DC171 totalHomeCloseOdds => " + totalHomeCloseOdds);
-        }
-        catch (Exception e)
-        {
-            System.out.println("DC175 Can't find totalHomeCloseOdds");
-            throw new RuntimeException(e);
-        }
+        ouOversMap.put(dataEventId, ouOver);
+        ouUndersMap.put(dataEventId, ouUnder);
+        atsHomesMap.put(dataEventId, atsAway);
+        atsAwaysMap.put(dataEventId, atsHome);
     }
     public HashMap<String, String> getHomeFullNameMap()
     {
@@ -200,10 +173,7 @@ public class DataCollector
     {
         return ouOversMap;
     }
-    public HashMap<String, String> getOuHomeMap()
-    {
-        return ouUndersMap;
-    }
+    public HashMap<String, String> getOuHomeMap() {return ouUndersMap;}
     public HashMap<String, String> getGameIdentifierMap()
     {
         return gameIdentifierMap;
