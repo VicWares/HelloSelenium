@@ -3,7 +3,7 @@ package org.wintrisstech;
  * Must be run before Selenium for initial setup
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 230415
+ * version 230419
  **********************************************************************************/
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
@@ -16,17 +16,17 @@ import java.io.OutputStream;
 public class Main
 {
     private static XSSFWorkbook sportDataWorkbook;
-    private static String version = "version 230414";
+    private static String version = "version 230419";
     private static XSSFSheet BigNFLsheet;
     static String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
     private static InputStream is;
     private static OutputStream os;
-    private static String homeTeam;
-    private static String awayTeam;
-    private static int matchups = 0;
+    private static double homeTeamScore;
+    private static double awayTeamScore;
     public static void main(String[] args) throws IOException, InterruptedException
     {
         System.out.println("SharpMarkets, version " + version + ", Copyright 2023 Dan Farris");
+        new CityNameMapBuilder();
         try {
             is = new FileInputStream(deskTopPath + "/BigNFL.xlsx");
             sportDataWorkbook = (XSSFWorkbook) WorkbookFactory.create(is);
@@ -41,15 +41,17 @@ public class Main
         System.out.println("Main44 START MAIN LOOP ********** BigNFL Sheet Size => " + BigNFLsheet.getLastRowNum() + " *********************** START MAIN LOOP");
         for (int i = 3; i < BigNFLsheet.getLastRowNum(); i++)
         {
-            homeTeam = String.valueOf(BigNFLsheet.getRow(i).getCell(11).getStringCellValue());//K10 Home Team (Zero based)
-            awayTeam = String.valueOf(BigNFLsheet.getRow(i).getCell(22).getStringCellValue());//V21 Away Team Zero based
-            if ((homeTeam.equals("LAR") && awayTeam.equals("BUF"))|| (homeTeam.equals("BUF") && awayTeam.equals("LAR")))
+            homeTeamScore = (BigNFLsheet.getRow(i).getCell(20).getNumericCellValue());// Home Team Score(Zero based)
+            awayTeamScore = (BigNFLsheet.getRow(i).getCell(31).getNumericCellValue());// Away Team Score Zero based
+            if (homeTeamScore > awayTeamScore)
             {
-                System.out.println("Main47..." + homeTeam + "/" + awayTeam + " matchup");
-                matchups++;
+                System.out.println("Main49...home team wins, score => "  + (int)homeTeamScore + "/" + (int)awayTeamScore);
+            }
+            if (awayTeamScore > homeTeamScore)
+            {
+                System.out.println("Main52...away team wins, score => "  + (int)awayTeamScore + "/" + (int)homeTeamScore);
             }
         }
-        System.out.println("LAR/BUF matchups " + matchups);
         //<END MAIN LOOP>******************************************************************************************************************<END>***********************************************************************************************************************
         System.out.println("Main58......Completed GreatCovers Successfully...Hooray...");
     }

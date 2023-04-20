@@ -4,13 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment=" * version 221105...Almost there with consensus. Putting some numbers into wrong Excel column...don't understand why...">
+    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment=" * version 230415 Reading BigNFL Excel sheet">
+      <change afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/CityNameMapBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/DataCollector.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/MoneyLineCollector.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/WeekDateMapBuilder.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,17 +72,6 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="JetRunConfigurationType">
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
-      <option name="filePath" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -304,7 +291,18 @@
       <workItem from="1681592858860" duration="355000" />
       <workItem from="1681594271214" duration="237000" />
       <workItem from="1681594514500" duration="3732000" />
-      <workItem from="1681616370224" duration="367000" />
+      <workItem from="1681616370224" duration="616000" />
+      <workItem from="1681677352220" duration="1395000" />
+      <workItem from="1681679350595" duration="42000" />
+      <workItem from="1681704207547" duration="45000" />
+      <workItem from="1681704257818" duration="90000" />
+      <workItem from="1681705060014" duration="22000" />
+      <workItem from="1681705087373" duration="470000" />
+      <workItem from="1681930758347" duration="605000" />
+      <workItem from="1681963244046" duration="16000" />
+      <workItem from="1681963372886" duration="31000" />
+      <workItem from="1681963409046" duration="1218000" />
+      <workItem from="1681964918417" duration="328000" />
     </task>
     <task id="LOCAL-00001" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
       <created>1662438233430</created>
@@ -425,7 +423,14 @@
       <option name="project" value="LOCAL" />
       <updated>1667691079576</updated>
     </task>
-    <option name="localTasksCounter" value="18" />
+    <task id="LOCAL-00018" summary=" * version 230415 Reading BigNFL Excel sheet">
+      <created>1681616927374</created>
+      <option name="number" value="00018" />
+      <option name="presentableId" value="LOCAL-00018" />
+      <option name="project" value="LOCAL" />
+      <updated>1681616927374</updated>
+    </task>
+    <option name="localTasksCounter" value="19" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -460,6 +465,7 @@
     <MESSAGE value=" * version 221104 Adding waits.  Running OK with waits, but only gets ATS home, Overall correctly..." />
     <MESSAGE value=" * version 221104A Runs complete...maybe betting all 8 consensus elements..." />
     <MESSAGE value=" * version 221105...Almost there with consensus. Putting some numbers into wrong Excel column...don't understand why..." />
-    <option name="LAST_COMMIT_MESSAGE" value=" * version 221105...Almost there with consensus. Putting some numbers into wrong Excel column...don't understand why..." />
+    <MESSAGE value=" * version 230415 Reading BigNFL Excel sheet" />
+    <option name="LAST_COMMIT_MESSAGE" value=" * version 230415 Reading BigNFL Excel sheet" />
   </component>
 </project>
