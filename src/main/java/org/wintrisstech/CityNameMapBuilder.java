@@ -1,8 +1,10 @@
 package org.wintrisstech;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
+import java.util.Map;
 public class CityNameMapBuilder
 {
-    private static HashMap<String, String> cityNameMap = new HashMap();
+    private static HashMap<String, String> cityNameMap = new LinkedHashMap<String, String>();
     public CityNameMapBuilder()
     {
         System.out.println("CityNameMapBuilder...building cityNameMap");
@@ -46,5 +48,11 @@ public class CityNameMapBuilder
         cityNameMap.put("Los Angeles", "Los Angeles");//Los Angeles Rams
         cityNameMap.put("San Francisco", "San Francisco");//San Francisco 49ers
         cityNameMap.put("Seattle", "Seattle");//Seattle Seahawks
+        System.out.println(cityNameMap.size() + " teams");
+        //cityNameMap.forEach((key, value) -> System.out.println(key + " = " + value));
+    }
+    Map getCityNameMap()
+    {
+        return cityNameMap;
     }
 }
