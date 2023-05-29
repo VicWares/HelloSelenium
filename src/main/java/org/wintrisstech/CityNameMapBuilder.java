@@ -4,9 +4,8 @@ import java.util.Map;
 public class CityNameMapBuilder
 {
     private static Map<String, String> cityNameMap = new LinkedHashMap<String, String>();
-    public CityNameMapBuilder()
+    public Map<String, String> buildCityNameMap()
     {
-        System.out.println("CityNameMapBuilder...building cityNameMap");
         cityNameMap.put("Minneapolis", "1&Minnesota");//Minnesota Vikings
         cityNameMap.put("Tampa", "2&Tampa Bay");//Tampa Bay Buccaneers
         cityNameMap.put("Tampa Bay", "2&Tampa Bay");//Tampa Bay Buccaneers
@@ -47,11 +46,11 @@ public class CityNameMapBuilder
         cityNameMap.put("Los Angeles", "30&Los Angeles");//Los Angeles Rams
         cityNameMap.put("San Francisco", "31&San Francisco");//San Francisco 49ers
         cityNameMap.put("Seattle", "32&Seattle");//Seattle Seahawks
-        System.out.println(cityNameMap.size() + " NFL teams");
         //cityNameMap.forEach((key, value) -> System.out.println(key + " = " + value));
-    }
-    static Map getCityNameMap(String bigNFLawayCityName)
-    {
         return cityNameMap;
+    }
+    public Map<String, String> getCityNameMap()
+    {
+        return (Map<String, String>) cityNameMap;
     }
 }
