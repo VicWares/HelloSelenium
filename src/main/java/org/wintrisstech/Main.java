@@ -11,7 +11,6 @@ import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.Map;
@@ -40,51 +39,39 @@ public class Main
     {
         System.out.println("SharpMarkets, version " + version + ", Copyright 2023 Dan Farris");
         bigNFLsheet = bigSheetNFLreader.getBigNFLsheet();
+        sheet1 = book1.getSheet("Data");//output sheet to Book1.xlsx
         Map<String, String> cityNameMap = cityNameMapBuilder.buildCityNameMap();
         XSSFRow row = sheet1.createRow(0);//Team numbers on first row of Book1.xlsx
         bigNFLsheet = BigNFLsheetReader.getBigNFLsheet();
         System.out.println("Main46 START MAIN LOOP ***************************" + bigNFLsheet.getLastRowNum() + "**************************************** START MAIN LOOP");
         for (int i = 3; i < bigNFLsheet.getLastRowNum(); i++)//Start of main loop interating through BigNFL.xlsx...all games in history
         {
-            System.out.println("=======" + i);
-            String homeTeamArray[] = bigNFLsheet.getRow(i).getCell(10).getStringCellValue().split(" ");//Home Team Full Name
-            if(homeTeamArray.length == 2)// 2 word team name e.g. Buffalo Bills
-            {
-                homeCity = homeTeamArray[0];//e.g. Buffalo
-            }
-            if(homeTeamArray.length == 3)// 3 word team name e.g. Los Angeles Rams
-            {
-                homeCity = homeTeamArray[0] + " " + homeTeamArray[1];//e.g.
-            }
-            String homeNumber = cityNameMap.get(homeCity).split("&")[0];//Home Team Number
-            String awayTeamArray[] = bigNFLsheet.getRow(i).getCell(21).getStringCellValue().split(" ");//Away Team Full Name
-            if(awayTeamArray.length == 2)// 2 word team name e.g. Buffalo Bills
-            {
-                awayCity = awayTeamArray[0];//e.g. Buffalo
-            }
-            if(awayTeamArray.length == 3)// 3 word team name e.g. Los Angeles Rams
-            {
-                awayCity = awayTeamArray[0] + " " + awayTeamArray[1];//e.g.
-            }
-            String awayNumber = cityNameMap.get(awayCity).split("&")[0];//Away Team Number
+            System.out.println("=======>" + i);
+            teamCityGenerator(cityNameMap, i);//Gets proper city name for home and away teams
             homeScore = bigNFLsheet.getRow(i).getCell(20).getNumericCellValue();//Home Team Score
             awayScore = bigNFLsheet.getRow(i).getCell(31).getNumericCellValue();//Away Team Score
-            System.out.println("Main75...team cities away/home => " + awayCity + (int) awayScore + "/" + homeCity + (int) homeScore);
-            System.out.println("Main74 Home City => " + homeCity + ", number " + homeNumber);
-            System.out.println("Main79 Away City => " + awayCity + ", number " + awayNumber);
+            System.out.println("Main75...team cities away/home => " + awayCity + (int)awayScore + "/" + homeCity + (int)homeScore);
             if (homeScore > awayScore)//Home Team Wins, so put home team number in the cell 6
             {
-                //sheet1.getRow(i).createCell(6).setCellValue("5");
-                System.out.println(sheet1.getRow(i));
-                //sheet1.getRow(i).createCell(6).setCellValue(homeTeamNumber);
+                if (homeCity.equals("Washington Football"))//Washington Football Team
+                {
+                    homeCity = "Washington";//Washington Football Team special case
+                }
+                String homeNumber = cityNameMap.get(homeCity).split("&")[0];//Home Team Number
+                System.out.println("******>homeWin " + homeCity + " #" + homeNumber);
             }
             if (awayScore > homeScore)//Away Team Wins, so put away team number in the cell 7
             {
-               // sheet1.getRow(i).createCell(7).setCellValue(awayTeamNumber);
+                if (awayCity.equals("Washington Football"))//Washington Football Team
+                {
+                    awayCity = "Washington";//Washington Football Team special case
+                }
+                String awayNumber = cityNameMap.get(awayCity).split("&")[0];//Away Team Number
+                System.out.println("******>awayWin " + awayCity + " #" + awayNumber);
             }
             if (awayScore == homeScore)
             {
-                System.out.println("Main87 TIE");
+                System.out.println(" <TIE> ");
             }
         }//End of main loop
         System.out.println("Main91 END MAIN LOOP **********************************" + bigNFLsheet.getLastRowNum() + "**************************************************** END MAIN LOOP");
@@ -100,31 +87,29 @@ public class Main
         }
     }
 
-    private static void getCityNumber(Map<String, String> cityNameMap, int i)
+    private static void teamCityGenerator(Map<String, String> cityNameMap, int i)
     {
-        String[] homeTeamNameArray = String.valueOf(bigNFLsheet.getRow(i).getCell(10)).split(" ");//e.g. Chicago Bears or New England Patiots...length 2 or 3
-        if (homeTeamNameArray.length == 3)
+        String homeTeamArray[] = bigNFLsheet.getRow(i).getCell(10).getStringCellValue().split(" ");//Home Team Full Name
+        if(homeTeamArray.length == 2)// 2 word team name e.g. Buffalo Bills
         {
-            homeCity = homeTeamNameArray[0];
+            homeCity = homeTeamArray[0];//e.g. Buffalo
         }
-        if (homeTeamNameArray.length == 2)
+        if(homeTeamArray.length == 3)// 3 word team name e.g. Los Angeles Rams
         {
-            homeCity = homeTeamNameArray[0] + " " + homeTeamNameArray[1];
+            homeCity = homeTeamArray[0] + " " + homeTeamArray[1];//e.g.
         }
-        if (homeTeamNameArray.length == 1)
+        String awayTeamArray[] = bigNFLsheet.getRow(i).getCell(21).getStringCellValue().split(" ");//Away Team Full Name
+        if(awayTeamArray.length == 2)// 2 word team name e.g. Buffalo Bills
         {
-            homeCity = homeTeamNameArray[0];
+            awayCity = awayTeamArray[0];//e.g. Buffalo
         }
-        String[] awayTeamNameArray = String.valueOf(bigNFLsheet.getRow(i).getCell(21)).split(" ");//e.g. Chicago Bears or New England Patiots...length 2 or 3
-        if (awayTeamNameArray.length > 2)
+        if(awayTeamArray.length == 3)// 3 word team name e.g. Los Angeles Rams
         {
-            awayCity = awayTeamNameArray[0] + " " + awayTeamNameArray[1];
+            awayCity = awayTeamArray[0] + " " + awayTeamArray[1];
+            if (awayCity.equals("Washington Football"))//Washington Football Team, special case
+            {
+                awayCity = "Washington";
+            }
         }
-        else
-        {
-            awayCity = awayTeamNameArray[0];
-        }
-        homeTeamNumber = cityNameMap.get(homeCity);//.split("&")[0];
-        awayTeamNumber = cityNameMap.get(awayCity);//.split("&")[0];
     }
 }

@@ -35,7 +35,7 @@ public class CityNameMapBuilder
         cityNameMap.put("Tennessee", "19&Tennessee");//Tennessee Titans
         cityNameMap.put("Denver", "20&Denver");//Denver Broncos
         cityNameMap.put("Kansas City", "21&Kansas City");//Kansas City Chiefs
-        cityNameMap.put("Las Vegas", "22&Las Vegas");//Los Angeles Chargers and Los Angeles Rams
+        cityNameMap.put("Las Vegas", "22&Las Vegas");
         cityNameMap.put("Philadelphia", "23&Philadelphia");//Philadelphia Eagles
         cityNameMap.put("Chicago", "24&Chicago");//Chicago Bears
         cityNameMap.put("Detroit", "25&Detroit");//Detroit Lions
