@@ -20,7 +20,7 @@ public class Main
     private static XSSFWorkbook bigNFLWorkbook = new XSSFWorkbook();
     private static XSSFWorkbook book1 = new XSSFWorkbook();
     private static XSSFSheet sheet1 = book1.createSheet("Data");
-    private static String version = "version 230529";
+    private static String version = "version 230529A";
     static String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
     private static double homeScore;
     private static double awayScore;

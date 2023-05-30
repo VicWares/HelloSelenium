@@ -4,10 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="version 230529 Building CSV input files">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" afterDir="false" />
-    </list>
+    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="version 230529 Getting Team Numbers...problem with Los Angeles Rams/Chargers" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -370,7 +367,7 @@
       <workItem from="1685318864147" duration="1112000" />
       <workItem from="1685324031394" duration="7121000" />
       <workItem from="1685393231506" duration="989000" />
-      <workItem from="1685394563116" duration="14759000" />
+      <workItem from="1685394563116" duration="15106000" />
     </task>
     <task id="LOCAL-00001" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
       <created>1662438233430</created>
@@ -533,7 +530,14 @@
       <option name="project" value="LOCAL" />
       <updated>1685393376126</updated>
     </task>
-    <option name="localTasksCounter" value="24" />
+    <task id="LOCAL-00024" summary="version 230529 Getting Team Numbers...problem with Los Angeles Rams/Chargers">
+      <created>1685418919459</created>
+      <option name="number" value="00024" />
+      <option name="presentableId" value="LOCAL-00024" />
+      <option name="project" value="LOCAL" />
+      <updated>1685418919459</updated>
+    </task>
+    <option name="localTasksCounter" value="25" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -574,7 +578,8 @@
     <MESSAGE value=" * version 230429 Getting winning team to Excel File...Book1.xlsx" />
     <MESSAGE value=" * version 230517 Disadvantage going west" />
     <MESSAGE value="version 230529 Building CSV input files" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 230529 Building CSV input files" />
+    <MESSAGE value="version 230529 Getting Team Numbers...problem with Los Angeles Rams/Chargers" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 230529 Getting Team Numbers...problem with Los Angeles Rams/Chargers" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -618,6 +623,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
           <line>61</line>
           <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
+          <line>65</line>
+          <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
