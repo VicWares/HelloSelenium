@@ -3,7 +3,7 @@ package org.wintrisstech;
  * Must be run before Selenium for initial setup
  * cd /usr/bin/
  * sudo safaridriver --enable
- * version 230519
+ * version 230529A
  * Teams going west have a circadian disadvantage
  **********************************************************************************/
 
