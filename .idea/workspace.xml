@@ -4,7 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="version 230529 Getting Team Numbers...problem with Los Angeles Rams/Chargers" />
+    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="version 230529A">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/BigNFLsheetReader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/BigNFLbookReader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/CityNameMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/CityNameMapBuilder.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -367,7 +373,18 @@
       <workItem from="1685318864147" duration="1112000" />
       <workItem from="1685324031394" duration="7121000" />
       <workItem from="1685393231506" duration="989000" />
-      <workItem from="1685394563116" duration="15106000" />
+      <workItem from="1685394563116" duration="15584000" />
+      <workItem from="1685466337553" duration="4811000" />
+      <workItem from="1685471460197" duration="4294000" />
+      <workItem from="1685489173506" duration="222000" />
+      <workItem from="1685489402435" duration="2952000" />
+      <workItem from="1685499822224" duration="3208000" />
+      <workItem from="1685503045731" duration="743000" />
+      <workItem from="1685503796611" duration="2111000" />
+      <workItem from="1685554399937" duration="1736000" />
+      <workItem from="1685589734615" duration="18000" />
+      <workItem from="1685589758503" duration="2151000" />
+      <workItem from="1685654081161" duration="5502000" />
     </task>
     <task id="LOCAL-00001" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
       <created>1662438233430</created>
@@ -537,7 +554,21 @@
       <option name="project" value="LOCAL" />
       <updated>1685418919459</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="version 230529 Getting Team Numbers...problem with Los Angeles Rams/Chargers...duplicate push">
+      <created>1685419078846</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1685419078846</updated>
+    </task>
+    <task id="LOCAL-00026" summary="version 230529A">
+      <created>1685419404283</created>
+      <option name="number" value="00026" />
+      <option name="presentableId" value="LOCAL-00026" />
+      <option name="project" value="LOCAL" />
+      <updated>1685419404283</updated>
+    </task>
+    <option name="localTasksCounter" value="27" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -579,59 +610,56 @@
     <MESSAGE value=" * version 230517 Disadvantage going west" />
     <MESSAGE value="version 230529 Building CSV input files" />
     <MESSAGE value="version 230529 Getting Team Numbers...problem with Los Angeles Rams/Chargers" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 230529 Getting Team Numbers...problem with Los Angeles Rams/Chargers" />
+    <MESSAGE value="version 230529 Getting Team Numbers...problem with Los Angeles Rams/Chargers...duplicate push" />
+    <MESSAGE value="version 230529A" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 230529A" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/CityNameMapBuilder.java</url>
-          <line>16</line>
+          <line>17</line>
           <option name="timeStamp" value="7" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>82</line>
+          <line>62</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/BigNFLsheetReader.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/BigNFLbookReader.java</url>
           <line>22</line>
           <option name="timeStamp" value="24" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>50</line>
+          <line>41</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>51</line>
+          <line>42</line>
           <option name="timeStamp" value="27" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>71</line>
+          <line>51</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>53</line>
+          <line>43</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>61</line>
+          <line>50</line>
           <option name="timeStamp" value="31" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>65</line>
-          <option name="timeStamp" value="35" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>37</line>
+          <line>32</line>
           <properties class="org.wintrisstech.Main" method="main">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />

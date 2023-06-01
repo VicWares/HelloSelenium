@@ -5,13 +5,11 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileInputStream;
 import java.io.InputStream;
 
-public class BigNFLsheetReader
+public class BigNFLbookReader
 {
     static String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
-    private static XSSFSheet bigNFLsheet;
-
-    //    private static XSSFSheet bigNFLsheet;
-    public BigNFLsheetReader()
+    public static XSSFSheet bigNFLsheet;
+    public BigNFLbookReader()
     {
         try//Reading BigNFL.xlsx
         {
@@ -24,9 +22,5 @@ public class BigNFLsheetReader
         {
             System.out.println("BNLSR27...problems reading " + deskTopPath + "/BigNFL.xlsx" + " sheet");
         }
-    }
-    public static XSSFSheet getBigNFLsheet()
-    {
-        return bigNFLsheet;
     }
 }
