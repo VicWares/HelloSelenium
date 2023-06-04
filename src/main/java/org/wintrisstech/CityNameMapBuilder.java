@@ -2,7 +2,7 @@ package org.wintrisstech;
 import java.util.Map;
 public class CityNameMapBuilder
 {
-    public static Map<String, String> cityNameMap;
+    public static Map<String, String> cityNameMap = new java.util.HashMap<String, String>();
     public static String awayCity;
     public static String homeCity;
     public CityNameMapBuilder()
@@ -47,6 +47,11 @@ public class CityNameMapBuilder
         cityNameMap.put("Los Angeles", "30&Los Angeles");//Los Angeles Rams
         cityNameMap.put("San Francisco", "31&San Francisco");//San Francisco 49ers
         cityNameMap.put("Seattle", "32&Seattle");//Seattle Seahawks
-        cityNameMap.forEach((key, value) -> System.out.println(key + " = " + value));
+        //cityNameMap.forEach((key, value) -> System.out.println(key + " = " + value));
+    }
+    public static String getCityNumber(String cityName)
+    {
+        String cityNumber = cityNameMap.get(cityName).split("&")[0];
+        return cityNumber;
     }
 }

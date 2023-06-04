@@ -4,7 +4,6 @@ import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileInputStream;
 import java.io.InputStream;
-
 public class BigNFLbookReader
 {
     static String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
@@ -20,7 +19,7 @@ public class BigNFLbookReader
         }
         catch (Exception e)
         {
-            System.out.println("BNLSR27...problems reading " + deskTopPath + "/BigNFL.xlsx" + " sheet");
+            System.out.println("BNLSR22...problems reading " + deskTopPath + "/BigNFL.xlsx" + " sheet");
         }
     }
 }
