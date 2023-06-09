@@ -23,6 +23,8 @@ public class CityNameMapBuilder
         cityNameMap.put("East Rutherford", "8&New York");//New York Giants and New York Jets
         cityNameMap.put("New York", "8&New York");//New York Giants and New York Jets
         cityNameMap.put("Landover", "9&Washington");//Washington Football Team
+        cityNameMap.put("Washington Football Team", "9&Washington");//Washington Football Team
+        cityNameMap.put("Washington Commanders", "9&Washington");//Washington Football Team
         cityNameMap.put("Washington", "9&Washington");//Washington Football Team
         cityNameMap.put(" Nashville", "10&Tennessee");//Tennessee Titans
         cityNameMap.put("Miami", "11&Miami");//Miami Dolphins
@@ -49,9 +51,5 @@ public class CityNameMapBuilder
         cityNameMap.put("Seattle", "32&Seattle");//Seattle Seahawks
         //cityNameMap.forEach((key, value) -> System.out.println(key + " = " + value));
     }
-    public static String getCityNumber(String cityName)
-    {
-        String cityNumber = cityNameMap.get(cityName).split("&")[0];
-        return cityNumber;
-    }
+
 }
