@@ -1,39 +1,35 @@
 package org.wintrisstech;
 /**********************************************************************************
- * version 230609
+ * version 230610
  * Teams going west have a circadian disadvantage
  **********************************************************************************/
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-
 import java.io.FileOutputStream;
 import java.io.IOException;
-
 import static org.wintrisstech.BigNFLbookReader.bigNFLsheet;
 import static org.wintrisstech.CityNameMapBuilder.cityNameMap;
-
-public class Main
-{
+public class Main {
     private static XSSFWorkbook book1 = new XSSFWorkbook();//Output workbook
     private static XSSFSheet sheet1 = book1.createSheet("Data");//Output sheet
-    private static String version = "version 230609";
+    private static String version = "version 230610";
     static String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
     private static double homeScore;
     private static double awayScore;
     private static FileOutputStream os;
     public static String homeNumber;
     public static String awayNumber;
-    public static String homeName;
-    public static String teamName;
+    public static String homecity;
+    public static String cityName;
     public static String winCity;
-    private static String awayName;
+    private static String awayCity;
     private static String[] homeNameArray;
     private static String[] awayNameArray;
+    private static String cityNumber;
 
-    public static void main(String[] args) throws IOException, InterruptedException, InvalidFormatException
-    {
+    public static void main(String[] args) throws IOException, InterruptedException, InvalidFormatException {
         new BigNFLbookReader();
         new CityNameMapBuilder();
         cityNameMap = CityNameMapBuilder.cityNameMap;
@@ -44,23 +40,28 @@ public class Main
         {
             System.out.print("=======> row[" + i + "] ...");
             homeNameArray = bigNFLsheet.getRow(i).getCell(10).getStringCellValue().split(" ");//Home Team Name
-            homeName = getCleanCityName(homeNameArray);
             awayNameArray = bigNFLsheet.getRow(i).getCell(21).getStringCellValue().split(" ");//Away Team Name
-            awayName = getCleanCityName(awayNameArray);
+            homecity = getCleanCityName(homeNameArray);
+            awayCity = getCleanCityName(awayNameArray);
+            homeNumber = getCityNumber(homecity);
+            awayNumber = getCityNumber(awayCity);
             homeScore = bigNFLsheet.getRow(i).getCell(20).getNumericCellValue();//Home Team Score
             awayScore = bigNFLsheet.getRow(i).getCell(31).getNumericCellValue();//Away Team Score
             if (homeScore > awayScore)//Home Team Wins, so put home team number in the cell 6
             {
-                System.out.println("Main50******>homeWin " + homeName + ":" + (int) homeScore + "/" + teamName + ":" + (int) awayScore);
+                System.out.print("HOME WIN...");
+                printWin();
             }
             if (awayScore > homeScore)//Away Team Wins, so put away team number in the cell 7
             {
-                System.out.println("Main55======>awayWin " + teamName + ":" + (int) awayScore + "/" + homeName + ":" + (int) homeScore);
+                System.out.print("AWAY WIN...");
+                printWin();
             }
             if (awayScore == homeScore) {
-                System.out.println(" <TIE> Main59======>TIE " + teamName + ":" + (int) awayScore + "/" + homeName + ":" + (int) homeScore);
+                System.out.print("TIE...");
+                printWin();
             }
-            sheet1.createRow(i).createCell(6).setCellValue(teamName);//win team number
+            sheet1.createRow(i).createCell(6).setCellValue("hello");//win team number
         }//End of main loop
         System.out.println("Main63 END MAIN LOOP **********************************" + bigNFLsheet.getLastRowNum() + "**************************************************** END MAIN LOOP");
         try //Writing Book1.xlsx...epoch
@@ -69,8 +70,12 @@ public class Main
             book1.write(os);
             os.close();
         } catch (Exception e) {
-            System.out.println("Main67...problems writing " + deskTopPath + "/Book1.xlsx" + " sheet");
+            System.out.println("Main76...problems writing " + deskTopPath + "/Book1.xlsx" + " sheet");
         }
+    }
+
+    private static void printWin() {
+        System.out.println("#" + awayNumber + " " + awayCity + ":" + (int) awayScore + " @ " + "#" + homeNumber + " " + homecity + ":" + (int) homeScore);
     }
 
     private static String getCleanCityName(String[] teamNameArray)//
@@ -78,24 +83,42 @@ public class Main
         int teamNameLength = teamNameArray.length;
         switch (teamNameLength)//Get corrected away team City names
         {
-            case 1:
-                System.out.println("Main79...Name Error...awayNameLength = " + teamNameLength + "is too short");//Single word team name not allowed in BigNFL.xlsx
-                break;
             case 2: //Team Name is two words like Carolina Panthers
-                teamName = teamNameArray[0];// e.g. Carolina
+                cityName = teamNameArray[0];// e.g. Carolina
                 break;
             case 3: //Team Name is three words like Los Angeles Rams
-                teamName = teamNameArray[0] + " " + teamNameArray[1];// e.g. Los Angeles
+                if (teamNameArray[0].equals("Washimgton"))// Special case for Washington Football Team
+                {
+                    cityName = "Washington";
+                    break;
+                } else
+                    cityName = teamNameArray[0] + " " + teamNameArray[1];// e.g. Los Angeles
                 break;
             default:
-                System.out.println("Main91...Default  Switch Name Error...");
+                System.out.println("Main95...Default  Switch Name Error...");
         }
-        return teamName;
+        return cityName;
     }
-
     public static String getCityNumber(String cityName)
     {
-        String cityNumber = "+++++++++++++++++++++" + cityNameMap.get(cityName).split("&")[0];
+        if (cityName.equals("Washington Football")) //TODO: FIX Special case for Washington Football Team
+        {
+            cityName = "Washington";
+        }
+        if (cityName.equals("Oakland")) //TODO: FIX Special case for Oakland Raiders
+        {
+            cityName = "Oakland";
+        }
+        try
+        {
+            cityNumber = cityNameMap.get(cityName).split("&")[0];
+        }
+        catch (Exception e)
+        {
+            System.out.println("Main117...cityNumber Error...trying to find city name => " + cityName);
+        }
         return cityNumber;
     }
 }
+
+
