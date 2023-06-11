@@ -1,6 +1,6 @@
 package org.wintrisstech;
 /**********************************************************************************
- * version 230610A
+ * version 230610B
  * Teams going west have a circadian disadvantage
  **********************************************************************************/
 
@@ -15,7 +15,7 @@ import static org.wintrisstech.CityNameMapBuilder.cityNameMap;
 public class Main {
     private static XSSFWorkbook book1 = new XSSFWorkbook();//Output workbook
     private static XSSFSheet sheet1 = book1.createSheet("Data");//Output sheet
-    private static String version = "version 230610A";
+    private static String version = "version 230610B";
     static String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
     private static double homeScore;
     private static double awayScore;
@@ -133,7 +133,6 @@ public class Main {
         }
         catch (Exception e)
         {
-            System.out.println("..............................................Main118...cityNumber Error...trying to find city name => " + cityName);
         }
         return cityNumber;
     }

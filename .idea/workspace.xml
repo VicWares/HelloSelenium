@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="version 230610 working...trying to fill book1.xlsx with output...">
+    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="version 230610A Successfully putting home/away/winning team numbers in Book1.xlsx">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/CityNameMapBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/CityNameMapBuilder.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -410,7 +411,7 @@
       <workItem from="1686427183250" duration="6115000" />
       <workItem from="1686438137444" duration="1757000" />
       <workItem from="1686439906670" duration="3073000" />
-      <workItem from="1686449733561" duration="1689000" />
+      <workItem from="1686449733561" duration="4199000" />
     </task>
     <task id="LOCAL-00001" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
       <created>1662438233430</created>
@@ -622,7 +623,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686432940401</updated>
     </task>
-    <option name="localTasksCounter" value="31" />
+    <task id="LOCAL-00031" summary="version 230610A Successfully putting home/away/winning team numbers in Book1.xlsx">
+      <created>1686451699789</created>
+      <option name="number" value="00031" />
+      <option name="presentableId" value="LOCAL-00031" />
+      <option name="project" value="LOCAL" />
+      <updated>1686451699789</updated>
+    </task>
+    <option name="localTasksCounter" value="32" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -641,7 +649,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Version 220922 HelloSelenium2.  Added Main Page getter.  No longer getting MoneyLine Away Close Odds column AH34." />
     <MESSAGE value="Version 220927 HelloSelenium2.  Clean up with JS executor." />
     <MESSAGE value="Version 221003A HelloSelenium9. Building dataEventIdMap with DataEventIdMapBuilder constructor." />
     <MESSAGE value=" * version 221023 HelloSeleniumx...combined HelloSelenium3 and FantasticCovers to get rid of Excel 1904 error." />
@@ -666,7 +673,8 @@
     <MESSAGE value="version 230603 working without city numbers..." />
     <MESSAGE value="version 230609 working without with new switch...next, get team numbers..." />
     <MESSAGE value="version 230610 working...trying to fill book1.xlsx with output..." />
-    <option name="LAST_COMMIT_MESSAGE" value="version 230610 working...trying to fill book1.xlsx with output..." />
+    <MESSAGE value="version 230610A Successfully putting home/away/winning team numbers in Book1.xlsx" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 230610A Successfully putting home/away/winning team numbers in Book1.xlsx" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -678,7 +686,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>88</line>
+          <line>89</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -733,7 +741,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>81</line>
+          <line>82</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -748,7 +756,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>87</line>
+          <line>88</line>
           <option name="timeStamp" value="42" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -758,7 +766,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>80</line>
+          <line>81</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
