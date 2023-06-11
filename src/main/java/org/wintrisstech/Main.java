@@ -1,10 +1,11 @@
 package org.wintrisstech;
 /**********************************************************************************
- * version 230610
+ * version 230610A
  * Teams going west have a circadian disadvantage
  **********************************************************************************/
 
 import org.apache.poi.openxml4j.exceptions.InvalidFormatException;
+import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import java.io.FileOutputStream;
@@ -14,7 +15,7 @@ import static org.wintrisstech.CityNameMapBuilder.cityNameMap;
 public class Main {
     private static XSSFWorkbook book1 = new XSSFWorkbook();//Output workbook
     private static XSSFSheet sheet1 = book1.createSheet("Data");//Output sheet
-    private static String version = "version 230610";
+    private static String version = "version 230610A";
     static String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
     private static double homeScore;
     private static double awayScore;
@@ -51,21 +52,38 @@ public class Main {
             {
                 System.out.print("HOME WIN...");
                 printWin();
+                if (sheet1.getRow(i) == null)//If the row doesn't exist, create it
+                {
+                    sheet1.createRow(i);
+                }
+                sheet1.getRow(i).createCell(3).setCellValue(homeNumber);//Put winning home team number in the cell 6
             }
             if (awayScore > homeScore)//Away Team Wins, so put away team number in the cell 7
             {
                 System.out.print("AWAY WIN...");
                 printWin();
+                if (sheet1.getRow(i) == null)//If the row doesn't exist, create it
+                {
+                    sheet1.createRow(i);
+                }
+                sheet1.getRow(i).createCell(3).setCellValue(awayNumber);//Put winning asay team number in the cell
             }
-            if (awayScore == homeScore) {
+            if (awayScore == homeScore)
+            {
                 System.out.print("TIE...");
                 printWin();
             }
-            sheet1.createRow(i).createCell(6).setCellValue("hello");//win team number
+            if (sheet1.getRow(i) == null)//If the row doesn't exist, create it
+            {
+                sheet1.createRow(i);
+            }
+            sheet1.getRow(i).createCell(0).setCellValue(homeNumber);//Put home team number in the cell 0
+            sheet1.getRow(i).createCell(1).setCellValue(awayNumber);//Put away team number in the cell 1
         }//End of main loop
         System.out.println("Main63 END MAIN LOOP **********************************" + bigNFLsheet.getLastRowNum() + "**************************************************** END MAIN LOOP");
         try //Writing Book1.xlsx...epoch
         {
+            System.out.println("Main69...Writing " + deskTopPath + "/Book1.xlsx" + " sheet");
             os = new FileOutputStream(deskTopPath + "/Book1.xlsx");
             book1.write(os);
             os.close();
@@ -115,7 +133,7 @@ public class Main {
         }
         catch (Exception e)
         {
-            System.out.println("Main117...cityNumber Error...trying to find city name => " + cityName);
+            System.out.println("..............................................Main118...cityNumber Error...trying to find city name => " + cityName);
         }
         return cityNumber;
     }
