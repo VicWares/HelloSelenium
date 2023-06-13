@@ -7,7 +7,7 @@ public class CityNameMapBuilder
     public static String homeCity;
     public CityNameMapBuilder()
     {
-        cityNameMap.put("Minneapolis", "1&Minnesota&5");//Minnesota Vikings
+        cityNameMap.put("Minneapolis", "1&Minnesota&5");//Minnesota Vikings......cityNumber&cityName&cityTime
         cityNameMap.put("Tampa", "2&Tampa Bay&4");//Tampa Bay Buccaneers
         cityNameMap.put("Tampa Bay", "2&Tampa Bay&4");//Tampa Bay Buccaneers
         cityNameMap.put("Arlington", "3&Dallas&5");//Dallas Cowboys
@@ -25,7 +25,7 @@ public class CityNameMapBuilder
         cityNameMap.put("Landover", "9&Washington&7");//Washington Football Team
         cityNameMap.put("Washington Football Team", "9&Washington&7");//Washington Football Team
         cityNameMap.put("Washington Commanders", "9&Washington&7");//Washington Football Team
-        cityNameMap.put("Washington", "9&Washingto&7");//Washington Football Team
+        cityNameMap.put("Washington", "9&Washington&7");//Washington Football Team
         cityNameMap.put("Nashville", "10&Tennessee&5");//Tennessee Titans
         cityNameMap.put("Miami", "11&Miami&4");//Miami Dolphins
         cityNameMap.put("Baltimore", "12&Baltimore&4");//Baltimore Ravens
@@ -38,7 +38,7 @@ public class CityNameMapBuilder
         cityNameMap.put("Tennessee", "19&Tennessee&4");//Tennessee Titans
         cityNameMap.put("Denver", "20&Denver&6");//Denver Broncos
         cityNameMap.put("Kansas City", "21&Kansas City&5");//Kansas City Chiefs
-        cityNameMap.put("Las Vegas", "22&Las Vegas&");
+        cityNameMap.put("Las Vegas", "22&Las Vegas&7");
         cityNameMap.put("Philadelphia", "23&Philadelphia&4");//Philadelphia Eagles
         cityNameMap.put("Chicago", "24&Chicago&5");//Chicago Bears
         cityNameMap.put("Detroit", "25&Detroit&4");//Detroit Lions
@@ -49,6 +49,9 @@ public class CityNameMapBuilder
         cityNameMap.put("Los Angeles", "30&Los Angeles&7");//Los Angeles Rams
         cityNameMap.put("San Francisco", "31&San Francisco&7");//San Francisco 49ers
         cityNameMap.put("Seattle", "32&Seattle&7");//Seattle Seahawks
+        cityNameMap.put("Oakland", "33&Oakland&7");//Seattle Seahawks
+        cityNameMap.put("San Diego", "34&Los Angeles&7");//Los angeles Chargers
+        cityNameMap.put("St. Louis", "35&St. Louis&5");//St. Louis Rams
         //cityNameMap.forEach((key, value) -> System.out.println(key + " = " + value));
     }
 
