@@ -25,7 +25,7 @@ public class CityNameMapBuilder
         cityNameMap.put("Landover", "9&Washington&7");//Washington Football Team
         cityNameMap.put("Washington Football Team", "9&Washington&7");//Washington Football Team
         cityNameMap.put("Washington Commanders", "9&Washington&7");//Washington Football Team
-        cityNameMap.put("Washington", "9&Washingto&7n");//Washington Football Team
+        cityNameMap.put("Washington", "9&Washingto&7");//Washington Football Team
         cityNameMap.put("Nashville", "10&Tennessee&5");//Tennessee Titans
         cityNameMap.put("Miami", "11&Miami&4");//Miami Dolphins
         cityNameMap.put("Baltimore", "12&Baltimore&4");//Baltimore Ravens
@@ -40,7 +40,7 @@ public class CityNameMapBuilder
         cityNameMap.put("Kansas City", "21&Kansas City&5");//Kansas City Chiefs
         cityNameMap.put("Las Vegas", "22&Las Vegas&");
         cityNameMap.put("Philadelphia", "23&Philadelphia&4");//Philadelphia Eagles
-        cityNameMap.put("Chicago", "24&Chicago&%5");//Chicago Bears
+        cityNameMap.put("Chicago", "24&Chicago&5");//Chicago Bears
         cityNameMap.put("Detroit", "25&Detroit&4");//Detroit Lions
         cityNameMap.put("Green Bay", "26&Green Bay&5");//Green Bay Packers
         cityNameMap.put("Minnesota", "27&Minnesota&5");
