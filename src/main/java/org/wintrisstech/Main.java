@@ -1,6 +1,6 @@
 package org.wintrisstech;
 /**********************************************************************************
- * version 230613A
+ * version 230617
  * Teams going west have a circadian disadvantage
  **********************************************************************************/
 
@@ -83,6 +83,7 @@ public class Main {
             if (awayScore == homeScore)
             {
                 System.out.print("TIE...");
+                sheet1.getRow(i).createCell(3).setCellValue("0");//Put winning asay team number in the cell
                 printWin("", "");
             }
             sheet1.getRow(i).createCell(0).setCellValue(homeNumber);//Put home team number in the cell 0
