@@ -1,6 +1,6 @@
 package org.wintrisstech;
 /**********************************************************************************
- * version 230617
+ * version 230617A
  * Teams going west have a circadian disadvantage
  **********************************************************************************/
 
@@ -9,14 +9,17 @@ import org.apache.poi.ss.usermodel.CellStyle;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 import java.io.FileOutputStream;
 import java.io.IOException;
+
 import static org.wintrisstech.BigNFLbookReader.bigNFLsheet;
 import static org.wintrisstech.CityNameMapBuilder.cityNameMap;
+
 public class Main {
     private static XSSFWorkbook book1 = new XSSFWorkbook();//Output workbook
     private static XSSFSheet sheet1 = book1.createSheet("Data");//Output sheet
-    private static String version = "version 230613A";
+    private static String version = "version 230617A";
     static String deskTopPath = System.getProperty("user.home") + "/Desktop";/* User's desktop path */
     private static double homeScore;
     private static double awayScore;
@@ -33,6 +36,8 @@ public class Main {
     private static String cityTime;
     private static String homeTime;
     private static String awayTime;
+    private static int predictedWinCount;
+
     public static void main(String[] args) throws IOException, InterruptedException, InvalidFormatException {
         new BigNFLbookReader();
         new CityNameMapBuilder();
@@ -64,24 +69,23 @@ public class Main {
             awayCity = getCleanCityName(awayNameArray);
             homeNumber = getCityNumber(homeCity);
             awayNumber = getCityNumber(awayCity);
-            homeTime    = getCityTime(homeCity);
-            awayTime    = getCityTime(awayCity);
-            int deltaCityTime = Integer.parseInt(homeTime) - Integer.parseInt(awayTime);
+            homeTime = getCityTime(homeCity);
+            awayTime = getCityTime(awayCity);
+            int deltaCityTime = Integer.parseInt(awayTime) - Integer.parseInt(homeTime);
             String deltaCityTimeString = Integer.toString(deltaCityTime);
             homeScore = bigNFLsheet.getRow(i).getCell(20).getNumericCellValue();//Home Team Score
             awayScore = bigNFLsheet.getRow(i).getCell(31).getNumericCellValue();//Away Team Score
-            if (homeScore > awayScore)//Home Team Wins, so put home team number in the cell 6
+            if (homeScore > awayScore)//Home Team Wins, so put home team number in the cell 3
             {
-                printWin("" , "**=>");
-                sheet1.getRow(i).createCell(3).setCellValue(homeNumber);//Put winning home team number in the cell 6
+                printWin("", "**=>");
+                sheet1.getRow(i).createCell(3).setCellValue(homeNumber);//Put winning home team number in the cell 3
             }
-            if (awayScore > homeScore)//Away Team Wins, so put away team number in the cell 7
+            if (awayScore > homeScore)//Away Team Wins, so put away team number in the cell 3
             {
                 printWin("**=>", "");
-                sheet1.getRow(i).createCell(3).setCellValue(awayNumber);//Put winning asay team number in the cell
+                sheet1.getRow(i).createCell(3).setCellValue(awayNumber);//Put winning away team number in the cell 3
             }
-            if (awayScore == homeScore)
-            {
+            if (awayScore == homeScore) {
                 System.out.print("TIE...");
                 sheet1.getRow(i).createCell(3).setCellValue("0");//Put winning asay team number in the cell
                 printWin("", "");
@@ -89,13 +93,27 @@ public class Main {
             sheet1.getRow(i).createCell(0).setCellValue(homeNumber);//Put home team number in the cell 0
             sheet1.getRow(i).createCell(1).setCellValue(awayNumber);//Put away team number in the cell 1
             sheet1.getRow(i).createCell(2).setCellValue(deltaCityTimeString);//Put delta time in the cell 2
+            if (Integer.parseInt(deltaCityTimeString) >= 1)
+            {
+                sheet1.getRow(i).createCell(4).setCellValue(homeNumber);//Put predicted winning home team number in the cell 4
+            }
+            else
+            {
+                sheet1.getRow(i).createCell(4).setCellValue("-");//Put predicted winning away team number in the cell 4
+            }
+            if (sheet1.getRow(i).getCell(3).getStringCellValue().equals(sheet1.getRow(i).getCell(4).getStringCellValue()))
+            {
+                System.out.println("BINGO...Predicted winner matches actual winner");
+                predictedWinCount++;
+            }
         }//End of main loop
         System.out.println("****************END MAIN LOOP **********************************" + bigNFLsheet.getLastRowNum() + "**************************************************** END MAIN LOOP");
+        System.out.println("Predicted winner % is predicted win  count " + predictedWinCount + "/" + (book1.getSheet("Data").getLastRowNum()-3) + " => " + (predictedWinCount * 100)/(book1.getSheet("Data").getLastRowNum()-3) + "%");
         writeBook1();
         System.out.println("Hooray...Main94...Finished");
     }
-    private static void writeBook1()
-    {
+
+    private static void writeBook1() {
         try //Writing Book1.xlsx...epoch
         {
             System.out.println("Main103...Writing " + deskTopPath + "/Book1.xlsx" + " sheet");
@@ -110,6 +128,7 @@ public class Main {
     private static void printWin(String awayWinTag, String homeWinTag) {
         System.out.println("#" + awayNumber + awayWinTag + awayCity + ":" + (int) awayScore + " @ " + "#" + homeNumber + homeWinTag + homeCity + ":" + (int) homeScore);
     }
+
     private static String getCleanCityName(String[] teamNameArray)//
     {
         int teamNameLength = teamNameArray.length;
@@ -131,8 +150,8 @@ public class Main {
         }
         return cityName;
     }
-    public static String getCityNumber(String cityName)
-    {
+
+    public static String getCityNumber(String cityName) {
         if (cityName.equals("Washington Football")) //TODO: FIX Special case for Washington Football Team
         {
             cityName = "Washington";
@@ -141,18 +160,15 @@ public class Main {
         {
             cityName = "Oakland";
         }
-        try
-        {
+        try {
             cityNumber = cityNameMap.get(cityName).split("&")[0];
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             System.out.println("ERROR Main157..." + cityNameMap.get(cityName));
         }
         return cityNumber;
     }
-    private static String getCityTime(String cityName)
-    {
+
+    private static String getCityTime(String cityName) {
         if (cityName.equals("Washington Football")) //TODO: FIX Special case for Washington Football Team
         {
             cityName = "Washington";

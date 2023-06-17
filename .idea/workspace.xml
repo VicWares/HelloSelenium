@@ -4,8 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="version 230613A Totally working version...release alpha">
+    <list default="true" id="dcf2321a-7522-48b1-ae06-43eb2120b38c" name="Changes" comment="version 230617 Beta release...fixed Tie team =&gt; 0">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -35,24 +36,24 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "jdk.selected.JAVA_MODULE": "openjdk-18",
-    "last_opened_file_path": "/Users/vicwintriss/git/DataPrep",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Java",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;jdk.selected.JAVA_MODULE&quot;: &quot;openjdk-18&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/vicwintriss/git/DataPrep&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="org.wintrisstech" />
@@ -421,7 +422,9 @@
       <workItem from="1686673452429" duration="3477000" />
       <workItem from="1686677606262" duration="1508000" />
       <workItem from="1686682691877" duration="3424000" />
-      <workItem from="1687033661579" duration="2593000" />
+      <workItem from="1687033661579" duration="2743000" />
+      <workItem from="1687036997887" duration="8000" />
+      <workItem from="1687037036147" duration="9050000" />
     </task>
     <task id="LOCAL-00001" summary="Version 220905 integrated helloSelenium with myprogram...selenium running with covers.">
       <created>1662438233430</created>
@@ -675,7 +678,14 @@
       <option name="project" value="LOCAL" />
       <updated>1686686118034</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="version 230617 Beta release...fixed Tie team =&gt; 0">
+      <created>1687036766377</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1687036766377</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -694,7 +704,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value=" * version 221027 Getting all overall consensus data...working on Consensus Money Leaders" />
     <MESSAGE value=" * version 221028  Succesfully getting all 8 consensus numbers...some are repeats...not sure numbers right..." />
     <MESSAGE value=" * version 221103 Adding waits.  Gets completely through all games with ATS Home for both Overall and Money Leaders consensus...trying others consensus items." />
     <MESSAGE value=" * version 221104 Adding waits.  Running OK with waits, but only gets ATS home, Overall correctly..." />
@@ -719,7 +728,8 @@
     <MESSAGE value="version 230611A Added home/away team numbers and win team number...working on delta time zone" />
     <MESSAGE value="version 230613 working with team times...glitch at row 14" />
     <MESSAGE value="version 230613A Totally working version...release alpha" />
-    <option name="LAST_COMMIT_MESSAGE" value="version 230613A Totally working version...release alpha" />
+    <MESSAGE value="version 230617 Beta release...fixed Tie team =&gt; 0" />
+    <option name="LAST_COMMIT_MESSAGE" value="version 230617 Beta release...fixed Tie team =&gt; 0" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -736,17 +746,17 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>70</line>
+          <line>75</line>
           <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>82</line>
+          <line>87</line>
           <option name="timeStamp" value="28" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>72</line>
+          <line>77</line>
           <option name="timeStamp" value="30" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -776,52 +786,52 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>52</line>
+          <line>57</line>
           <option name="timeStamp" value="38" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>92</line>
+          <line>109</line>
           <option name="timeStamp" value="39" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>78</line>
+          <line>83</line>
           <option name="timeStamp" value="40" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>54</line>
+          <line>59</line>
           <option name="timeStamp" value="41" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>61</line>
+          <line>66</line>
           <option name="timeStamp" value="43" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>91</line>
+          <line>108</line>
           <option name="timeStamp" value="44" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>125</line>
+          <line>144</line>
           <option name="timeStamp" value="45" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>123</line>
+          <line>142</line>
           <option name="timeStamp" value="46" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>43</line>
+          <line>48</line>
           <option name="timeStamp" value="47" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>46</line>
+          <line>51</line>
           <option name="timeStamp" value="48" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
@@ -829,9 +839,14 @@
           <line>20</line>
           <option name="timeStamp" value="50" />
         </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
+          <line>91</line>
+          <option name="timeStamp" value="51" />
+        </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
           <url>file://$PROJECT_DIR$/src/main/java/org/wintrisstech/Main.java</url>
-          <line>35</line>
+          <line>40</line>
           <properties class="org.wintrisstech.Main" method="main">
             <option name="EMULATED" value="true" />
             <option name="WATCH_EXIT" value="false" />
